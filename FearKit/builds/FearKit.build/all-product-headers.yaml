@@ -1,0 +1,33 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/builds/Debug-iphonesimulator/FearKit.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "FearKit-Swift.h",
+          'external-contents': "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/builds/Debug-iphonesimulator/FearKit.framework/Headers/FearKit-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "FearKit.h",
+          'external-contents': "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/FearKit/src/FearKit.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/builds/Debug-iphonesimulator/FearKit.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/builds/FearKit.build/Debug-iphonesimulator/FearKit.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

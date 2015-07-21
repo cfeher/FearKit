@@ -1,0 +1,10 @@
+framework module FearKit {
+  umbrella header "FearKit.h"
+
+  export *
+  module * { export * }
+}
+
+module FearKit.__Swift {
+    exclude header "FearKit-Swift.h"
+}

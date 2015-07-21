@@ -1,0 +1,13 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': '/Users/cfeher/Dropbox/Documents/FearKit/FearKit/builds/Debug-iphoneos/FearKit.framework/Modules'
+    'contents': [{
+      'type': 'file',
+      'name': 'module.modulemap',
+      'external-contents': '/Users/cfeher/Dropbox/Documents/FearKit/FearKit/builds/FearKit.build/Debug-iphoneos/FearKit.build/unextended-module.modulemap',
+    }]
+  }]
+}
