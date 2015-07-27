@@ -2,7 +2,7 @@ import UIKit
 
 public class FKMasterViewController: UIViewController {
 
-	init() {
+	public init() {
 		super.init(nibName: nil, bundle: nil);
 		self.view.backgroundColor = UIColor.greenColor()
 	}

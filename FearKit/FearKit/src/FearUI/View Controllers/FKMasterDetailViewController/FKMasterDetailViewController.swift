@@ -8,7 +8,7 @@ public class FKMasterDetailViewController: UIViewController {
 	var masterViewController: FKMasterViewController?
 	var navController: FKBottomNavigationViewController?
 
-	init() {
+	public init() {
 		super.init(nibName: nil, bundle: nil);
 		self.view.frame = UIScreen.mainScreen().bounds
 	}
@@ -17,7 +17,7 @@ public class FKMasterDetailViewController: UIViewController {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
-    override public func viewDidLoad() {
+	override public func viewDidLoad() {
         super.viewDidLoad()
 	}
 
@@ -31,7 +31,7 @@ public class FKMasterDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-	func addDetailViewController(vc: FKDetailViewController!) {
+	public func addDetailViewController(vc: FKDetailViewController!) {
 
 		//Get rid of the old stuff
 		self.navController?.view.removeFromSuperview()
@@ -62,7 +62,7 @@ public class FKMasterDetailViewController: UIViewController {
 		self.view.bringSubviewToFront(self.navController!.view)
 	}
 
-	func addMasterViewController(vc: FKMasterViewController) {
+	public func addMasterViewController(vc: FKMasterViewController) {
 
 		//Get rid of the old stuff
 		self.masterViewController?.view.removeFromSuperview()

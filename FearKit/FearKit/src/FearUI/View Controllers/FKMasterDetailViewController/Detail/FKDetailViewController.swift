@@ -2,14 +2,14 @@ import UIKit
 
 public class FKDetailViewController: UIViewController {
 
-	var showHideButton: UIBarButtonItem? {
+	public var showHideButton: UIBarButtonItem? {
 		didSet {
 			self.navigationItem.leftItemsSupplementBackButton = true
 			self.navigationItem.leftBarButtonItem = self.showHideButton
 		}
 	}
 
-	init() {
+	public init() {
 		super.init(nibName: nil, bundle: nil);
 		self.title = "Detail"
 	}
