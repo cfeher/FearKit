@@ -23,6 +23,8 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 		// Setup the table view
 		self.tableView.frame = self.view.frame
 		self.view.addSubview(self.tableView)
+		self.tableView.dataSource = self
+		self.tableView.delegate = self
 	}
 
 	required public init(coder aDecoder: NSCoder) {
