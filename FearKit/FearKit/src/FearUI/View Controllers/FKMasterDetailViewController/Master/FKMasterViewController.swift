@@ -2,17 +2,17 @@ import UIKit
 
 public class FKMasterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-	/**
+/**
 
-		// MARK: - Public Functionality
+	// MARK: - Public Functionality
 
-	*/
+*/
 
 	public struct MasterItem {
-		var itemTitle: String!
-		var itemImage: UIImage?
-		var itemCallback: (MasterItem) -> Void!
-		var ord: Int = Int.min
+		public var itemTitle: String!
+		public var itemImage: UIImage?
+		public var itemCallback: (MasterItem) -> Void!
+		public var ord: Int = Int.min
 	}
 
 	required public init(items: [MasterItem]?) {
@@ -31,11 +31,12 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	    fatalError("init(coder:) has not been implemented")
 	}
 
-	/**
+/**
 
-		// MARK: - Private Functionality
+	// MARK: - Private Functionality
 
-	*/
+*/
+
 	private var items: [MasterItem] = []
 	private func addMasterItem(item: MasterItem) {
 		items.append(item)
@@ -43,11 +44,11 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 	private let tableView = UITableView()
 
-	/**
+/**
 
-		// MARK: - UITableView delegate and data source
+	// MARK: - UITableView delegate and data source
 
-	*/
+*/
 
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
