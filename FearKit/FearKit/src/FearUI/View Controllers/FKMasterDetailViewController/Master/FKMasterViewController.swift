@@ -78,7 +78,8 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 			cell = unwrappedCell as! UITableViewCell
 		} else {
-			tableView.registerNib(UINib(nibName: "FKMasterCell", bundle: nil), forCellReuseIdentifier: self.identifier)
+			tableView.registerClass(FKMasterCell.self,
+				forCellReuseIdentifier: self.identifier)
 			return self.tableView(tableView, cellForRowAtIndexPath: indexPath)
 		}
 		return cell
