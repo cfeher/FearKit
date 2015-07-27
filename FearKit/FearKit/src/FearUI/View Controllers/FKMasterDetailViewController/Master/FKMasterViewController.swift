@@ -1,5 +1,17 @@
 import UIKit
 
+/**
+
+	// MARK: - Master Item Struct
+
+*/
+public struct MasterItem {
+	public var itemTitle: String!
+	public var itemImage: UIImage?
+	public var itemCallback: (MasterItem) -> Void!
+	public var ord: Int = Int.min
+}
+
 public class FKMasterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 /**
@@ -7,13 +19,6 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	// MARK: - Public Functionality
 
 */
-
-	public struct MasterItem {
-		public var itemTitle: String!
-		public var itemImage: UIImage?
-		public var itemCallback: (MasterItem) -> Void!
-		public var ord: Int = Int.min
-	}
 
 	required public init(items: [MasterItem]?) {
 		super.init(nibName: nil, bundle: nil);
