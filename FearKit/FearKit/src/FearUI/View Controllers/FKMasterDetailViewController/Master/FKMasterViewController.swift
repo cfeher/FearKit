@@ -8,10 +8,10 @@ import UIKit
 public struct MasterItem {
 	public var itemTitle: String!
 	public var itemImage: UIImage?
-	public var itemCallback: (MasterItem) -> Void!
+	public var itemCallback: ((MasterItem) -> Void)!
 	public var ord: Int!
 
-	public init(itemTitle: String, itemImage: UIImage, itemCallback: (MasterItem) -> Void!, ord: Int = Int.min) {
+	public init(itemTitle: String, itemImage: UIImage?, itemCallback: (MasterItem) -> Void, ord: Int = Int.min) {
 		self.itemTitle = itemTitle
 		self.itemImage = itemImage
 		self.itemCallback = itemCallback
