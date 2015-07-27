@@ -43,6 +43,10 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	    fatalError("init(coder:) has not been implemented")
 	}
 
+	public func addMasterItem(item: MasterItem) {
+		items.append(item)
+	}
+
 /**
 
 	// MARK: - Private Functionality
@@ -50,10 +54,6 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 */
 
 	private var items: [MasterItem] = []
-	private func addMasterItem(item: MasterItem) {
-		items.append(item)
-	}
-
 	private let tableView = UITableView()
 
 /**
