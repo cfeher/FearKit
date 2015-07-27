@@ -1,6 +1,6 @@
 import UIKit
 
-class FKMasterDetailViewController: UIViewController {
+public class FKMasterDetailViewController: UIViewController {
 
 	let splitPercentage: CGFloat = 0.65
 	let openAnimationDuration: Double = 0.25
@@ -13,20 +13,20 @@ class FKMasterDetailViewController: UIViewController {
 		self.view.frame = UIScreen.mainScreen().bounds
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required public init(coder aDecoder: NSCoder) {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 	}
 
 
-	override func viewDidAppear(animated: Bool) {
+	override public func viewDidAppear(animated: Bool) {
 		super.viewDidAppear(animated)
 	}
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }

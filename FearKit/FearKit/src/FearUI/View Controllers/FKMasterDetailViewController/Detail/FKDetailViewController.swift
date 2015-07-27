@@ -1,6 +1,6 @@
 import UIKit
 
-class FKDetailViewController: UIViewController {
+public class FKDetailViewController: UIViewController {
 
 	var showHideButton: UIBarButtonItem? {
 		didSet {
@@ -18,17 +18,17 @@ class FKDetailViewController: UIViewController {
 		super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required public init(coder aDecoder: NSCoder) {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
-	override func viewDidLoad() {
+	override public func viewDidLoad() {
 		super.viewDidLoad()
 
 		// Do any additional setup after loading the view.
 	}
 
-	override func didReceiveMemoryWarning() {
+	override public func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}

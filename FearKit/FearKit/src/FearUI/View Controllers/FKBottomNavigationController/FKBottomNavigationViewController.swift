@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FKBottomNavigationViewController: UINavigationController {
-	override func viewDidAppear(animated: Bool) {
+public class FKBottomNavigationViewController: UINavigationController {
+	override public func viewDidAppear(animated: Bool) {
 
 		//Move bar to bottom
 		self.navigationBar.transform = CGAffineTransformScale(self.navigationBar.transform, 1, -1)

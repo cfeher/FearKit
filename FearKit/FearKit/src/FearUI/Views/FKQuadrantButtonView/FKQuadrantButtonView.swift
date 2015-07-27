@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuadrantButtonView: UIView {
+public class FKQuadrantButtonView: UIView {
 
 	private let button1 = UIButton(frame: CGRectZero)
 	private let button2 = UIButton(frame: CGRectZero)
@@ -17,8 +17,10 @@ class QuadrantButtonView: UIView {
 
 	private let separatorFraction: CGFloat = 0.85
 	private let separatorPadding: CGFloat = 10
-	private let horizontalSeparator: FadedView = FadedView(frame: CGRectMake(0, 0, 0, 0))
-	private let verticalSeparator: FadedView = FadedView(frame: CGRectMake(0, 0, 0, 0))
+	private let horizontalSeparator: FKFadedLineView = FKFadedLineView(
+		frame: CGRectMake(0, 0, 0, 0))
+	private let verticalSeparator: FKFadedLineView = FKFadedLineView(
+		frame: CGRectMake(0, 0, 0, 0))
 	private var cachedConstraints: [NSLayoutConstraint] = []
 
 	var topLeftCallback: ((buttonControlState: UIControlState) -> Void)?
@@ -42,7 +44,7 @@ class QuadrantButtonView: UIView {
 		self.layoutIfNeeded()
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required public init(coder aDecoder: NSCoder) {
 	    fatalError("init(coder:) has not been implemented")
 	}
 

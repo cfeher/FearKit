@@ -12,7 +12,7 @@ enum GradientDirection {
 	case Horizontal, Vertical
 }
 
-class FadedView: UIView {
+class FKFadedLineView: UIView {
 
 	var gradientDirection: GradientDirection = .Vertical {
 		didSet {
