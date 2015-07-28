@@ -11,8 +11,8 @@ public class FKMasterCell: UITableViewCell {
 	public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-		self.addSubview(self.majorLabel)
-		self.addSubview(self.leftImageView)
+		self.contentView.addSubview(self.majorLabel)
+		self.contentView.addSubview(self.leftImageView)
 		self.reapplyConstraints()
 	}
 
