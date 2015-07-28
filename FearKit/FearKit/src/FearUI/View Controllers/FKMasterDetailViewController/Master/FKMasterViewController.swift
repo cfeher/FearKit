@@ -80,6 +80,9 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 								NSForegroundColorAttributeName: self.majorFont.colorValue(),
 								NSFontAttributeName: self.majorFont.fontValue()
 								])
+				if let unwrappedImage = item.itemImage {
+					cell.leftImage = unwrappedImage
+				}
 
 		} else {
 			tableView.registerClass(FKMasterCell.self,

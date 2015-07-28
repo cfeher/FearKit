@@ -3,7 +3,11 @@ import UIKit
 public class FKMasterCell: UITableViewCell {
 
 	public let majorLabel: UILabel = UILabel()
-	public var leftImage: UIImage?
+	public var leftImage: UIImage? {
+		didSet {
+			self.reapplyConstraints()
+		}
+	}
 	private var leftImageView: UIImageView = UIImageView(frame: CGRectZero)
 	private let padding: CGFloat = 10
 	private var consts: [NSLayoutConstraint] = []
