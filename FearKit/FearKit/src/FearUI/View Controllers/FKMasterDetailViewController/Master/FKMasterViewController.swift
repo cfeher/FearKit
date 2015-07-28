@@ -1,24 +1,5 @@
 import UIKit
 
-/**
-
-	// MARK: - Master Item Struct
-
-*/
-public struct MasterItem {
-	public var itemTitle: String!
-	public var itemImage: UIImage?
-	public var itemCallback: ((MasterItem) -> Void)!
-	public var ord: Int!
-
-	public init(itemTitle: String, itemImage: UIImage?, itemCallback: (MasterItem) -> Void, ord: Int = Int.min) {
-		self.itemTitle = itemTitle
-		self.itemImage = itemImage
-		self.itemCallback = itemCallback
-		self.ord = ord
-	}
-}
-
 public class FKMasterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
 /**
@@ -26,6 +7,15 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	// MARK: - Public Functionality
 
 */
+	public var majorFont: FKFont = FKFont(
+		font: UIFont(name: "Helvetica", size: 20)!,
+		color: UIColor.blackColor()) {
+
+		didSet {
+			//reload tableview
+			self.tableView.reloadData()
+		}
+	}
 
 	required public init(items: [MasterItem]?) {
 		super.init(nibName: nil, bundle: nil);
@@ -72,16 +62,31 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 	let identifier = "master_row"
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		var cell: UITableViewCell
+		var cell: FKMasterCell
 		if let unwrappedCell: AnyObject = tableView.dequeueReusableCellWithIdentifier(self.identifier)
-			where (unwrappedCell.isKindOfClass(UITableViewCell)) {
+			where (unwrappedCell.isKindOfClass(FKMasterCell)) {
 
-			cell = unwrappedCell as! UITableViewCell
+				cell = unwrappedCell as! FKMasterCell
+
+				//assign the values
+				let item: MasterItem = self.items[indexPath.row]
+				cell.majorLabel.attributedText = NSAttributedString(
+					string: item.itemTitle,
+					attributes: [
+								NSForegroundColorAttributeName: self.majorFont.colorValue(),
+								NSFontAttributeName: self.majorFont.fontValue()
+								])
+
 		} else {
 			tableView.registerClass(FKMasterCell.self,
 				forCellReuseIdentifier: self.identifier)
 			return self.tableView(tableView, cellForRowAtIndexPath: indexPath)
 		}
 		return cell
+	}
+
+	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let item: MasterItem = self.items[indexPath.row]
+		item.itemCallback(item)
 	}
 }

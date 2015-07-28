@@ -45,6 +45,10 @@
                     </mask>
                 </variation>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="leftImageView" destination="o9O-Wg-8DG" id="T73-vK-F2j"/>
+                <outlet property="majorLabel" destination="2bW-lS-Cpg" id="hia-aV-pzj"/>
+            </connections>
             <point key="canvasLocation" x="333" y="439"/>
         </tableViewCell>
     </objects>

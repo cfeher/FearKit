@@ -10,6 +10,9 @@ import UIKit
 
 public class FKMasterCell: UITableViewCell {
 
+	@IBOutlet weak var majorLabel: UILabel!
+	@IBOutlet weak var leftImageView: UIImageView!
+
     override public func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
