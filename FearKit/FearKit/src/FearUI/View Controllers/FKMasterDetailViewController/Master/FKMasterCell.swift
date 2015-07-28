@@ -35,10 +35,10 @@ public class FKMasterCell: UITableViewCell {
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Leading,
 			relatedBy: NSLayoutRelation.Equal,
-			toItem: self.contentView,
-			attribute: NSLayoutAttribute.Leading,
+			toItem: self.leftImageView,
+			attribute: NSLayoutAttribute.Right,
 			multiplier: 1.0,
-			constant: 0))
+			constant: self.padding))
 
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
@@ -47,7 +47,7 @@ public class FKMasterCell: UITableViewCell {
 			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Right,
 			multiplier: 1.0,
-			constant: 0))
+			constant: -self.padding))
 
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
