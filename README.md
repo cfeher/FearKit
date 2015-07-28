@@ -1,3 +1,6 @@
+#FearKit
+A framework with useful iOS stuff
+
 ##Installation
 ### Carthage
 
