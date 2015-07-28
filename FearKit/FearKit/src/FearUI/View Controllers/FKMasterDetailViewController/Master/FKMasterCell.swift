@@ -19,7 +19,7 @@ public class FKMasterCell: UITableViewCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 
 		self.addSubview(self.majorLabel)
-		self.addSubview(self.majorLabel)
+		self.addSubview(self.leftImageView)
 
 		//autolayout
 		self.addConstraint(NSLayoutConstraint(
