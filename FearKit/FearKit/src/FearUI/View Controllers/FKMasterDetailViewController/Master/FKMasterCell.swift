@@ -20,14 +20,27 @@ public class FKMasterCell: UITableViewCell {
 
 		self.addSubview(self.majorLabel)
 		self.addSubview(self.leftImageView)
+		self.reapplyConstraints()
+	}
 
+	required public init(coder aDecoder: NSCoder) {
+	    fatalError("init(coder:) has not been implemented")
+	}
+
+    override public func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+	private func reapplyConstraints() {
 		//autolayout
 		self.addConstraint(NSLayoutConstraint(
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Left,
 			relatedBy: NSLayoutRelation.Equal,
-			toItem: self.leftImageView,
-			attribute: NSLayoutAttribute.Right,
+			toItem: self,
+			attribute: NSLayoutAttribute.Left,
 			multiplier: 1.0,
 			constant: self.padding))
 
@@ -59,17 +72,6 @@ public class FKMasterCell: UITableViewCell {
 			constant: 0))
 
 		self.layoutIfNeeded()
-
 	}
-
-	required public init(coder aDecoder: NSCoder) {
-	    fatalError("init(coder:) has not been implemented")
-	}
-
-    override public func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
 }
