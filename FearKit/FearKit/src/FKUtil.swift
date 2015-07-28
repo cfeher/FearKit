@@ -1,11 +1,3 @@
-//
-//  FKUtil.swift
-//  FearKit
-//
-//  Created by Chris Feher on 2015-07-28.
-//  Copyright (c) 2015 Chris Feher. All rights reserved.
-//
-
 import Foundation
 
 // Definitions

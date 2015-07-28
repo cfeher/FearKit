@@ -25,8 +25,6 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 		// Setup the table view
 		self.tableView.frame = self.view.frame
 		self.view.addSubview(self.tableView)
-		self.tableView.dataSource = self
-		self.tableView.delegate = self
 	}
 
 	required public init(coder aDecoder: NSCoder) {
@@ -35,6 +33,11 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 	public func addMasterItem(item: MasterItem) {
 		items.append(item)
+	}
+
+	public override func viewDidAppear(animated: Bool) {
+		self.tableView.dataSource = self
+		self.tableView.delegate = self
 	}
 
 /**
@@ -70,6 +73,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 				//assign the values
 				let item: MasterItem = self.items[indexPath.row]
+
 				cell.majorLabel.attributedText = NSAttributedString(
 					string: item.itemTitle,
 					attributes: [
