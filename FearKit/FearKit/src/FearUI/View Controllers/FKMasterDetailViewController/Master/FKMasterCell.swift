@@ -58,6 +58,8 @@ public class FKMasterCell: UITableViewCell {
 			multiplier: 1.0,
 			constant: 0))
 
+		self.layoutIfNeeded()
+
 	}
 
 	required public init(coder aDecoder: NSCoder) {
