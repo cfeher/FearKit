@@ -66,8 +66,6 @@ public class FKMasterCell: UITableViewCell {
 		)
 
 		self.addConstraints(self.consts)
-		self.layoutIfNeeded()
-
-		println(self.contentView.frame)
+		self.contentView.layoutIfNeeded()
 	}
 }
