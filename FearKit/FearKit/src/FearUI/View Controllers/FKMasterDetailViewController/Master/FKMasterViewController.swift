@@ -35,7 +35,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 		items.append(item)
 	}
 
-	public override func viewDidLoad() {
+	public override func viewDidAppear(animated: Bool) {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
 	}
