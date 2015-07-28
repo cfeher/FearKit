@@ -6,6 +6,7 @@ public class FKMasterCell: UITableViewCell {
 	public var leftImage: UIImage?
 	private var leftImageView: UIImageView = UIImageView(frame: CGRectZero)
 	private let padding: CGFloat = 10
+	private var consts: [NSLayoutConstraint] = []
 
 	public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -27,7 +28,7 @@ public class FKMasterCell: UITableViewCell {
 
 	private func reapplyConstraints() {
 		//autolayout
-		self.addConstraint(NSLayoutConstraint(
+		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Leading,
 			relatedBy: NSLayoutRelation.Equal,
@@ -36,7 +37,7 @@ public class FKMasterCell: UITableViewCell {
 			multiplier: 1.0,
 			constant: self.padding))
 
-		self.addConstraint(NSLayoutConstraint(
+		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Trailing,
 			relatedBy: NSLayoutRelation.Equal,
@@ -45,7 +46,7 @@ public class FKMasterCell: UITableViewCell {
 			multiplier: 1.0,
 			constant: -self.padding))
 
-		self.addConstraint(NSLayoutConstraint(
+		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.CenterY,
 			relatedBy: NSLayoutRelation.Equal,
@@ -54,6 +55,17 @@ public class FKMasterCell: UITableViewCell {
 			multiplier: 1.0,
 			constant: 0))
 
+		consts.append(NSLayoutConstraint(
+			item: self.majorLabel,
+			attribute: NSLayoutAttribute.Height,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self,
+			attribute: NSLayoutAttribute.Height,
+			multiplier: 1.0,
+			constant: 0)
+		)
+
+		self.addConstraints(self.consts)
 		self.layoutIfNeeded()
 	}
 }
