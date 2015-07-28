@@ -42,7 +42,14 @@ public class FKMasterCell: UITableViewCell {
 			multiplier: 1.0,
 			constant: 0))
 		if let unwrappedImage = self.leftImage {
-
+			consts.append(NSLayoutConstraint(
+				item: self.leftImageView,
+				attribute: NSLayoutAttribute.Width,
+				relatedBy: NSLayoutRelation.Equal,
+				toItem: self.contentView,
+				attribute: NSLayoutAttribute.Height,
+				multiplier: 1.0,
+				constant: -self.padding))
 		} else {
 			consts.append(NSLayoutConstraint(
 				item: self.leftImageView,
@@ -60,15 +67,15 @@ public class FKMasterCell: UITableViewCell {
 				attribute: NSLayoutAttribute.NotAnAttribute,
 				multiplier: 1.0,
 				constant: 0))
-			consts.append(NSLayoutConstraint(
-				item: self.leftImageView,
-				attribute: NSLayoutAttribute.Height,
-				relatedBy: NSLayoutRelation.Equal,
-				toItem: self.leftImageView,
-				attribute: NSLayoutAttribute.Width,
-				multiplier: 1.0,
-				constant: 0))
 		}
+		consts.append(NSLayoutConstraint(
+			item: self.leftImageView,
+			attribute: NSLayoutAttribute.Height,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self.leftImageView,
+			attribute: NSLayoutAttribute.Width,
+			multiplier: 1.0,
+			constant: 0))
 
 		// Label
 		consts.append(NSLayoutConstraint(
