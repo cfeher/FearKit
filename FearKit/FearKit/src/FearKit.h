@@ -1,11 +1,3 @@
-//
-//  FearKit.h
-//  FearKit
-//
-//  Created by Chris Feher on 2015-07-21.
-//  Copyright (c) 2015 Chris Feher. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for FearKit.

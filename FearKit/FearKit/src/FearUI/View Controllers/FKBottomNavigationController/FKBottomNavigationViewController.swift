@@ -1,11 +1,3 @@
-//
-//  BottomNavigationViewController.swift
-//  TaxiBoss
-//
-//  Created by Chris Feher on 2015-07-17.
-//  Copyright (c) 2015 Chris Feher. All rights reserved.
-//
-
 import UIKit
 
 public class FKBottomNavigationViewController: UINavigationController {
