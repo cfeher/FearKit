@@ -5,6 +5,7 @@ public class FKMasterCell: UITableViewCell {
 	public let majorLabel: UILabel = UILabel()
 	public var leftImage: UIImage? {
 		didSet {
+			self.leftImageView.image = self.leftImage!
 			self.reapplyConstraints()
 		}
 	}
