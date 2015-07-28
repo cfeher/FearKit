@@ -32,7 +32,7 @@ public class FKMasterCell: UITableViewCell {
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Leading,
 			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
+			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Leading,
 			multiplier: 1.0,
 			constant: self.padding))
@@ -41,7 +41,7 @@ public class FKMasterCell: UITableViewCell {
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Trailing,
 			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
+			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Right,
 			multiplier: 1.0,
 			constant: -self.padding))
@@ -50,7 +50,7 @@ public class FKMasterCell: UITableViewCell {
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.CenterY,
 			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
+			toItem: self.contentView,
 			attribute: NSLayoutAttribute.CenterY,
 			multiplier: 1.0,
 			constant: 0))
@@ -59,7 +59,7 @@ public class FKMasterCell: UITableViewCell {
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Height,
 			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
+			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Height,
 			multiplier: 1.0,
 			constant: 0)
