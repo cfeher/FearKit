@@ -28,3 +28,9 @@ To integrate FearKit into your Xcode project using Carthage, specify it in your 
   ```
 
   This script works around an [App Store submission bug](http://www.openradar.me/radar?id=6409498411401216) triggered by universal binaries.
+  
+  ####Example Cartfile
+  ```
+  github "Alamofire/Alamofire" >= 1.2
+  github "cfeher/FearKit"
+  ```
