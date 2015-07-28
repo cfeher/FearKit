@@ -70,6 +70,12 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 				//assign the values
 				let item: MasterItem = self.items[indexPath.row]
+
+				//debug
+				println(item)
+				println(cell)
+				println(self.majorFont)
+
 				cell.majorLabel.attributedText = NSAttributedString(
 					string: item.itemTitle,
 					attributes: [
