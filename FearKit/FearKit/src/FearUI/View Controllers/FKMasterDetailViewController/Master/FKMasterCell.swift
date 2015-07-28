@@ -65,7 +65,7 @@ public class FKMasterCell: UITableViewCell {
 			constant: 0)
 		)
 
-		self.addConstraints(self.consts)
+		self.contentView.addConstraints(self.consts)
 		self.contentView.layoutIfNeeded()
 	}
 }
