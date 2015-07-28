@@ -30,7 +30,47 @@ public class FKMasterCell: UITableViewCell {
 		//autolayout
 		self.majorLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
 		self.leftImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		self.consts = []
 
+		// Left Image
+		consts.append(NSLayoutConstraint(
+			item: self.leftImageView,
+			attribute: NSLayoutAttribute.CenterY,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self.contentView,
+			attribute: NSLayoutAttribute.CenterY,
+			multiplier: 1.0,
+			constant: 0))
+		if let unwrappedImage = self.leftImage {
+
+		} else {
+			consts.append(NSLayoutConstraint(
+				item: self.leftImageView,
+				attribute: NSLayoutAttribute.Left,
+				relatedBy: NSLayoutRelation.Equal,
+				toItem: self.contentView,
+				attribute: NSLayoutAttribute.Left,
+				multiplier: 1.0,
+				constant: 0))
+			consts.append(NSLayoutConstraint(
+				item: self.leftImageView,
+				attribute: NSLayoutAttribute.Width,
+				relatedBy: NSLayoutRelation.Equal,
+				toItem: nil,
+				attribute: NSLayoutAttribute.NotAnAttribute,
+				multiplier: 1.0,
+				constant: 0))
+			consts.append(NSLayoutConstraint(
+				item: self.leftImageView,
+				attribute: NSLayoutAttribute.Height,
+				relatedBy: NSLayoutRelation.Equal,
+				toItem: self.leftImageView,
+				attribute: NSLayoutAttribute.Width,
+				multiplier: 1.0,
+				constant: 0))
+		}
+
+		// Label
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Leading,
