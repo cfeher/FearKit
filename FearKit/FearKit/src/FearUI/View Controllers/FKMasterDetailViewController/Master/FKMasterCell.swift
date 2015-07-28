@@ -28,6 +28,26 @@ public class FKMasterCell: UITableViewCell {
 
 	private func reapplyConstraints() {
 		//autolayout
+		self.majorLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+		self.leftImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+		consts.append(NSLayoutConstraint(
+			item: self.majorLabel,
+			attribute: NSLayoutAttribute.Leading,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self.contentView,
+			attribute: NSLayoutAttribute.Leading,
+			multiplier: 1.0,
+			constant: 0))
+
+		consts.append(NSLayoutConstraint(
+			item: self.majorLabel,
+			attribute: NSLayoutAttribute.Trailing,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self.contentView,
+			attribute: NSLayoutAttribute.Right,
+			multiplier: 1.0,
+			constant: 0))
 
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
@@ -40,34 +60,15 @@ public class FKMasterCell: UITableViewCell {
 
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
-			attribute: NSLayoutAttribute.CenterX,
-			relatedBy: NSLayoutRelation.Equal,
-			toItem: self.contentView,
-			attribute: NSLayoutAttribute.CenterX,
-			multiplier: 1.0,
-			constant: 0))
-
-		consts.append(NSLayoutConstraint(
-			item: self.majorLabel,
 			attribute: NSLayoutAttribute.Height,
 			relatedBy: NSLayoutRelation.Equal,
 			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Height,
 			multiplier: 1.0,
-			constant: 0))
-
-		consts.append(NSLayoutConstraint(
-			item: self.majorLabel,
-			attribute: NSLayoutAttribute.Width,
-			relatedBy: NSLayoutRelation.Equal,
-			toItem: self.contentView,
-			attribute: NSLayoutAttribute.Width,
-			multiplier: 1.0,
-			constant: 0))
+			constant: 0)
+		)
 
 		self.contentView.addConstraints(self.consts)
 		self.contentView.layoutIfNeeded()
-		self.leftImageView.layoutIfNeeded()
-		self.majorLabel.layoutIfNeeded()
 	}
 }
