@@ -10,12 +10,9 @@ public class FKMasterCell: UITableViewCell {
 	public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-		// TODO: Use autolayout
-		self.majorLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-
 		self.addSubview(self.majorLabel)
 		self.addSubview(self.leftImageView)
-
+		self.reapplyConstraints()
 	}
 
 	required public init(coder aDecoder: NSCoder) {
@@ -28,4 +25,35 @@ public class FKMasterCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+	private func reapplyConstraints() {
+		//autolayout
+		self.addConstraint(NSLayoutConstraint(
+			item: self.majorLabel,
+			attribute: NSLayoutAttribute.Leading,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self,
+			attribute: NSLayoutAttribute.Leading,
+			multiplier: 1.0,
+			constant: self.padding))
+
+		self.addConstraint(NSLayoutConstraint(
+			item: self.majorLabel,
+			attribute: NSLayoutAttribute.Trailing,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self,
+			attribute: NSLayoutAttribute.Right,
+			multiplier: 1.0,
+			constant: -self.padding))
+
+		self.addConstraint(NSLayoutConstraint(
+			item: self.majorLabel,
+			attribute: NSLayoutAttribute.CenterY,
+			relatedBy: NSLayoutRelation.Equal,
+			toItem: self,
+			attribute: NSLayoutAttribute.CenterY,
+			multiplier: 1.0,
+			constant: 0))
+
+		self.layoutIfNeeded()
+	}
 }
