@@ -1,11 +1,3 @@
-//
-//  FKMasterCell.swift
-//  FearKit
-//
-//  Created by Chris Feher on 2015-07-27.
-//  Copyright (c) 2015 Chris Feher. All rights reserved.
-//
-
 import UIKit
 
 public class FKMasterCell: UITableViewCell {
@@ -18,9 +10,12 @@ public class FKMasterCell: UITableViewCell {
 	public override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+		// TODO: Use autolayout
+		self.majorLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+
 		self.addSubview(self.majorLabel)
 		self.addSubview(self.leftImageView)
-		self.reapplyConstraints()
+
 	}
 
 	required public init(coder aDecoder: NSCoder) {
@@ -33,45 +28,4 @@ public class FKMasterCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-	private func reapplyConstraints() {
-		//autolayout
-		self.addConstraint(NSLayoutConstraint(
-			item: self.majorLabel,
-			attribute: NSLayoutAttribute.Left,
-			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
-			attribute: NSLayoutAttribute.Left,
-			multiplier: 1.0,
-			constant: self.padding))
-
-		self.addConstraint(NSLayoutConstraint(
-			item: self.majorLabel,
-			attribute: NSLayoutAttribute.Right,
-			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
-			attribute: NSLayoutAttribute.Right,
-			multiplier: 1.0,
-			constant: -self.padding))
-
-		self.addConstraint(NSLayoutConstraint(
-			item: self.majorLabel,
-			attribute: NSLayoutAttribute.Top,
-			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
-			attribute: NSLayoutAttribute.Top,
-			multiplier: 1.0,
-			constant: 0))
-
-		self.addConstraint(NSLayoutConstraint(
-			item: self.majorLabel,
-			attribute: NSLayoutAttribute.Bottom,
-			relatedBy: NSLayoutRelation.Equal,
-			toItem: self,
-			attribute: NSLayoutAttribute.Bottom,
-			multiplier: 1.0,
-			constant: 0))
-
-		self.layoutIfNeeded()
-	}
-    
 }
