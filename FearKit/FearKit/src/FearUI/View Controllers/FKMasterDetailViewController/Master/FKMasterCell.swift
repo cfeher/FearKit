@@ -30,21 +30,21 @@ public class FKMasterCell: UITableViewCell {
 		//autolayout
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
-			attribute: NSLayoutAttribute.Left,
+			attribute: NSLayoutAttribute.Leading,
 			relatedBy: NSLayoutRelation.Equal,
 			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Leading,
 			multiplier: 1.0,
-			constant: self.padding))
+			constant: 0))
 
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
-			attribute: NSLayoutAttribute.Right,
+			attribute: NSLayoutAttribute.Trailing,
 			relatedBy: NSLayoutRelation.Equal,
 			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Right,
 			multiplier: 1.0,
-			constant: -self.padding))
+			constant: 0))
 
 		consts.append(NSLayoutConstraint(
 			item: self.majorLabel,
@@ -67,5 +67,7 @@ public class FKMasterCell: UITableViewCell {
 
 		self.contentView.addConstraints(self.consts)
 		self.contentView.layoutIfNeeded()
+		self.leftImageView.layoutIfNeeded()
+		self.majorLabel.layoutIfNeeded()
 	}
 }
