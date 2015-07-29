@@ -109,6 +109,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let item: MasterItem = self.items[indexPath.row]
 		item.itemCallback(item)
+		tableView.deselectRowAtIndexPath(indexPath animated: true)
 	}
 
 	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
