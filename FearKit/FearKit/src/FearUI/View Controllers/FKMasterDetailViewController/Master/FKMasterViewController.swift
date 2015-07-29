@@ -19,11 +19,11 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	required public init(items: [MasterItem]?) {
 		super.init(nibName: nil, bundle: nil);
 		self.view.backgroundColor = UIColor.greenColor()
-		items?.map({[weak self] in self?.addMasterItem($0)})
 
 		// Setup the table view
 		self.tableView.frame = self.view.frame
 		self.view.addSubview(self.tableView)
+		items?.map({[weak self] in self?.addMasterItem($0)})
 	}
 
 	required public init(coder aDecoder: NSCoder) {
