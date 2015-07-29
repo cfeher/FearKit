@@ -80,6 +80,11 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 				cell = unwrappedCell as! FKMasterCell
 
+				//set the width
+				if self.width != CGFloat.max {
+					cell.cellWidth = self.width
+				}
+
 				//assign the values
 				let item: MasterItem = self.items[indexPath.row]
 
