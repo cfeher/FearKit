@@ -65,8 +65,8 @@ public class FKMasterCell: UITableViewCell {
 			relatedBy: NSLayoutRelation.Equal,
 			toItem: self.contentView,
 			attribute: NSLayoutAttribute.Height,
-			multiplier: 1.0,
-			constant: -self.padding))
+			multiplier: 0.75,
+			constant: 0))
 		consts.append(NSLayoutConstraint(
 			item: self.leftImageView,
 			attribute: NSLayoutAttribute.Left,
