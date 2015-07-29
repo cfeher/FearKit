@@ -33,6 +33,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 	public func addMasterItem(item: MasterItem) {
 		items.append(item)
+		self.tableView.reloadData()
 	}
 
 	public override func viewDidAppear(animated: Bool) {
