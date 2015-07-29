@@ -110,4 +110,8 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 		let item: MasterItem = self.items[indexPath.row]
 		item.itemCallback(item)
 	}
+
+	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		return 60
+	}
 }
