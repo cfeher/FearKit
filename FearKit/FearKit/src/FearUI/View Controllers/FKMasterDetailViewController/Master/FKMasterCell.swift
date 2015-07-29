@@ -25,12 +25,6 @@ public class FKMasterCell: UITableViewCell {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
-    override public func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 	private func reapplyConstraints() {
 		//autolayout
 		self.majorLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
