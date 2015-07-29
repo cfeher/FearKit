@@ -31,3 +31,7 @@ public struct MasterItem {
 		self.ord = ord
 	}
 }
+
+public protocol FKBottomNavigation {
+	var navigationOnBottom: Bool { get set }
+}

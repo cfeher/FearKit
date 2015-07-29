@@ -10,7 +10,7 @@
 		532D09C51B5E85EA009E962E /* FearKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D09B91B5E85EA009E962E /* FearKit.framework */; };
 		532D09CC1B5E85EA009E962E /* FearKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D09CB1B5E85EA009E962E /* FearKitTests.swift */; };
 		532D0A401B5E8C2E009E962E /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 532D0A301B5E8C2E009E962E /* FearKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		532D0A411B5E8C2E009E962E /* FKBottomNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A341B5E8C2E009E962E /* FKBottomNavigationViewController.swift */; };
+		532D0A411B5E8C2E009E962E /* FKNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A341B5E8C2E009E962E /* FKNavigationViewController.swift */; };
 		532D0A421B5E8C2E009E962E /* FKDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A371B5E8C2E009E962E /* FKDetailViewController.swift */; };
 		532D0A431B5E8C2E009E962E /* FKMasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A381B5E8C2E009E962E /* FKMasterDetailViewController.swift */; };
 		532D0A441B5E8C2E009E962E /* FKMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A3A1B5E8C2E009E962E /* FKMasterViewController.swift */; };
@@ -38,7 +38,7 @@
 		532D09CA1B5E85EA009E962E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532D09CB1B5E85EA009E962E /* FearKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FearKitTests.swift; sourceTree = "<group>"; };
 		532D0A301B5E8C2E009E962E /* FearKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FearKit.h; sourceTree = "<group>"; };
-		532D0A341B5E8C2E009E962E /* FKBottomNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKBottomNavigationViewController.swift; sourceTree = "<group>"; };
+		532D0A341B5E8C2E009E962E /* FKNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKNavigationViewController.swift; sourceTree = "<group>"; };
 		532D0A371B5E8C2E009E962E /* FKDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKDetailViewController.swift; sourceTree = "<group>"; };
 		532D0A381B5E8C2E009E962E /* FKMasterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterDetailViewController.swift; sourceTree = "<group>"; };
 		532D0A3A1B5E8C2E009E962E /* FKMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		532D0A331B5E8C2E009E962E /* FKBottomNavigationController */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A341B5E8C2E009E962E /* FKBottomNavigationViewController.swift */,
+				532D0A341B5E8C2E009E962E /* FKNavigationViewController.swift */,
 			);
 			path = FKBottomNavigationController;
 			sourceTree = "<group>";
@@ -313,7 +313,7 @@
 				532D0A421B5E8C2E009E962E /* FKDetailViewController.swift in Sources */,
 				532D0A431B5E8C2E009E962E /* FKMasterDetailViewController.swift in Sources */,
 				53C8CF8B1B668A0C0034F51C /* FKMasterCell.swift in Sources */,
-				532D0A411B5E8C2E009E962E /* FKBottomNavigationViewController.swift in Sources */,
+				532D0A411B5E8C2E009E962E /* FKNavigationViewController.swift in Sources */,
 				532D0A441B5E8C2E009E962E /* FKMasterViewController.swift in Sources */,
 				53659F431B67D3B900965F97 /* FKUtil.swift in Sources */,
 				532D0A461B5E8C2E009E962E /* FKQuadrantButtonView.swift in Sources */,

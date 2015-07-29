@@ -6,7 +6,7 @@ public class FKMasterDetailViewController: UIViewController {
 	let openAnimationDuration: Double = 0.25
 	var detailViewController: FKDetailViewController?
 	var masterViewController: FKMasterViewController?
-	var navController: FKBottomNavigationViewController?
+	var navController: FKNavigationViewController?
 
 	public init() {
 		super.init(nibName: nil, bundle: nil);
@@ -46,7 +46,7 @@ public class FKMasterDetailViewController: UIViewController {
 		let barButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("masterStateChange"))
 		self.detailViewController?.showHideButton = barButton
 
-		self.navController = FKBottomNavigationViewController(rootViewController: self.detailViewController!)
+		self.navController = FKNavigationViewController(rootViewController: self.detailViewController!)
 		self.navController?.view.layer.shadowOffset = CGSizeMake(-3, 3)
 		self.navController?.view.layer.shadowRadius = 5
 		self.navController?.view.layer.shadowOpacity = 0.5
