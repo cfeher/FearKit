@@ -1,5 +1,5 @@
 #FearKit
-A framework with useful iOS stuff
+A framework with useful iOS stuff I found myself always having to re-implement on different projects
 
 ##Installation
 ### Carthage
