@@ -43,6 +43,12 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 		self.tableView.delegate = self
 	}
 
+	private var width = CGFloat.max
+	public func setWidth(width: CGFloat) {
+		self.width = width
+		self.tableView.reloadData()
+	}
+
 /**
 
 	// MARK: - Private Functionality

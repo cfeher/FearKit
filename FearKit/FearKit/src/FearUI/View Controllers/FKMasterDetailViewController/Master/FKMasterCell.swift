@@ -25,12 +25,30 @@ public class FKMasterCell: UITableViewCell {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
+	public var cellWidth = CGFloat.max {
+		didSet {
+			self.reapplyConstraints()
+		}
+	}
+	
 	private func reapplyConstraints() {
 		//autolayout
 		self.majorLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
 		self.leftImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
-		self.consts.map({self.contentView.removeConstraint($0)})
+		for constraint in self.consts { self.contentView.removeConstraint(constraint) }
 		self.consts = []
+
+		//Content view
+		if self.cellWidth != CGFloat.max {
+			consts.append(NSLayoutConstraint(
+				item: self.contentView,
+				attribute: NSLayoutAttribute.Width,
+				relatedBy: NSLayoutRelation.Equal,
+				toItem: nil,
+				attribute: NSLayoutAttribute.NotAnAttribute,
+				multiplier: 1.0,
+				constant: self.cellWidth))
+		}
 
 		// Left Image
 		consts.append(NSLayoutConstraint(
