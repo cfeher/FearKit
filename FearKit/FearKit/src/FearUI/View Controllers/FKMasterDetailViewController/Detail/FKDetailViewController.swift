@@ -12,6 +12,7 @@ public class FKDetailViewController: UIViewController {
 	public init() {
 		super.init(nibName: nil, bundle: nil);
 		self.title = "Detail"
+		self.view.backgroundColor = UIColor.redColor()
 	}
 
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
