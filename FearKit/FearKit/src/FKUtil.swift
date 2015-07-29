@@ -24,7 +24,7 @@ public struct MasterItem {
 	public let itemCallback: ((MasterItem) -> Void)!
 	public let ord: Int!
 
-	public init(itemTitle: String, itemImage: UIImage?, itemCallback: (MasterItem) -> Void, ord: Int = Int.min) {
+	public init(itemTitle: String, itemImage: UIImage?, ord: Int = Int.min, itemCallback: (MasterItem) -> Void) {
 		self.itemTitle = itemTitle
 		self.itemImage = itemImage
 		self.itemCallback = itemCallback
