@@ -1,6 +1,6 @@
 import UIKit
 
-public class FKMasterDetailViewController: UIViewController {
+public class FKMasterDetailViewController: UIViewController, FKBottomNavigation {
 
 	let splitPercentage: CGFloat = 0.65
 	let openAnimationDuration: Double = 0.25
@@ -125,6 +125,13 @@ public class FKMasterDetailViewController: UIViewController {
 			self.showMaster(true)
 		default:
 			self.hideMaster(true)
+		}
+	}
+
+	// FKBottomNavigation protocol
+	public var navigationOnBottom = false {
+		didSet {
+			self.navController?.navigationOnBottom = self.navigationOnBottom
 		}
 	}
 }

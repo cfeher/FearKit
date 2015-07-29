@@ -36,7 +36,7 @@ public class FKDetailViewController: UIViewController, FKBottomNavigation {
 
 	// FKBottomNavigation protocol
 	public var navigationOnBottom = false {
-		didSet {
+		willSet(newNavigationOnBottom) {
 			let titleView = UIView(frame: CGRect(
 				x: 0,
 				y: 0,
