@@ -33,6 +33,10 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 	public func addMasterItem(item: MasterItem) {
 		items.append(item)
+		items.sort { (item1: MasterItem, item2: MasterItem) -> Bool in
+			return item1.ord > item2.ord
+		}
+		self.tableView.reloadData()
 	}
 
 	public override func viewDidAppear(animated: Bool) {
@@ -80,6 +84,9 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 								NSForegroundColorAttributeName: self.majorFont.colorValue(),
 								NSFontAttributeName: self.majorFont.fontValue()
 								])
+				if let unwrappedImage = item.itemImage {
+					cell.leftImage = unwrappedImage
+				}
 
 		} else {
 			tableView.registerClass(FKMasterCell.self,
