@@ -1,6 +1,5 @@
 import UIKit
 
-//"HelveticaNeue-UltraLight"
 public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
 	// MARK: - Private Properties
@@ -23,7 +22,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 			self.tableView.backgroundColor = self.tableViewBackgroundColor
 		}
 	}
-	
+
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.setup()
