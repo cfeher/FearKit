@@ -84,7 +84,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 			relatedBy: NSLayoutRelation.Equal,
 			toItem: self,
 			attribute: NSLayoutAttribute.Height,
-			multiplier: 4.0/10.0,
+			multiplier: 6/10.0,
 			constant: 0))
 
 		//scrollview

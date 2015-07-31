@@ -61,6 +61,10 @@ func >= (size1: CGSize, size2: CGSize) -> Bool {
 	return size1.width * size1.height >= size2.width * size2.height
 }
 
+public enum GradientDirection {
+	case Horizontal, Vertical
+}
+
 func delay(delay:Double, closure:()->()) {
 	dispatch_after(
 		dispatch_time(

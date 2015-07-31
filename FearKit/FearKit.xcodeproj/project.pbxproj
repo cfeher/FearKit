@@ -20,6 +20,7 @@
 		533397611B6BBE9000000EB5 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 533397561B6BBE9000000EB5 /* placeholder.png */; };
 		533397621B6BBE9000000EB5 /* FKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397581B6BBE9000000EB5 /* FKTableView.swift */; };
 		533397631B6BBE9000000EB5 /* FKUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397591B6BBE9000000EB5 /* FKUtil.swift */; };
+		533397B11B6BD7FF00000EB5 /* FKFadedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397B01B6BD7FF00000EB5 /* FKFadedLineView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		533397561B6BBE9000000EB5 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		533397581B6BBE9000000EB5 /* FKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKTableView.swift; sourceTree = "<group>"; };
 		533397591B6BBE9000000EB5 /* FKUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKUtil.swift; sourceTree = "<group>"; };
+		533397B01B6BD7FF00000EB5 /* FKFadedLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKFadedLineView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 		533397531B6BBE9000000EB5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				533397AF1B6BD7F200000EB5 /* FKFadedLine */,
 				533397541B6BBE9000000EB5 /* FKQuadrantButtonView */,
 				533397571B6BBE9000000EB5 /* FKTableView */,
 			);
@@ -211,6 +214,14 @@
 				533397581B6BBE9000000EB5 /* FKTableView.swift */,
 			);
 			path = FKTableView;
+			sourceTree = "<group>";
+		};
+		533397AF1B6BD7F200000EB5 /* FKFadedLine */ = {
+			isa = PBXGroup;
+			children = (
+				533397B01B6BD7FF00000EB5 /* FKFadedLineView.swift */,
+			);
+			path = FKFadedLine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -322,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5333975C1B6BBE9000000EB5 /* FKDetailViewController.swift in Sources */,
+				533397B11B6BD7FF00000EB5 /* FKFadedLineView.swift in Sources */,
 				533397621B6BBE9000000EB5 /* FKTableView.swift in Sources */,
 				5333975F1B6BBE9000000EB5 /* FKMasterViewController.swift in Sources */,
 				5333975D1B6BBE9000000EB5 /* FKMasterDetailViewController.swift in Sources */,
