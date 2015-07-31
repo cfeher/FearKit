@@ -310,28 +310,28 @@ enum GradientDirection {
 	case Horizontal, Vertical
 }
 
-private class FKFadedLineView: UIView {
+public class FKFadedLineView: UIView {
 
-	var gradientDirection: GradientDirection = .Vertical {
+	public var gradientDirection: GradientDirection = .Vertical {
 		didSet {
 			self.setNeedsDisplay()
 		}
 	}
-	var baseColor: UIColor = UIColor.lightGrayColor() {
+	public var baseColor: UIColor = UIColor.lightGrayColor() {
 		didSet {
 			self.setNeedsDisplay()
 		}
 	}
 
-	override init(frame: CGRect) {
+	override public init(frame: CGRect) {
 		super.init(frame: frame)
 	}
 
-	required init(coder aDecoder: NSCoder) {
+	required public init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	override func drawRect(rect: CGRect) {
+	override public func drawRect(rect: CGRect) {
 
 		var red : CGFloat = 0
 		var green : CGFloat = 0
