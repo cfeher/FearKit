@@ -1,6 +1,6 @@
 import UIKit
 
-public class FKDetailViewController: UIViewController {
+public class FKDetailViewController: UIViewController, FKBottomNavigation {
 
 	public var showHideButton: UIBarButtonItem? {
 		didSet {
@@ -12,6 +12,7 @@ public class FKDetailViewController: UIViewController {
 	public init() {
 		super.init(nibName: nil, bundle: nil);
 		self.title = "Detail"
+		self.view.backgroundColor = UIColor.redColor()
 	}
 
 	override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
@@ -31,5 +32,18 @@ public class FKDetailViewController: UIViewController {
 	override public func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
+	}
+
+	// FKBottomNavigation protocol
+	public var navigationOnBottom = false {
+		willSet(newNavigationOnBottom) {
+			let titleView = UIView(frame: CGRect(
+				x: 0,
+				y: 0,
+				width: 100,
+				height: 30))
+			titleView.backgroundColor = UIColor.greenColor()
+			self.navigationItem.titleView = titleView
+		}
 	}
 }

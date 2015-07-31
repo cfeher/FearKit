@@ -12,7 +12,6 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 		color: UIColor.blackColor()) {
 
 		didSet {
-			//reload tableview
 			self.tableView.reloadData()
 		}
 	}
@@ -20,11 +19,11 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	required public init(items: [MasterItem]?) {
 		super.init(nibName: nil, bundle: nil);
 		self.view.backgroundColor = UIColor.greenColor()
-		items?.map({[weak self] in self?.addMasterItem($0)})
 
 		// Setup the table view
 		self.tableView.frame = self.view.frame
 		self.view.addSubview(self.tableView)
+		items?.map({[weak self] in self?.addMasterItem($0)})
 	}
 
 	required public init(coder aDecoder: NSCoder) {
@@ -34,7 +33,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	public func addMasterItem(item: MasterItem) {
 		items.append(item)
 		items.sort { (item1: MasterItem, item2: MasterItem) -> Bool in
-			return item1.ord > item2.ord
+			return item1.ord < item2.ord
 		}
 		self.tableView.reloadData()
 	}
@@ -42,6 +41,12 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	public override func viewDidAppear(animated: Bool) {
 		self.tableView.dataSource = self
 		self.tableView.delegate = self
+	}
+
+	private var width = CGFloat.max
+	public func setWidth(width: CGFloat) {
+		self.width = width
+		self.tableView.reloadData()
 	}
 
 /**
@@ -75,6 +80,11 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
 				cell = unwrappedCell as! FKMasterCell
 
+				//set the width
+				if self.width != CGFloat.max {
+					cell.cellWidth = self.width
+				}
+
 				//assign the values
 				let item: MasterItem = self.items[indexPath.row]
 
@@ -99,5 +109,10 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 	public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let item: MasterItem = self.items[indexPath.row]
 		item.itemCallback(item)
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+	}
+
+	public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+		return 60
 	}
 }
