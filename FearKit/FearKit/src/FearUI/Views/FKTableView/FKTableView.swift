@@ -18,7 +18,12 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 			self.updateTopView()
 		}
 	}
-
+	public var tableViewBackgroundColor = UIColor.whiteColor() {
+		didSet {
+			self.tableView.backgroundColor = self.tableViewBackgroundColor
+		}
+	}
+	
 	public override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.setup()
