@@ -9,16 +9,17 @@
 /* Begin PBXBuildFile section */
 		532D09C51B5E85EA009E962E /* FearKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D09B91B5E85EA009E962E /* FearKit.framework */; };
 		532D09CC1B5E85EA009E962E /* FearKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D09CB1B5E85EA009E962E /* FearKitTests.swift */; };
-		532D0A401B5E8C2E009E962E /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 532D0A301B5E8C2E009E962E /* FearKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		532D0A411B5E8C2E009E962E /* FKNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A341B5E8C2E009E962E /* FKNavigationViewController.swift */; };
-		532D0A421B5E8C2E009E962E /* FKDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A371B5E8C2E009E962E /* FKDetailViewController.swift */; };
-		532D0A431B5E8C2E009E962E /* FKMasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A381B5E8C2E009E962E /* FKMasterDetailViewController.swift */; };
-		532D0A441B5E8C2E009E962E /* FKMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A3A1B5E8C2E009E962E /* FKMasterViewController.swift */; };
-		532D0A461B5E8C2E009E962E /* FKQuadrantButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D0A3E1B5E8C2E009E962E /* FKQuadrantButtonView.swift */; };
-		532D0A471B5E8C2E009E962E /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 532D0A3F1B5E8C2E009E962E /* placeholder.png */; };
 		532D0A491B5E8C9E009E962E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
-		53659F431B67D3B900965F97 /* FKUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53659F421B67D3B900965F97 /* FKUtil.swift */; };
-		53C8CF8B1B668A0C0034F51C /* FKMasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C8CF891B668A0C0034F51C /* FKMasterCell.swift */; };
+		5333975A1B6BBE9000000EB5 /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 533397471B6BBE9000000EB5 /* FearKit.h */; };
+		5333975B1B6BBE9000000EB5 /* FKNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333974B1B6BBE9000000EB5 /* FKNavigationViewController.swift */; };
+		5333975C1B6BBE9000000EB5 /* FKDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333974E1B6BBE9000000EB5 /* FKDetailViewController.swift */; };
+		5333975D1B6BBE9000000EB5 /* FKMasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333974F1B6BBE9000000EB5 /* FKMasterDetailViewController.swift */; };
+		5333975E1B6BBE9000000EB5 /* FKMasterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397511B6BBE9000000EB5 /* FKMasterCell.swift */; };
+		5333975F1B6BBE9000000EB5 /* FKMasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397521B6BBE9000000EB5 /* FKMasterViewController.swift */; };
+		533397601B6BBE9000000EB5 /* FKQuadrantButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397551B6BBE9000000EB5 /* FKQuadrantButtonView.swift */; };
+		533397611B6BBE9000000EB5 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 533397561B6BBE9000000EB5 /* placeholder.png */; };
+		533397621B6BBE9000000EB5 /* FKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397581B6BBE9000000EB5 /* FKTableView.swift */; };
+		533397631B6BBE9000000EB5 /* FKUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397591B6BBE9000000EB5 /* FKUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,16 +38,17 @@
 		532D09C41B5E85EA009E962E /* FearKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FearKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		532D09CA1B5E85EA009E962E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532D09CB1B5E85EA009E962E /* FearKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FearKitTests.swift; sourceTree = "<group>"; };
-		532D0A301B5E8C2E009E962E /* FearKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FearKit.h; sourceTree = "<group>"; };
-		532D0A341B5E8C2E009E962E /* FKNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKNavigationViewController.swift; sourceTree = "<group>"; };
-		532D0A371B5E8C2E009E962E /* FKDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKDetailViewController.swift; sourceTree = "<group>"; };
-		532D0A381B5E8C2E009E962E /* FKMasterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterDetailViewController.swift; sourceTree = "<group>"; };
-		532D0A3A1B5E8C2E009E962E /* FKMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterViewController.swift; sourceTree = "<group>"; };
-		532D0A3E1B5E8C2E009E962E /* FKQuadrantButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKQuadrantButtonView.swift; sourceTree = "<group>"; };
-		532D0A3F1B5E8C2E009E962E /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		532D0A481B5E8C9E009E962E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		53659F421B67D3B900965F97 /* FKUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKUtil.swift; sourceTree = "<group>"; };
-		53C8CF891B668A0C0034F51C /* FKMasterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterCell.swift; sourceTree = "<group>"; };
+		533397471B6BBE9000000EB5 /* FearKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FearKit.h; sourceTree = "<group>"; };
+		5333974B1B6BBE9000000EB5 /* FKNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKNavigationViewController.swift; sourceTree = "<group>"; };
+		5333974E1B6BBE9000000EB5 /* FKDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKDetailViewController.swift; sourceTree = "<group>"; };
+		5333974F1B6BBE9000000EB5 /* FKMasterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterDetailViewController.swift; sourceTree = "<group>"; };
+		533397511B6BBE9000000EB5 /* FKMasterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterCell.swift; sourceTree = "<group>"; };
+		533397521B6BBE9000000EB5 /* FKMasterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKMasterViewController.swift; sourceTree = "<group>"; };
+		533397551B6BBE9000000EB5 /* FKQuadrantButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKQuadrantButtonView.swift; sourceTree = "<group>"; };
+		533397561B6BBE9000000EB5 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		533397581B6BBE9000000EB5 /* FKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKTableView.swift; sourceTree = "<group>"; };
+		533397591B6BBE9000000EB5 /* FKUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +93,7 @@
 		532D09BB1B5E85EA009E962E /* FearKit */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A2F1B5E8C2E009E962E /* src */,
+				533397461B6BBE9000000EB5 /* src */,
 				532D09BC1B5E85EA009E962E /* Supporting Files */,
 			);
 			path = FearKit;
@@ -122,84 +124,93 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		532D0A2F1B5E8C2E009E962E /* src */ = {
+		533397461B6BBE9000000EB5 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A301B5E8C2E009E962E /* FearKit.h */,
-				532D0A311B5E8C2E009E962E /* FearUI */,
-				53659F421B67D3B900965F97 /* FKUtil.swift */,
+				533397471B6BBE9000000EB5 /* FearKit.h */,
+				533397481B6BBE9000000EB5 /* FearUI */,
+				533397591B6BBE9000000EB5 /* FKUtil.swift */,
 			);
 			path = src;
 			sourceTree = "<group>";
 		};
-		532D0A311B5E8C2E009E962E /* FearUI */ = {
+		533397481B6BBE9000000EB5 /* FearUI */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A321B5E8C2E009E962E /* View Controllers */,
-				532D0A3B1B5E8C2E009E962E /* Views */,
+				533397491B6BBE9000000EB5 /* View Controllers */,
+				533397531B6BBE9000000EB5 /* Views */,
 			);
 			path = FearUI;
 			sourceTree = "<group>";
 		};
-		532D0A321B5E8C2E009E962E /* View Controllers */ = {
+		533397491B6BBE9000000EB5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A331B5E8C2E009E962E /* FKBottomNavigationController */,
-				532D0A351B5E8C2E009E962E /* FKMasterDetailViewController */,
+				5333974A1B6BBE9000000EB5 /* FKBottomNavigationController */,
+				5333974C1B6BBE9000000EB5 /* FKMasterDetailViewController */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		532D0A331B5E8C2E009E962E /* FKBottomNavigationController */ = {
+		5333974A1B6BBE9000000EB5 /* FKBottomNavigationController */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A341B5E8C2E009E962E /* FKNavigationViewController.swift */,
+				5333974B1B6BBE9000000EB5 /* FKNavigationViewController.swift */,
 			);
 			path = FKBottomNavigationController;
 			sourceTree = "<group>";
 		};
-		532D0A351B5E8C2E009E962E /* FKMasterDetailViewController */ = {
+		5333974C1B6BBE9000000EB5 /* FKMasterDetailViewController */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A361B5E8C2E009E962E /* Detail */,
-				532D0A381B5E8C2E009E962E /* FKMasterDetailViewController.swift */,
-				532D0A391B5E8C2E009E962E /* Master */,
+				5333974D1B6BBE9000000EB5 /* Detail */,
+				5333974F1B6BBE9000000EB5 /* FKMasterDetailViewController.swift */,
+				533397501B6BBE9000000EB5 /* Master */,
 			);
 			path = FKMasterDetailViewController;
 			sourceTree = "<group>";
 		};
-		532D0A361B5E8C2E009E962E /* Detail */ = {
+		5333974D1B6BBE9000000EB5 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A371B5E8C2E009E962E /* FKDetailViewController.swift */,
+				5333974E1B6BBE9000000EB5 /* FKDetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
 		};
-		532D0A391B5E8C2E009E962E /* Master */ = {
+		533397501B6BBE9000000EB5 /* Master */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A3A1B5E8C2E009E962E /* FKMasterViewController.swift */,
-				53C8CF891B668A0C0034F51C /* FKMasterCell.swift */,
+				533397511B6BBE9000000EB5 /* FKMasterCell.swift */,
+				533397521B6BBE9000000EB5 /* FKMasterViewController.swift */,
 			);
 			path = Master;
 			sourceTree = "<group>";
 		};
-		532D0A3B1B5E8C2E009E962E /* Views */ = {
+		533397531B6BBE9000000EB5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A3C1B5E8C2E009E962E /* FKQuadrantButtonView */,
+				533397541B6BBE9000000EB5 /* FKQuadrantButtonView */,
+				533397571B6BBE9000000EB5 /* FKTableView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		532D0A3C1B5E8C2E009E962E /* FKQuadrantButtonView */ = {
+		533397541B6BBE9000000EB5 /* FKQuadrantButtonView */ = {
 			isa = PBXGroup;
 			children = (
-				532D0A3E1B5E8C2E009E962E /* FKQuadrantButtonView.swift */,
-				532D0A3F1B5E8C2E009E962E /* placeholder.png */,
+				533397551B6BBE9000000EB5 /* FKQuadrantButtonView.swift */,
+				533397561B6BBE9000000EB5 /* placeholder.png */,
 			);
 			path = FKQuadrantButtonView;
+			sourceTree = "<group>";
+		};
+		533397571B6BBE9000000EB5 /* FKTableView */ = {
+			isa = PBXGroup;
+			children = (
+				533397581B6BBE9000000EB5 /* FKTableView.swift */,
+			);
+			path = FKTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,7 +220,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				532D0A401B5E8C2E009E962E /* FearKit.h in Headers */,
+				5333975A1B6BBE9000000EB5 /* FearKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				532D0A471B5E8C2E009E962E /* placeholder.png in Resources */,
+				533397611B6BBE9000000EB5 /* placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,13 +321,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				532D0A421B5E8C2E009E962E /* FKDetailViewController.swift in Sources */,
-				532D0A431B5E8C2E009E962E /* FKMasterDetailViewController.swift in Sources */,
-				53C8CF8B1B668A0C0034F51C /* FKMasterCell.swift in Sources */,
-				532D0A411B5E8C2E009E962E /* FKNavigationViewController.swift in Sources */,
-				532D0A441B5E8C2E009E962E /* FKMasterViewController.swift in Sources */,
-				53659F431B67D3B900965F97 /* FKUtil.swift in Sources */,
-				532D0A461B5E8C2E009E962E /* FKQuadrantButtonView.swift in Sources */,
+				5333975C1B6BBE9000000EB5 /* FKDetailViewController.swift in Sources */,
+				533397621B6BBE9000000EB5 /* FKTableView.swift in Sources */,
+				5333975F1B6BBE9000000EB5 /* FKMasterViewController.swift in Sources */,
+				5333975D1B6BBE9000000EB5 /* FKMasterDetailViewController.swift in Sources */,
+				5333975E1B6BBE9000000EB5 /* FKMasterCell.swift in Sources */,
+				5333975B1B6BBE9000000EB5 /* FKNavigationViewController.swift in Sources */,
+				533397631B6BBE9000000EB5 /* FKUtil.swift in Sources */,
+				533397601B6BBE9000000EB5 /* FKQuadrantButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
