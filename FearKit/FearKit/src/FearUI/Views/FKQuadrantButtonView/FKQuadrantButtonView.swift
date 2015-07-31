@@ -306,7 +306,7 @@ public class FKQuadrantButtonView: UIView {
 
 //FKFadedLineView
 
-enum GradientDirection {
+public enum GradientDirection {
 	case Horizontal, Vertical
 }
 
