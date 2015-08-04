@@ -42,7 +42,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 		//drop shadow
 		self.tableView.layer.masksToBounds = false;
 		self.tableView.layer.shadowOffset = CGSizeMake(0, -5);
-		self.tableView.layer.shadowOpacity = 0.5;
+		self.tableView.layer.shadowOpacity = 0.3;
 	}
 
 	required public init(coder aDecoder: NSCoder) {
