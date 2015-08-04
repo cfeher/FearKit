@@ -9,8 +9,8 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 	private var consts: [NSLayoutConstraint] = []
 	private let identifier = "master_row"
 	private var numRows = 0 {
-		willSet (newNumRows) {
-			if newNumRows != self.numRows {
+		didSet(old) {
+			if old != self.numRows {
 				self.updateTableViewHeight()
 			}
 		}
@@ -135,7 +135,6 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
 	private func updateTableViewHeight() {
 		var totalHeight: CGFloat = 0
-		println("\n\n\n\n\n\n\(self.numRows)\n\n\n\n\n")
 		if self.numRows > 0 {
 			for row in 0...self.numRows {
 				totalHeight += self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: row, inSection: 0))
