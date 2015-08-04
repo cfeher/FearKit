@@ -177,6 +177,8 @@ extension FKTableView {
 
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if let del = self.delegate {
+			println("\n\n\n\n\(del.numberOfRowsInTableView(tableView))\n\n\n\n\n")
+			self.updateTableViewHeight()
 			return del.numberOfRowsInTableView(tableView)
 		} else {
 			return 1
