@@ -133,9 +133,11 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 		}
 
 		//Table view needs to fill the remainder of the screen
+		println(totalHeight)
 		if totalHeight < self.frame.size.height - self.topView.frame.size.height {
-			totalHeight = self.frame.size.height
+			totalHeight = self.frame.size.height - self.topView.frame.size.height
 		}
+		println(totalHeight)
 
 		//update the height of the tableview
 		self.tableView.frame = CGRect(
