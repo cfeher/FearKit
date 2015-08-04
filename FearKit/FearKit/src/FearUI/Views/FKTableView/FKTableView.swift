@@ -7,6 +7,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 	private let scrollView: UIScrollView = UIScrollView(frame: CGRectZero)
 	private let topView: UIView = UIView(frame: CGRectZero)
 	private var consts: [NSLayoutConstraint] = []
+	private let identifier = "master_row"
 
 	//Mark: - Public Properties
 	public var delegate: FKTableViewDelegate? {
@@ -164,8 +165,10 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 			self.topView.addSubview(view)
 		}
 	}
+}
 
-	// MARK: - Table View Delegate and Data Source
+extension FKTableView {
+	// Table View Delegate and Data Source
 	public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
 		return 1
 	}
@@ -178,7 +181,6 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 		}
 	}
 
-	let identifier = "master_row"
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		if let del = self.delegate {
 			return del.tableView(tableView, cellForRow: indexPath.row)
@@ -197,5 +199,33 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 		} else {
 			return 60
 		}
+	}
+}
+
+extension FKTableView {
+	//Table View Methods
+	func insertSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
+		self.tableView.insertSections(sections, withRowAnimation: animation)
+	}
+	func deleteSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
+		self.tableView.deleteSections(sections, withRowAnimation: animation)
+	}
+	func reloadSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
+		self.tableView.reloadSections(sections, withRowAnimation: animation)
+	}
+	func moveSection(section: Int, toSection newSection: Int) {
+		self.tableView.moveSection(section, toSection: newSection)
+	}
+	func insertRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+		self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+	}
+	func deleteRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+		self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+	}
+	func reloadRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+		self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+	}
+	func moveRowAtIndexPath(indexPath: NSIndexPath, toIndexPath newIndexPath: NSIndexPath) {
+		self.tableView.moveRowAtIndexPath(indexPath, toIndexPath: newIndexPath)
 	}
 }
