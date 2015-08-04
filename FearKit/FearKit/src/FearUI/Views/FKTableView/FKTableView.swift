@@ -206,9 +206,11 @@ extension FKTableView {
 	//Table View Methods
 	public func insertSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.insertSections(sections, withRowAnimation: animation)
+		self.updateTableViewHeight()
 	}
 	public func deleteSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.deleteSections(sections, withRowAnimation: animation)
+		self.updateTableViewHeight()
 	}
 	public func reloadSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.reloadSections(sections, withRowAnimation: animation)
@@ -218,9 +220,11 @@ extension FKTableView {
 	}
 	public func insertRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+		self.updateTableViewHeight()
 	}
 	public func deleteRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
+		self.updateTableViewHeight()
 	}
 	public func reloadRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
