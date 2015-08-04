@@ -136,16 +136,16 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 	private func updateTableViewHeight() {
 		var totalHeight: CGFloat = 0
 		println("\n\n\n\n\n\n\(self.numRows)\n\n\n\n\n")
-		for row in 0...self.tableView(self.tableView, numberOfRowsInSection: 0) {
-			totalHeight += self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: row, inSection: 0))
+		if self.numRows > 0 {
+			for row in 0...self.tableView(self.tableView, numberOfRowsInSection: 0) {
+				totalHeight += self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: row, inSection: 0))
+			}
 		}
 
 		//Table view needs to fill the remainder of the screen
-		println(totalHeight)
 		if totalHeight < self.frame.size.height - self.topView.frame.size.height {
 			totalHeight = self.frame.size.height - self.topView.frame.size.height
 		}
-		println(totalHeight)
 
 		//update the height of the tableview
 		self.tableView.frame = CGRect(
