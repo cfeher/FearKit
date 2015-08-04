@@ -42,7 +42,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 		//drop shadow
 		self.tableView.layer.masksToBounds = false;
 		self.tableView.layer.cornerRadius = 8; // if you like rounded corners
-		self.tableView.layer.shadowOffset = CGSizeMake(0, 8);
+		self.tableView.layer.shadowOffset = CGSizeMake(0, -8);
 		self.tableView.layer.shadowRadius = 5;
 		self.tableView.layer.shadowOpacity = 0.5;
 	}
