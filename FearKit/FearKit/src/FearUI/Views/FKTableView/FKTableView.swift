@@ -135,6 +135,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
 	private func updateTableViewHeight() {
 		var totalHeight: CGFloat = 0
+		println("\n\n\n\n\n\n\(self.numRows)\n\n\n\n\n")
 		for row in 0...self.tableView(self.tableView, numberOfRowsInSection: 0) {
 			totalHeight += self.tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: row, inSection: 0))
 		}
