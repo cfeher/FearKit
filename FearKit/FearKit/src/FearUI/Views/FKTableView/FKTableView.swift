@@ -204,28 +204,28 @@ extension FKTableView {
 
 extension FKTableView {
 	//Table View Methods
-	func insertSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
+	public func insertSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.insertSections(sections, withRowAnimation: animation)
 	}
-	func deleteSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
+	public func deleteSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.deleteSections(sections, withRowAnimation: animation)
 	}
-	func reloadSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
+	public func reloadSections(sections: NSIndexSet, withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.reloadSections(sections, withRowAnimation: animation)
 	}
-	func moveSection(section: Int, toSection newSection: Int) {
+	public func moveSection(section: Int, toSection newSection: Int) {
 		self.tableView.moveSection(section, toSection: newSection)
 	}
-	func insertRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+	public func insertRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
 	}
-	func deleteRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+	public func deleteRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
 	}
-	func reloadRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+	public func reloadRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
 	}
-	func moveRowAtIndexPath(indexPath: NSIndexPath, toIndexPath newIndexPath: NSIndexPath) {
+	public func moveRowAtIndexPath(indexPath: NSIndexPath, toIndexPath newIndexPath: NSIndexPath) {
 		self.tableView.moveRowAtIndexPath(indexPath, toIndexPath: newIndexPath)
 	}
 }
