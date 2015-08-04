@@ -8,6 +8,13 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 	private let topView: UIView = UIView(frame: CGRectZero)
 	private var consts: [NSLayoutConstraint] = []
 	private let identifier = "master_row"
+	private var numRows = 0 {
+		willSet (newNumRows) {
+			if newNumRows != self.numRows {
+				self.updateTableViewHeight()
+			}
+		}
+	}
 
 	//Mark: - Public Properties
 	public var delegate: FKTableViewDelegate? {
@@ -177,11 +184,11 @@ extension FKTableView {
 
 	public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		if let del = self.delegate {
-			println("\n\n\n\n\(del.numberOfRowsInTableView(tableView))\n\n\n\n\n")
-			return del.numberOfRowsInTableView(tableView)
+			self.numRows = del.numberOfRowsInTableView(tableView)
 		} else {
-			return 1
+			self.numRows = 1
 		}
+		return self.numRows
 	}
 
 	public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
