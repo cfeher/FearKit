@@ -73,3 +73,15 @@ public func delay(delay:Double, closure:()->()) {
 		),
 		dispatch_get_main_queue(), closure)
 }
+
+extension Array {
+	func indexesOf<T : Equatable>(object:T) -> [Int] {
+		var result: [Int] = []
+		for (index,obj) in enumerate(self) {
+			if obj as! T == object {
+				result.append(index)
+			}
+		}
+		return result
+	}
+}

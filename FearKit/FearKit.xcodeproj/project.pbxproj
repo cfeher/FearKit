@@ -21,6 +21,8 @@
 		533397621B6BBE9000000EB5 /* FKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397581B6BBE9000000EB5 /* FKTableView.swift */; };
 		533397631B6BBE9000000EB5 /* FKUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397591B6BBE9000000EB5 /* FKUtil.swift */; };
 		533397B11B6BD7FF00000EB5 /* FKFadedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533397B01B6BD7FF00000EB5 /* FKFadedLineView.swift */; };
+		53E895CF1B724C2200C4F143 /* FKPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E895CE1B724C2200C4F143 /* FKPageViewController.swift */; };
+		53E895D21B72844E00C4F143 /* FKPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E895D11B72844E00C4F143 /* FKPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		533397581B6BBE9000000EB5 /* FKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKTableView.swift; sourceTree = "<group>"; };
 		533397591B6BBE9000000EB5 /* FKUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKUtil.swift; sourceTree = "<group>"; };
 		533397B01B6BD7FF00000EB5 /* FKFadedLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKFadedLineView.swift; sourceTree = "<group>"; };
+		53E895CE1B724C2200C4F143 /* FKPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKPageViewController.swift; sourceTree = "<group>"; };
+		53E895D11B72844E00C4F143 /* FKPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +152,7 @@
 		533397491B6BBE9000000EB5 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				53E895CD1B724BB400C4F143 /* FKPageViewController */,
 				5333974A1B6BBE9000000EB5 /* FKBottomNavigationController */,
 				5333974C1B6BBE9000000EB5 /* FKMasterDetailViewController */,
 			);
@@ -192,6 +197,7 @@
 		533397531B6BBE9000000EB5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				53E895D01B72843D00C4F143 /* FKPageView */,
 				533397AF1B6BD7F200000EB5 /* FKFadedLine */,
 				533397541B6BBE9000000EB5 /* FKQuadrantButtonView */,
 				533397571B6BBE9000000EB5 /* FKTableView */,
@@ -222,6 +228,22 @@
 				533397B01B6BD7FF00000EB5 /* FKFadedLineView.swift */,
 			);
 			path = FKFadedLine;
+			sourceTree = "<group>";
+		};
+		53E895CD1B724BB400C4F143 /* FKPageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				53E895CE1B724C2200C4F143 /* FKPageViewController.swift */,
+			);
+			path = FKPageViewController;
+			sourceTree = "<group>";
+		};
+		53E895D01B72843D00C4F143 /* FKPageView */ = {
+			isa = PBXGroup;
+			children = (
+				53E895D11B72844E00C4F143 /* FKPageView.swift */,
+			);
+			path = FKPageView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,6 +302,7 @@
 		532D09B01B5E85EA009E962E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = FK;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Chris Feher";
 				TargetAttributes = {
@@ -338,6 +361,8 @@
 				5333975F1B6BBE9000000EB5 /* FKMasterViewController.swift in Sources */,
 				5333975D1B6BBE9000000EB5 /* FKMasterDetailViewController.swift in Sources */,
 				5333975E1B6BBE9000000EB5 /* FKMasterCell.swift in Sources */,
+				53E895CF1B724C2200C4F143 /* FKPageViewController.swift in Sources */,
+				53E895D21B72844E00C4F143 /* FKPageView.swift in Sources */,
 				5333975B1B6BBE9000000EB5 /* FKNavigationViewController.swift in Sources */,
 				533397631B6BBE9000000EB5 /* FKUtil.swift in Sources */,
 				533397601B6BBE9000000EB5 /* FKQuadrantButtonView.swift in Sources */,
