@@ -247,3 +247,29 @@ extension FKTableView {
 		self.tableView.moveRowAtIndexPath(indexPath, toIndexPath: newIndexPath)
 	}
 }
+
+extension UIScrollView {
+	func touchIntersectsTransparentRegion(point: CGPoint) -> Bool {
+		for view in self.subviews {
+			if let subView = view as? UIView {
+
+				var alteredFrame = CGRect(
+					origin: CGPoint(
+						x: subView.frame.origin.x,
+						y: subView.frame.origin.y + -self.contentOffset.y),
+					size: subView.frame.size)
+				var alteredPoint = CGPoint(
+					x: point.x,
+					y: point.y + -self.contentOffset.y)
+
+				if alteredPoint.y > alteredFrame.origin.y && alteredPoint.y <= alteredFrame.origin.y + alteredFrame.size.height {
+					return false
+				}
+			}
+		}
+		return true
+	}
+	override public func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+		return !self.touchIntersectsTransparentRegion(point)
+	}
+}
