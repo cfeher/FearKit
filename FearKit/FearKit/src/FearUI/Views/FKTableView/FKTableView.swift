@@ -177,6 +177,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 			view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
 			self.topView.addSubview(view)
 		}
+		self.bringSubviewToFront(self.scrollView)
 	}
 }
 

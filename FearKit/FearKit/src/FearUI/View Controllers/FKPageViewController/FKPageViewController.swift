@@ -46,56 +46,6 @@ extension FKPageViewController {
 		viewController.view.addSubview(view)
 		view.setTranslatesAutoresizingMaskIntoConstraints(false)
 
-//		//Add Constraints
-//		viewController.view.addConstraint(NSLayoutConstraint(
-//			item: viewController.view,
-//			attribute: .Width,
-//			relatedBy: .Equal,
-//			toItem: view,
-//			attribute: .Width,
-//			multiplier: 1.0,
-//			constant: 0))
-//		viewController.view.addConstraint(NSLayoutConstraint(
-//			item: viewController.view,
-//			attribute: .Height,
-//			relatedBy: .Equal,
-//			toItem: view,
-//			attribute: .Height,
-//			multiplier: 1.0,
-//			constant: 0))
-//		viewController.view.addConstraint(NSLayoutConstraint(
-//			item: view,
-//			attribute: .Left,
-//			relatedBy: .Equal,
-//			toItem: viewController.view,
-//			attribute: .Left,
-//			multiplier: 1.0,
-//			constant: 0))
-//		viewController.view.addConstraint(NSLayoutConstraint(
-//			item: view,
-//			attribute: .Top,
-//			relatedBy: .Equal,
-//			toItem: viewController.view,
-//			attribute: .Top,
-//			multiplier: 1.0,
-//			constant: 0))
-//		viewController.view.addConstraint(NSLayoutConstraint(
-//			item: view,
-//			attribute: .Right,
-//			relatedBy: .Equal,
-//			toItem: viewController.view,
-//			attribute: .Right,
-//			multiplier: 1.0,
-//			constant: 0))
-//		viewController.view.addConstraint(NSLayoutConstraint(
-//			item: view,
-//			attribute: .Bottom,
-//			relatedBy: .Equal,
-//			toItem: viewController.view,
-//			attribute: .Bottom,
-//			multiplier: 1.0,
-//			constant: 0))
-
 		//setup pageviewcontroller
 		self.currentIndex = 0
 		self.pageViewController.dataSource = self
