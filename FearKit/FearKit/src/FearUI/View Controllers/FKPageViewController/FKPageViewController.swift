@@ -21,9 +21,8 @@ public class FKPageViewController: UIViewController, UIPageViewControllerDataSou
 	private var pages = [FKPageViewContainer]()
 	public var pageSize: CGSize = CGSizeZero {
 		didSet {
-			self.pageViewController.view.frame = CGRect(
-				origin: CGPointZero,
-				size: self.pageSize)
+			self.view.frame = CGRect(origin: CGPointZero, size: self.pageSize)
+			self.pageViewController.view.layoutIfNeeded()
 		}
 	}
     override public func viewDidLoad() {
