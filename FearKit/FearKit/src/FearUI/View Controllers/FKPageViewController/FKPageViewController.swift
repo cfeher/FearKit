@@ -90,7 +90,7 @@ extension FKPageViewController {
 			multiplier: 1.0,
 			constant: 0))
 		viewController.view.addConstraint(NSLayoutConstraint(
-			item: self.pageViewController.view,
+			item: viewController.view,
 			attribute: .Height,
 			relatedBy: .Equal,
 			toItem: view,
