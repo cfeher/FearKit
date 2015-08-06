@@ -85,7 +85,7 @@ extension FKPageViewController {
 			item: viewController.view,
 			attribute: .Width,
 			relatedBy: .Equal,
-			toItem: self.pageViewController.view,
+			toItem: view,
 			attribute: .Width,
 			multiplier: 1.0,
 			constant: 0))
