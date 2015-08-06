@@ -80,6 +80,7 @@ extension FKPageViewController {
 			options: nil)
 		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
 		self.pageViewController.setViewControllers(self.viewControllersFromPages(), direction: .Forward, animated: true, completion: nil)
+		self.view.addSubview(self.pageViewController.view)
 
 		viewController.view.addConstraint(NSLayoutConstraint(
 			item: viewController.view,
