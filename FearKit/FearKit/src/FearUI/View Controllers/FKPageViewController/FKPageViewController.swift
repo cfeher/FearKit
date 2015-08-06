@@ -11,12 +11,20 @@ internal struct FKPageViewContainer {
 	}
 }
 
-public class FKPageViewController: UIViewController {
+public class FKPageViewController: UIViewController, UIPageViewControllerDataSource {
 
+	private var currentIndex: Int = 0
 	private var pageViewController = UIPageViewController(
 		transitionStyle: .Scroll,
 		navigationOrientation: .Horizontal,
-		options: nil)
+		options: nil) {
+		willSet(newPageViewController) {
+			self.pageViewController.view.removeFromSuperview()
+			self.pageViewController.removeFromParentViewController()
+			self.currentIndex = 0
+			newPageViewController.dataSource = self
+		}
+	}
 	private var pages = [FKPageViewContainer]()
 	public var pageSize: CGSize = CGSizeZero {
 		didSet {
@@ -78,14 +86,16 @@ extension FKPageViewController {
 		viewController.view.addSubview(view)
 		view.setTranslatesAutoresizingMaskIntoConstraints(false)
 
-		self.pageViewController.view.removeFromSuperview()
-		self.pageViewController.removeFromParentViewController()
 		self.pageViewController = UIPageViewController(
 			transitionStyle: .Scroll,
 			navigationOrientation: .Horizontal,
 			options: nil)
 		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
-		self.pageViewController.setViewControllers(self.viewControllersFromPages(), direction: .Forward, animated: true, completion: nil)
+		self.pageViewController.setViewControllers(
+			[self.viewControllersFromPages()[0]],
+			direction: .Forward,
+			animated: true,
+			completion: nil)
 		self.pageSize = CGSize(
 			width: view.frame.size.width,
 			height: view.frame.size.height)
@@ -141,7 +151,7 @@ extension FKPageViewController {
 			constant: 0))
 	}
 
-	public func viewControllersFromPages() -> [UIViewController] {
+	private func viewControllersFromPages() -> [UIViewController] {
 		var vcs = [UIViewController]()
 		for container in self.pages {
 			vcs.append(container.controller)
@@ -149,9 +159,25 @@ extension FKPageViewController {
 		return vcs
 	}
 
-	public func removePageView(view: FKPageView) {
+	private func removePageView(view: FKPageView) {
+		//TODO: Make this save to use externally
 		for index in self.pages.indexesOf(view) {
 			self.pages.removeAtIndex(index)
 		}
+	}
+
+
+	public func pageViewController(pageViewController: UIPageViewController,
+		viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+			if self.currentIndex > 0 {
+				self.currentIndex -= 1
+			}
+			return self.pages[self.currentIndex].controller
+	}
+	public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+		if self.currentIndex < self.pages.count - 1 {
+			self.currentIndex += 1
+		}
+		return self.pages[self.currentIndex].controller
 	}
 }
