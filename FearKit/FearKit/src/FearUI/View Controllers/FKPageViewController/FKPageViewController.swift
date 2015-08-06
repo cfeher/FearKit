@@ -100,20 +100,14 @@ extension FKPageViewController {
 		self.currentIndex = 0
 		self.pageViewController.dataSource = self
 		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
-		if self.pages.count > 1 {
-			let tmp = self.viewControllersFromPages()
-			self.pageViewController.setViewControllers(
-				[tmp[0], tmp[1]],
-				direction: .Forward,
-				animated: true,
-				completion: nil)
-		} else {
-			self.pageViewController.setViewControllers(
-				[viewController],
-				direction: .Forward,
-				animated: true,
-				completion: nil)
-		}
+
+		let tmp = self.viewControllersFromPages()
+		self.pageViewController.setViewControllers(
+			[viewController],
+			direction: .Forward,
+			animated: true,
+			completion: nil)
+
 
 		//adjust page size - TODO: NOT NEEDED?
 		self.pageSize = CGSize(
