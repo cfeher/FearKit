@@ -17,14 +17,7 @@ public class FKPageViewController: UIViewController, UIPageViewControllerDataSou
 	private var pageViewController = UIPageViewController(
 		transitionStyle: .Scroll,
 		navigationOrientation: .Horizontal,
-		options: nil) {
-		willSet(newPageViewController) {
-			self.pageViewController.view.removeFromSuperview()
-			self.pageViewController.removeFromParentViewController()
-			self.currentIndex = 0
-			newPageViewController.dataSource = self
-		}
-	}
+		options: nil)
 	private var pages = [FKPageViewContainer]()
 	public var pageSize: CGSize = CGSizeZero {
 		didSet {
@@ -86,10 +79,15 @@ extension FKPageViewController {
 		viewController.view.addSubview(view)
 		view.setTranslatesAutoresizingMaskIntoConstraints(false)
 
+		self.currentIndex = 0
+		self.pageViewController.view.removeFromSuperview()
+		self.pageViewController.removeFromParentViewController()
 		self.pageViewController = UIPageViewController(
 			transitionStyle: .Scroll,
 			navigationOrientation: .Horizontal,
 			options: nil)
+		self.pageViewController.dataSource = self
+		self.addChildViewController(self.pageViewController)
 		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
 		self.pageViewController.setViewControllers(
 			[self.viewControllersFromPages()[0]],
@@ -165,7 +163,6 @@ extension FKPageViewController {
 			self.pages.removeAtIndex(index)
 		}
 	}
-
 
 	public func pageViewController(pageViewController: UIPageViewController,
 		viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
