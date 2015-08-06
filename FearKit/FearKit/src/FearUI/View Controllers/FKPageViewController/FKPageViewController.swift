@@ -1,10 +1,10 @@
 import UIKit
 
 internal struct FKPageViewContainer {
-	var pageView: FKPageView
+	var pageView: UIView
 	var controller: UIViewController
 
-	init(controller: UIViewController, pageView: FKPageView) {
+	init(controller: UIViewController, pageView: UIView) {
 		//make sure the controller and the pageview match up
 		self.pageView = pageView
 		self.controller = controller
@@ -39,7 +39,7 @@ public class FKPageViewController: UIViewController, UIPageViewControllerDataSou
 }
 
 extension FKPageViewController {
-	public func addPageView(view: FKPageView) {
+	public func addPageView(view: UIView) {
 
 		//setup new view controller
 		let viewController = UIViewController(nibName: nil, bundle: nil)
