@@ -1,12 +1,23 @@
 import UIKit
 
+internal struct FKPageViewContainer {
+	var pageView: FKPageView
+	var controller: UIViewController
+
+	init(controller: UIViewController, pageView: FKPageView) {
+		//make sure the controller and the pageview match up
+		self.pageView = pageView
+		self.controller = controller
+	}
+}
+
 public class FKPageViewController: UIViewController {
 
-	private let pageViewController = UIPageViewController(
+	private var pageViewController = UIPageViewController(
 		transitionStyle: .Scroll,
 		navigationOrientation: .Horizontal,
 		options: nil)
-	private var pages = [FKPageView]()
+	private var pages = [FKPageViewContainer]()
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -52,9 +63,80 @@ public class FKPageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
 
+extension FKPageViewController {
 	public func addPageView(view: FKPageView) {
-		self.pages.append(view)
+
+		let viewController = UIViewController(nibName: nil, bundle: nil)
+		viewController.view.addSubview(view)
+		view.setTranslatesAutoresizingMaskIntoConstraints(false)
+
+		self.pageViewController.view.removeFromSuperview()
+		self.pageViewController.removeFromParentViewController()
+		self.pageViewController = UIPageViewController(
+			transitionStyle: .Scroll,
+			navigationOrientation: .Horizontal,
+			options: nil)
+		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
+		self.pageViewController.setViewControllers(self.viewControllersFromPages(), direction: .Forward, animated: true, completion: nil)
+
+		viewController.view.addConstraint(NSLayoutConstraint(
+			item: viewController.view,
+			attribute: .Width,
+			relatedBy: .Equal,
+			toItem: self.pageViewController.view,
+			attribute: .Width,
+			multiplier: 1.0,
+			constant: 0))
+		viewController.view.addConstraint(NSLayoutConstraint(
+			item: self.pageViewController.view,
+			attribute: .Height,
+			relatedBy: .Equal,
+			toItem: view,
+			attribute: .Height,
+			multiplier: 1.0,
+			constant: 0))
+		viewController.view.addConstraint(NSLayoutConstraint(
+			item: view,
+			attribute: .Left,
+			relatedBy: .Equal,
+			toItem: viewController.view,
+			attribute: .Left,
+			multiplier: 1.0,
+			constant: 0))
+		viewController.view.addConstraint(NSLayoutConstraint(
+			item: view,
+			attribute: .Top,
+			relatedBy: .Equal,
+			toItem: viewController.view,
+			attribute: .Top,
+			multiplier: 1.0,
+			constant: 0))
+		viewController.view.addConstraint(NSLayoutConstraint(
+			item: view,
+			attribute: .Right,
+			relatedBy: .Equal,
+			toItem: viewController.view,
+			attribute: .Right,
+			multiplier: 1.0,
+			constant: 0))
+		viewController.view.addConstraint(NSLayoutConstraint(
+			item: view,
+			attribute: .Bottom,
+			relatedBy: .Equal,
+			toItem: viewController.view,
+			attribute: .Bottom,
+			multiplier: 1.0,
+			constant: 0))
+	}
+
+	public func viewControllersFromPages() -> [UIViewController] {
+		var vcs = [UIViewController]()
+		for container in self.pages {
+			vcs.append(container.controller)
+		}
+		return vcs
 	}
 
 	public func removePageView(view: FKPageView) {
