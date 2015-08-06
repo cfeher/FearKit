@@ -22,7 +22,7 @@ public class FKPageViewController: UIViewController, UIPageViewControllerDataSou
 	public var pageSize: CGSize = CGSizeZero {
 		didSet {
 			self.view.frame = CGRect(origin: CGPointZero, size: self.pageSize)
-			self.pageViewController.view.layoutIfNeeded()
+			self.pageViewController.view.frame = self.view.bounds
 		}
 	}
     override public func viewDidLoad() {
@@ -30,39 +30,6 @@ public class FKPageViewController: UIViewController, UIPageViewControllerDataSou
 
 		self.addChildViewController(self.pageViewController)
 		self.view.addSubview(self.pageViewController.view)
-
-		self.view.addConstraint(NSLayoutConstraint(
-			item: self.pageViewController.view,
-			attribute: .Left,
-			relatedBy: .Equal,
-			toItem: self.view,
-			attribute: .Left,
-			multiplier: 1.0,
-			constant: 0))
-		self.view.addConstraint(NSLayoutConstraint(
-			item: self.pageViewController.view,
-			attribute: .Right,
-			relatedBy: .Equal,
-			toItem: self.view,
-			attribute: .Right,
-			multiplier: 1.0,
-			constant: 0))
-		self.view.addConstraint(NSLayoutConstraint(
-			item: self.pageViewController.view,
-			attribute: .Top,
-			relatedBy: .Equal,
-			toItem: self.view,
-			attribute: .Top,
-			multiplier: 1.0,
-			constant: 0))
-		self.view.addConstraint(NSLayoutConstraint(
-			item: self.pageViewController.view,
-			attribute: .Bottom,
-			relatedBy: .Equal,
-			toItem: self.view,
-			attribute: .Bottom,
-			multiplier: 1.0,
-			constant: 0))
     }
 
     override public func didReceiveMemoryWarning() {
@@ -133,11 +100,20 @@ extension FKPageViewController {
 		self.currentIndex = 0
 		self.pageViewController.dataSource = self
 		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
-		self.pageViewController.setViewControllers(
-			[self.viewControllersFromPages()[0]],
-			direction: .Forward,
-			animated: true,
-			completion: nil)
+		if self.pages.count > 1 {
+			let tmp = self.viewControllersFromPages()
+			self.pageViewController.setViewControllers(
+				[tmp[0], tmp[1]],
+				direction: .Forward,
+				animated: true,
+				completion: nil)
+		} else {
+			self.pageViewController.setViewControllers(
+				[viewController],
+				direction: .Forward,
+				animated: true,
+				completion: nil)
+		}
 
 		//adjust page size - TODO: NOT NEEDED?
 		self.pageSize = CGSize(
