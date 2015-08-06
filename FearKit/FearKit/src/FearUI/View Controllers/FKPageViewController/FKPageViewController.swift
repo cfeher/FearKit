@@ -18,7 +18,7 @@ public class FKPageViewController: UIViewController {
 		navigationOrientation: .Horizontal,
 		options: nil)
 	private var pages = [FKPageViewContainer]()
-	public var pageSize: CGSize {
+	public var pageSize: CGSize = CGSizeZero {
 		didSet {
 			self.pageViewController.view.frame = CGRect(
 				origin: CGPointZero,
