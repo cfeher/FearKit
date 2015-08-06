@@ -18,7 +18,13 @@ public class FKPageViewController: UIViewController {
 		navigationOrientation: .Horizontal,
 		options: nil)
 	private var pages = [FKPageViewContainer]()
-
+	public var pageSize: CGSize {
+		didSet {
+			self.pageViewController.view.frame = CGRect(
+				origin: CGPointZero,
+				size: self.pageSize)
+		}
+	}
     override public func viewDidLoad() {
         super.viewDidLoad()
 
@@ -80,6 +86,9 @@ extension FKPageViewController {
 			options: nil)
 		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
 		self.pageViewController.setViewControllers(self.viewControllersFromPages(), direction: .Forward, animated: true, completion: nil)
+		self.pageSize = CGSize(
+			width: view.frame.size.width,
+			height: view.frame.size.height)
 		self.view.addSubview(self.pageViewController.view)
 
 		viewController.view.addConstraint(NSLayoutConstraint(
