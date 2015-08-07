@@ -37,7 +37,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
 		//colors for seeing stuff
 		self.scrollView.backgroundColor = UIColor.clearColor()
-		self.topView.backgroundColor = UIColor.orangeColor()
+		self.topView.backgroundColor = UIColor.blackColor()
 
 		//drop shadow
 		self.tableView.layer.masksToBounds = false;
