@@ -85,3 +85,12 @@ extension Array {
 		return result
 	}
 }
+
+public func setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(root: UIView, val: Bool) {
+	for view in root.subviews {
+		view.setTranslatesAutoresizingMaskIntoConstraints(val)
+		if view.subviews.count > 0 {
+			setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(view as! UIView, val)
+		}
+	}
+}
