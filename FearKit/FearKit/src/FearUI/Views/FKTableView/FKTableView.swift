@@ -218,6 +218,9 @@ extension FKTableView {
 	public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
 			return self.delegate?.tableView(tableView, editActionsForRow: indexPath.row)
 	}
+	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		return true
+	}
 }
 
 extension FKTableView {
