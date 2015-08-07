@@ -215,6 +215,9 @@ extension FKTableView {
 			return 60
 		}
 	}
+	public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+			return self.delegate?.tableView(tableView, editActionsForRow: indexPath.row)
+	}
 }
 
 extension FKTableView {

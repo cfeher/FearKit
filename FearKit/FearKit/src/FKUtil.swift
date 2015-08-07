@@ -43,6 +43,7 @@ public protocol FKTableViewDelegate {
 	func tableView(tableView: UITableView, didSelectRow row: Int)
 	func tableView(tableView: UITableView, heightForRow row: Int) -> CGFloat
 	func topView(thatFitsIn: CGSize) -> UIView
+	func tableView(tableView: UITableView, editActionsForRow row: Int) -> [AnyObject]?
 }
 
 func < (size1: CGSize, size2: CGSize) -> Bool {
