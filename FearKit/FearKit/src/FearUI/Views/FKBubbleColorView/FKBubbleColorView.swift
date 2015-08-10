@@ -14,9 +14,12 @@ public class FKBubbleColorView: UIView {
     // An empty implementation adversely affects performance during animation.
     override public func drawRect(rect: CGRect) {
         // Drawing code
+		self.backgroundColor = UIColor.whiteColor()
 		for iterator in 1...100 {
 			let radius = arc4random() % 100 + 1
-			let circleCurve = UIBezierPath(ovalInRect: CGRectMake(CGFloat(radius), CGFloat(radius), CGFloat(radius), CGFloat(radius)))
+			let x = Int(arc4random()) % Int(self.frame.size.width)
+			let y = Int(arc4random()) % Int(self.frame.size.height)
+			let circleCurve = UIBezierPath(ovalInRect: CGRectMake(CGFloat(x), CGFloat(y), CGFloat(radius), CGFloat(radius)))
 			let red = arc4random() % 255 + 1 //random for now
 			let green = arc4random() % 255 + 1 //random for now
 			let blue = arc4random() % 255 + 1 //random for now
