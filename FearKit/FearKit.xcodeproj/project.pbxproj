@@ -10,7 +10,7 @@
 		532D09C51B5E85EA009E962E /* FearKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D09B91B5E85EA009E962E /* FearKit.framework */; };
 		532D09CC1B5E85EA009E962E /* FearKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D09CB1B5E85EA009E962E /* FearKitTests.swift */; };
 		532D0A491B5E8C9E009E962E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
-		5333975A1B6BBE9000000EB5 /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 533397471B6BBE9000000EB5 /* FearKit.h */; };
+		5333975A1B6BBE9000000EB5 /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 533397471B6BBE9000000EB5 /* FearKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5333975B1B6BBE9000000EB5 /* FKNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333974B1B6BBE9000000EB5 /* FKNavigationViewController.swift */; };
 		5333975C1B6BBE9000000EB5 /* FKDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333974E1B6BBE9000000EB5 /* FKDetailViewController.swift */; };
 		5333975D1B6BBE9000000EB5 /* FKMasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5333974F1B6BBE9000000EB5 /* FKMasterDetailViewController.swift */; };
