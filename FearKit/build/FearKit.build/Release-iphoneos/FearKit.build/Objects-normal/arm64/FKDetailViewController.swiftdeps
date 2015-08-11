@@ -1,0 +1,47 @@
+### Swift dependencies file v0 ###
+provides:
+- "FKDetailViewController"
+nominals:
+- "C7FearKit22FKDetailViewController"
+class-members:
+- "viewDidLoad"
+- "showHideButton"
+- "navigationOnBottom"
+- "didReceiveMemoryWarning"
+top-level:
+- !private "StringLiteralType"
+- "NSCoder"
+- !private "UIColor"
+- "UIViewController"
+- "FKBottomNavigation"
+- !private "fatalError"
+- "BooleanLiteralType"
+- "String"
+- "NSBundle"
+- "UIBarButtonItem"
+- !private "CGRect"
+- !private "UIView"
+member-access:
+- "P7FearKit18FKBottomNavigation"
+- "C7FearKit22FKDetailViewController"
+- !private "CSo16UINavigationItem"
+- !private "CSo6UIView"
+- "CSo8NSObject"
+- !private "VSs12StaticString"
+- !private "Sq"
+- "CSo16UIViewController"
+- "CSo11UIResponder"
+- "PSs9AnyObject"
+- !private "VSC6CGRect"
+- !private "CSo7UIColor"
+dynamic-lookup:
+cross-module:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/Security.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/CoreImage.swiftmodule"
