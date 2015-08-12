@@ -4,7 +4,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
 	// MARK: - Private Properties
 	private let tableView: UITableView = UITableView(frame: CGRectZero)
-	private let scrollView: UIScrollView = UIScrollView(frame: CGRectZero)
+	private let scrollView: CustomScrollView = CustomScrollView(frame: CGRectZero)
 	private let topView: UIView = UIView(frame: CGRectZero)
 	private var consts: [NSLayoutConstraint] = []
 	private let identifier = "master_row"
@@ -248,7 +248,7 @@ extension FKTableView {
 	}
 }
 
-extension UIScrollView {
+internal class CustomScrollView: UIScrollView {
 	func touchIntersectsTransparentRegion(point: CGPoint) -> Bool {
 		for view in self.subviews {
 			if let subView = view as? UIView {
