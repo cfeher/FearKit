@@ -269,7 +269,7 @@ internal class CustomScrollView: UIScrollView {
 		}
 		return true
 	}
-	override public func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
-		return !self.touchIntersectsTransparentRegion(point)
-	}
+//	override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+//		return !self.touchIntersectsTransparentRegion(point)
+//	}
 }
