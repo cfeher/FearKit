@@ -37,7 +37,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 
 		//colors for seeing stuff
 		self.scrollView.backgroundColor = UIColor.clearColor()
-		self.topView.backgroundColor = UIColor.orangeColor()
+		self.topView.backgroundColor = UIColor.blackColor()
 
 		//drop shadow
 		self.tableView.layer.masksToBounds = false;
@@ -177,6 +177,7 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 			view.frame = CGRectMake(0, 0, view.frame.size.width, view.frame.size.height)
 			self.topView.addSubview(view)
 		}
+		self.bringSubviewToFront(self.scrollView)
 	}
 }
 
@@ -213,6 +214,15 @@ extension FKTableView {
 		} else {
 			return 60
 		}
+	}
+	public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+			return self.delegate?.tableView(tableView, editActionsForRow: indexPath.row)
+	}
+	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+		return true
+	}
+	public func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+		
 	}
 }
 
