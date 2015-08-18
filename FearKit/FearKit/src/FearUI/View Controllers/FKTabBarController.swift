@@ -1,11 +1,11 @@
 import UIKit
 
 public struct FKTab {
-	let viewController: UIViewController
-	let image: UIImage
-	let title: String
+	private let viewController: UIViewController
+	private let image: UIImage
+	private let title: String
 
-	init(viewController: UIViewController, image: UIImage, title: String) {
+	public init(viewController: UIViewController, image: UIImage, title: String) {
 		self.viewController = viewController
 		self.image = image
 		self.title = title
@@ -58,9 +58,14 @@ public class FKTabBarController: UIViewController {
 			relatedBy: .Equal,
 			toItem: self.view,
 			attribute: .Height,
-			multiplier: 0.1,
+			multiplier: 0.15,
 			constant: 0))
 
+		delay(1.5, { () -> () in
+			println(self.view.frame)
+			println(tabBar.frame)
+		})
+		setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, false)
 		self.view.layoutIfNeeded()
 	}
 
