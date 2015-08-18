@@ -6,7 +6,7 @@ public struct FKTab {
 	private let title: String
 	private let backgroundColor: UIColor
 
-	public init(viewController: UIViewController, image: UIImage, title: String, backgroundColor: UIColor = UIColor.whiteColor()) {
+	public init(viewController: UIViewController, image: UIImage, title: String, backgroundColor: UIColor = UIColor.clearColor()) {
 		self.viewController = viewController
 		self.image = image
 		self.title = title
@@ -26,7 +26,7 @@ public class FKTabBarController: UIViewController {
 
 		//create tabbar container and constrain it
 		let tabBar = UIView(frame: CGRectZero)
-		tabBar.backgroundColor = UIColor.blueColor()
+		tabBar.backgroundColor = UIColor.lightGrayColor()
 		self.view.addSubview(tabBar)
 
 		self.view.addConstraint(NSLayoutConstraint(
@@ -140,7 +140,7 @@ internal class FKTabBarTab: UIView {
 		self.button.setImage(tab.image, forState: .Normal)
 		self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 		self.addSubview(self.button)
-		self.backgroundColor = UIColor.redColor()
+		self.backgroundColor = tab.backgroundColor
 
 		self.addConstraint(NSLayoutConstraint(
 			item: self.button,
