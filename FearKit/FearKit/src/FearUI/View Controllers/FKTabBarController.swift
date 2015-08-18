@@ -60,6 +60,8 @@ public class FKTabBarController: UIViewController {
 			attribute: .Height,
 			multiplier: 0.1,
 			constant: 0))
+
+		self.view.layoutIfNeeded()
 	}
 
 	required public init(coder aDecoder: NSCoder) {
