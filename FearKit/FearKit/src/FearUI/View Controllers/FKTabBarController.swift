@@ -12,11 +12,11 @@ public struct FKTab {
 	}
 }
 
-class FKTabBarController: UIViewController {
+public class FKTabBarController: UIViewController {
 
 	private var tabs: [FKTab]? = [] //for now
 
-	init(tabs: [FKTab]?) {
+	public init(tabs: [FKTab]?) {
 		super.init(nibName: nil, bundle: nil)
 
 		//assign to ivar
