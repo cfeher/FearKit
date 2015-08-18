@@ -65,7 +65,7 @@ public class FKTabBarController: UIViewController {
 		for tab in tabs {
 			let tab = FKTabBarTab(tab: tab, frame: CGRectZero)
 			self.fkTabs.append(tab)
-			self.view.addSubview(tab)
+			tabBar.addSubview(tab)
 		}
 
 		//constrain the tabs
@@ -76,7 +76,7 @@ public class FKTabBarController: UIViewController {
 					item: fkTab,
 					attribute: .Left,
 					relatedBy: .Equal,
-					toItem: self,
+					toItem: tabBar,
 					attribute: .Left,
 					multiplier: 1.0,
 					constant: 0))
@@ -107,7 +107,7 @@ public class FKTabBarController: UIViewController {
 				attribute: .Height,
 				multiplier: 1.0,
 				constant: 0))
-			
+
 			index += 1
 		}
 
