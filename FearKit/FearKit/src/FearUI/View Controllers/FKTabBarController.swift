@@ -4,11 +4,13 @@ public struct FKTab {
 	private let viewController: UIViewController
 	private let image: UIImage
 	private let title: String
+	private let backgroundColor: UIColor
 
-	public init(viewController: UIViewController, image: UIImage, title: String) {
+	public init(viewController: UIViewController, image: UIImage, title: String, backgroundColor: UIColor = UIColor.whiteColor()) {
 		self.viewController = viewController
 		self.image = image
 		self.title = title
+		self.backgroundColor = backgroundColor
 	}
 }
 
@@ -93,6 +95,14 @@ public class FKTabBarController: UIViewController {
 			}
 			self.view.addConstraint(NSLayoutConstraint(
 				item: fkTab,
+				attribute: .Top,
+				relatedBy: .Equal,
+				toItem: tabBar,
+				attribute: .Top,
+				multiplier: 1.0,
+				constant: 0))
+			self.view.addConstraint(NSLayoutConstraint(
+				item: fkTab,
 				attribute: .Height,
 				relatedBy: .Equal,
 				toItem: tabBar,
@@ -103,9 +113,9 @@ public class FKTabBarController: UIViewController {
 				item: fkTab,
 				attribute: .Width,
 				relatedBy: .Equal,
-				toItem: fkTab,
-				attribute: .Height,
-				multiplier: 1.0,
+				toItem: tabBar,
+				attribute: .Width,
+				multiplier: CGFloat(1.0)/CGFloat(self.fkTabs.count),
 				constant: 0))
 
 			index += 1
@@ -127,43 +137,45 @@ internal class FKTabBarTab: UIView {
 	init(tab: FKTab, frame: CGRect) {
 		super.init(frame: frame)
 
-		self.button.imageView?.image = tab.image
+		self.button.setImage(tab.image, forState: .Normal)
+		self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 		self.addSubview(self.button)
+		self.backgroundColor = UIColor.redColor()
 
 		self.addConstraint(NSLayoutConstraint(
 			item: self.button,
-			attribute: .Left,
+			attribute: .CenterX,
 			relatedBy: .Equal,
 			toItem: self,
-			attribute: .Left,
+			attribute: .CenterX,
 			multiplier: 1.0,
 			constant: 0))
 		self.addConstraint(NSLayoutConstraint(
 			item: self.button,
-			attribute: .Right,
+			attribute: .CenterY,
 			relatedBy: .Equal,
 			toItem: self,
-			attribute: .Right,
+			attribute: .CenterY,
 			multiplier: 1.0,
 			constant: 0))
 		self.addConstraint(NSLayoutConstraint(
 			item: self.button,
-			attribute: .Top,
+			attribute: .Width,
 			relatedBy: .Equal,
 			toItem: self,
-			attribute: .Top,
-			multiplier: 1.0,
+			attribute: .Width,
+			multiplier: 0.75,
 			constant: 0))
 		self.addConstraint(NSLayoutConstraint(
 			item: self.button,
-			attribute: .Bottom,
+			attribute: .Height,
 			relatedBy: .Equal,
-			toItem: self,
-			attribute: .Bottom,
+			toItem: self.button,
+			attribute: .Width,
 			multiplier: 1.0,
 			constant: 0))
 
-		setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
+		//self.button.setTranslatesAutoresizingMaskIntoConstraints(false)
 		self.layoutIfNeeded()
 	}
 
