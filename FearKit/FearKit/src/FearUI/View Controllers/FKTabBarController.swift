@@ -14,18 +14,17 @@ public struct FKTab {
 
 public class FKTabBarController: UIViewController {
 
-	private var tabs: [FKTab]? = [] //for now
+	private var fkTabs = [FKTabBarTab]()
 
-	public init(tabs: [FKTab]?) {
+	public init(tabs: [FKTab]) {
 		super.init(nibName: nil, bundle: nil)
 
 		//assign to ivar
-		self.tabs = tabs
 		self.view.backgroundColor = UIColor.whiteColor()
 
 		//create tabbar container and constrain it
 		let tabBar = UIView(frame: CGRectZero)
-		tabBar.backgroundColor = UIColor.blackColor()
+		tabBar.backgroundColor = UIColor.blueColor()
 		self.view.addSubview(tabBar)
 
 		self.view.addConstraint(NSLayoutConstraint(
@@ -61,10 +60,57 @@ public class FKTabBarController: UIViewController {
 			multiplier: 0.15,
 			constant: 0))
 
-		delay(1.5, { () -> () in
-			println(self.view.frame)
-			println(tabBar.frame)
-		})
+		//create the list of tabs
+		self.fkTabs.removeAll(keepCapacity: false)
+		for tab in tabs {
+			let tab = FKTabBarTab(tab: tab, frame: CGRectZero)
+			self.fkTabs.append(tab)
+			self.view.addSubview(tab)
+		}
+
+		//constrain the tabs
+		var index = 0
+		for fkTab in self.fkTabs {
+			if index == 0 {
+				self.view.addConstraint(NSLayoutConstraint(
+					item: fkTab,
+					attribute: .Left,
+					relatedBy: .Equal,
+					toItem: self,
+					attribute: .Left,
+					multiplier: 1.0,
+					constant: 0))
+			} else {
+				let previous = self.fkTabs[index - 1]
+				self.view.addConstraint(NSLayoutConstraint(
+					item: fkTab,
+					attribute: .Left,
+					relatedBy: .Equal,
+					toItem: previous,
+					attribute: .Right,
+					multiplier: 1.0,
+					constant: 0))
+			}
+			self.view.addConstraint(NSLayoutConstraint(
+				item: fkTab,
+				attribute: .Height,
+				relatedBy: .Equal,
+				toItem: tabBar,
+				attribute: .Height,
+				multiplier: 1.0,
+				constant: 0))
+			self.view.addConstraint(NSLayoutConstraint(
+				item: fkTab,
+				attribute: .Width,
+				relatedBy: .Equal,
+				toItem: fkTab,
+				attribute: .Height,
+				multiplier: 1.0,
+				constant: 0))
+			
+			index += 1
+		}
+
 		setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, false)
 		self.view.layoutIfNeeded()
 	}
@@ -74,6 +120,55 @@ public class FKTabBarController: UIViewController {
 	}
 }
 
-internal class FKTabBarTab {
+internal class FKTabBarTab: UIView {
 
+	let button = UIButton(frame: CGRectZero)
+
+	init(tab: FKTab, frame: CGRect) {
+		super.init(frame: frame)
+
+		self.button.imageView?.image = tab.image
+		self.addSubview(self.button)
+
+		self.addConstraint(NSLayoutConstraint(
+			item: self.button,
+			attribute: .Left,
+			relatedBy: .Equal,
+			toItem: self,
+			attribute: .Left,
+			multiplier: 1.0,
+			constant: 0))
+		self.addConstraint(NSLayoutConstraint(
+			item: self.button,
+			attribute: .Right,
+			relatedBy: .Equal,
+			toItem: self,
+			attribute: .Right,
+			multiplier: 1.0,
+			constant: 0))
+		self.addConstraint(NSLayoutConstraint(
+			item: self.button,
+			attribute: .Top,
+			relatedBy: .Equal,
+			toItem: self,
+			attribute: .Top,
+			multiplier: 1.0,
+			constant: 0))
+		self.addConstraint(NSLayoutConstraint(
+			item: self.button,
+			attribute: .Bottom,
+			relatedBy: .Equal,
+			toItem: self,
+			attribute: .Bottom,
+			multiplier: 1.0,
+			constant: 0))
+
+		setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
+		self.layoutIfNeeded()
+	}
+
+	required init(coder aDecoder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 }
+
