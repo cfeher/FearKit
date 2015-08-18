@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5306F6F21B838837000985D4 /* FKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5306F6F11B838837000985D4 /* FKTabBarController.swift */; };
 		532D09C51B5E85EA009E962E /* FearKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D09B91B5E85EA009E962E /* FearKit.framework */; };
 		532D09CC1B5E85EA009E962E /* FearKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D09CB1B5E85EA009E962E /* FearKitTests.swift */; };
 		532D0A491B5E8C9E009E962E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5306F6F11B838837000985D4 /* FKTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKTabBarController.swift; sourceTree = "<group>"; };
 		532D09B91B5E85EA009E962E /* FearKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FearKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		532D09BD1B5E85EA009E962E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532D09C41B5E85EA009E962E /* FearKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FearKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 				53E895CD1B724BB400C4F143 /* FKPageViewController */,
 				5333974A1B6BBE9000000EB5 /* FKBottomNavigationController */,
 				5333974C1B6BBE9000000EB5 /* FKMasterDetailViewController */,
+				5306F6F11B838837000985D4 /* FKTabBarController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 				5333975B1B6BBE9000000EB5 /* FKNavigationViewController.swift in Sources */,
 				533397631B6BBE9000000EB5 /* FKUtil.swift in Sources */,
 				533397601B6BBE9000000EB5 /* FKQuadrantButtonView.swift in Sources */,
+				5306F6F21B838837000985D4 /* FKTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
