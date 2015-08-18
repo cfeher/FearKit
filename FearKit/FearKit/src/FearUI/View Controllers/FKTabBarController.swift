@@ -66,6 +66,17 @@ public class FKTabBarController: UIViewController {
 		self.fkTabs.removeAll(keepCapacity: false)
 		for tab in tabs {
 			let tab = FKTabBarTab(tab: tab, frame: CGRectZero)
+			tab.buttonSelectedCallback = { [weak self] (tab: FKTab) in
+				if let welf = self {
+					var index = 0
+					for fkTab in welf.fkTabs {
+						if fkTab.tab == tab {
+							welf.tabSelected(index)
+						}
+						index += 1
+					}
+				}
+			}
 			self.fkTabs.append(tab)
 			tabBar.addSubview(tab)
 		}
@@ -122,7 +133,13 @@ public class FKTabBarController: UIViewController {
 		}
 
 		setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, false)
+		//view controllers
+		for fkTab in self.fkTabs {
+			self.addChildViewController(fkTab.tab.viewController)
+		}
+		self.view.bringSubviewToFront(tabBar)
 		self.view.layoutIfNeeded()
+		self.tabSelected(0)
 	}
 
 	required public init(coder aDecoder: NSCoder) {
@@ -130,15 +147,34 @@ public class FKTabBarController: UIViewController {
 	}
 }
 
+extension FKTabBarController {
+	func tabSelected(index: Int) {
+		for fkTab in self.fkTabs {
+			fkTab.tab.viewController.view.removeFromSuperview()
+		}
+		let view = self.fkTabs[index].tab.viewController.view
+		view.frame = CGRect(
+			x: 0,
+			y: 0,
+			width: self.view.frame.size.width,
+			height: self.view.frame.size.height - 0.15 * self.view.frame.size.height)
+		self.view.addSubview(view)
+	}
+}
+
 internal class FKTabBarTab: UIView {
 
 	let button = UIButton(frame: CGRectZero)
+	let tab: FKTab
+	var buttonSelectedCallback: ((tab: FKTab) -> ())?
 
 	init(tab: FKTab, frame: CGRect) {
+		self.tab = tab
 		super.init(frame: frame)
 
 		self.button.setImage(tab.image, forState: .Normal)
 		self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+		self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
 		self.addSubview(self.button)
 		self.backgroundColor = tab.backgroundColor
 
@@ -182,5 +218,12 @@ internal class FKTabBarTab: UIView {
 	required init(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+
+	func buttonPress() {
+		self.buttonSelectedCallback?(tab: self.tab)
+	}
 }
 
+func == (lhs: FKTab, rhs: FKTab) -> Bool {
+	return lhs.viewController == rhs.viewController
+}
