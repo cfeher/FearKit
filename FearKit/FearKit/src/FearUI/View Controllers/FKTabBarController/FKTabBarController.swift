@@ -5,12 +5,14 @@ public struct FKTab {
 	private let image: UIImage
 	private let title: String
 	private let backgroundColor: UIColor
+	private let selectedBackgroundColor: UIColor
 
-	public init(viewController: UIViewController, image: UIImage, title: String, backgroundColor: UIColor = UIColor.clearColor()) {
+	public init(viewController: UIViewController, image: UIImage, title: String, backgroundColor: UIColor = UIColor.clearColor(), selectedBackgroundColor: UIColor = UIColor.grayColor()) {
 		self.viewController = viewController
 		self.image = image
 		self.title = title
 		self.backgroundColor = backgroundColor
+		self.selectedBackgroundColor = selectedBackgroundColor
 	}
 }
 
@@ -151,7 +153,9 @@ extension FKTabBarController {
 	func tabSelected(index: Int) {
 		for fkTab in self.fkTabs {
 			fkTab.tab.viewController.view.removeFromSuperview()
+			fkTab.backgroundColor = fkTab.tab.backgroundColor
 		}
+		self.fkTabs[index].backgroundColor = self.fkTabs[index].tab.selectedBackgroundColor
 		let view = self.fkTabs[index].tab.viewController.view
 		view.frame = CGRect(
 			x: 0,
