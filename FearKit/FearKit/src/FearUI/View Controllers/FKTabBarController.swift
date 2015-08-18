@@ -21,6 +21,7 @@ public class FKTabBarController: UIViewController {
 
 		//assign to ivar
 		self.tabs = tabs
+		self.view.backgroundColor = UIColor.whiteColor()
 
 		//create tabbar container and constrain it
 		let tabBar = UIView(frame: CGRectZero)
