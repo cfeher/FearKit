@@ -19,6 +19,7 @@ public struct FKTab {
 public class FKTabBarController: UIViewController {
 
 	private var fkTabs = [FKTabBarTab]()
+	private var tabBar: UIView?
 
 	public init(tabs: [FKTab], barBackgroundColor: UIColor) {
 		super.init(nibName: nil, bundle: nil)
@@ -28,7 +29,7 @@ public class FKTabBarController: UIViewController {
 
 		//create tabbar container and constrain it
 		let tabBar = UIView(frame: CGRectZero)
-		tabBar.backgroundColor = UIColor.lightGrayColor()
+		tabBar.backgroundColor = barBackgroundColor
 		self.view.addSubview(tabBar)
 
 		self.view.addConstraint(NSLayoutConstraint(
@@ -82,6 +83,7 @@ public class FKTabBarController: UIViewController {
 			self.fkTabs.append(tab)
 			tabBar.addSubview(tab)
 		}
+		self.tabBar = tabBar
 
 		//constrain the tabs
 		var index = 0
@@ -161,8 +163,11 @@ extension FKTabBarController {
 			x: 0,
 			y: 0,
 			width: self.view.frame.size.width,
-			height: self.view.frame.size.height - 0.11 * self.view.frame.size.height)
+			height: self.view.frame.size.height)
 		self.view.addSubview(view)
+		if let tb = self.tabBar {
+			self.view.bringSubviewToFront(tb)
+		}
 	}
 }
 
@@ -179,8 +184,9 @@ internal class FKTabBarTab: UIView {
 		self.button.setImage(tab.image, forState: .Normal)
 		self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 		self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
+		self.button.backgroundColor = UIColor.clearColor()
 		self.addSubview(self.button)
-		self.backgroundColor = tab.backgroundColor
+		self.backgroundColor = UIColor.clearColor()
 
 		self.addConstraint(NSLayoutConstraint(
 			item: self.button,
