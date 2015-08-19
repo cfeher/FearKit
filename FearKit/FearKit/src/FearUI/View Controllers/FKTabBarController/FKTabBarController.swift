@@ -20,11 +20,11 @@ public class FKTabBarController: UIViewController {
 
 	private var fkTabs = [FKTabBarTab]()
 
-	public init(tabs: [FKTab]) {
+	public init(tabs: [FKTab], barBackgroundColor: UIColor) {
 		super.init(nibName: nil, bundle: nil)
 
 		//assign to ivar
-		self.view.backgroundColor = UIColor.whiteColor()
+		self.view.backgroundColor = barBackgroundColor
 
 		//create tabbar container and constrain it
 		let tabBar = UIView(frame: CGRectZero)
@@ -61,7 +61,7 @@ public class FKTabBarController: UIViewController {
 			relatedBy: .Equal,
 			toItem: self.view,
 			attribute: .Height,
-			multiplier: 0.15,
+			multiplier: 0.11,
 			constant: 0))
 
 		//create the list of tabs
@@ -161,7 +161,7 @@ extension FKTabBarController {
 			x: 0,
 			y: 0,
 			width: self.view.frame.size.width,
-			height: self.view.frame.size.height - 0.15 * self.view.frame.size.height)
+			height: self.view.frame.size.height - 0.11 * self.view.frame.size.height)
 		self.view.addSubview(view)
 	}
 }
