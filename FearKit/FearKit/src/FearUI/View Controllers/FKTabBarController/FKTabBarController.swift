@@ -19,7 +19,7 @@ public struct FKTab {
 public class FKTabBarController: UIViewController {
 
 	private var fkTabs = [FKTabBarTab]()
-	private var tabBar: UIView?
+	public var tabBar: UIView?
 
 	public init(tabs: [FKTab], barBackgroundColor: UIColor) {
 		super.init(nibName: nil, bundle: nil)

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5317B7FF1B850DF000C408BD /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5317B7E21B850DF000C408BD /* FearKit.h */; };
+		5317B7FF1B850DF000C408BD /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5317B7E21B850DF000C408BD /* FearKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5317B8001B850DF000C408BD /* FKNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7E61B850DF000C408BD /* FKNavigationViewController.swift */; };
 		5317B8011B850DF000C408BD /* FKDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7E91B850DF000C408BD /* FKDetailViewController.swift */; };
 		5317B8021B850DF000C408BD /* FKMasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7EA1B850DF000C408BD /* FKMasterDetailViewController.swift */; };
