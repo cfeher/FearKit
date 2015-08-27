@@ -152,6 +152,13 @@ public class FKTabBarController: UIViewController {
 }
 
 extension FKTabBarController {
+	//MARK: - Hiding tab bar
+	func tabBarHidden(isHidden: Bool) {
+		self.tabBar?.hidden = isHidden
+	}
+}
+
+extension FKTabBarController {
 	func tabSelected(index: Int) {
 		for fkTab in self.fkTabs {
 			fkTab.tab.viewController.view.removeFromSuperview()
