@@ -153,7 +153,7 @@ public class FKTabBarController: UIViewController {
 
 extension FKTabBarController {
 	//MARK: - Hiding tab bar
-	func tabBarHidden(isHidden: Bool) {
+	public func tabBarHidden(isHidden: Bool) {
 		self.tabBar?.hidden = isHidden
 	}
 }
