@@ -19,7 +19,7 @@ public struct FKTab {
 public class FKTabBarController: UIViewController {
 
 	private var fkTabs = [FKTabBarTab]()
-	private var tabBar: UIView?
+	public var tabBar: UIView?
 
 	public init(tabs: [FKTab], barBackgroundColor: UIColor) {
 		super.init(nibName: nil, bundle: nil)
@@ -62,7 +62,7 @@ public class FKTabBarController: UIViewController {
 			relatedBy: .Equal,
 			toItem: self.view,
 			attribute: .Height,
-			multiplier: 0.11,
+			multiplier: 0.09,
 			constant: 0))
 
 		//create the list of tabs
@@ -149,6 +149,24 @@ public class FKTabBarController: UIViewController {
 	required public init(coder aDecoder: NSCoder) {
 	    fatalError("init(coder:) has not been implemented")
 	}
+}
+
+extension FKTabBarController {
+	//MARK: - Hiding tab bar
+	public func tabBarHidden(isHidden: Bool) {
+		self.tabBar?.hidden = isHidden
+	}
+
+    public func setSelectedTab(tab: FKTab) {
+        var index = 0
+        for internalTab in self.fkTabs {
+            if tab == internalTab.tab {
+                self.tabSelected(index)
+                return
+            }
+            index += 1
+        }
+    }
 }
 
 extension FKTabBarController {

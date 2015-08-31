@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5317B7FF1B850DF000C408BD /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5317B7E21B850DF000C408BD /* FearKit.h */; };
+		5317B7FF1B850DF000C408BD /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5317B7E21B850DF000C408BD /* FearKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5317B8001B850DF000C408BD /* FKNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7E61B850DF000C408BD /* FKNavigationViewController.swift */; };
 		5317B8011B850DF000C408BD /* FKDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7E91B850DF000C408BD /* FKDetailViewController.swift */; };
 		5317B8021B850DF000C408BD /* FKMasterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7EA1B850DF000C408BD /* FKMasterDetailViewController.swift */; };
@@ -25,6 +25,7 @@
 		532D09C51B5E85EA009E962E /* FearKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D09B91B5E85EA009E962E /* FearKit.framework */; };
 		532D09CC1B5E85EA009E962E /* FearKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D09CB1B5E85EA009E962E /* FearKitTests.swift */; };
 		532D0A491B5E8C9E009E962E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
+		53B7FE4D1B94F1AE0043E1CB /* FKSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		532D09CA1B5E85EA009E962E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532D09CB1B5E85EA009E962E /* FearKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FearKitTests.swift; sourceTree = "<group>"; };
 		532D0A481B5E8C9E009E962E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		5317B7E31B850DF000C408BD /* FearUI */ = {
 			isa = PBXGroup;
 			children = (
+				53B7FE4B1B94F1940043E1CB /* Controls */,
 				5317B7E41B850DF000C408BD /* View Controllers */,
 				5317B7F21B850DF000C408BD /* Views */,
 			);
@@ -268,6 +271,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		53B7FE4B1B94F1940043E1CB /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -384,6 +395,7 @@
 				5317B8071B850DF000C408BD /* FKBubbleColorView.swift in Sources */,
 				5317B8061B850DF000C408BD /* FKTabBarController.swift in Sources */,
 				5317B8041B850DF000C408BD /* FKMasterViewController.swift in Sources */,
+				53B7FE4D1B94F1AE0043E1CB /* FKSegmentedControl.swift in Sources */,
 				5317B8051B850DF000C408BD /* FKPageViewController.swift in Sources */,
 				5317B8021B850DF000C408BD /* FKMasterDetailViewController.swift in Sources */,
 				5317B8031B850DF000C408BD /* FKMasterCell.swift in Sources */,
