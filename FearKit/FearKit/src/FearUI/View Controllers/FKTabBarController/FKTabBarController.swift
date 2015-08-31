@@ -156,6 +156,17 @@ extension FKTabBarController {
 	public func tabBarHidden(isHidden: Bool) {
 		self.tabBar?.hidden = isHidden
 	}
+
+    public func setSelectedTab(tab: FKTab) {
+        var index = 0
+        for internalTab in self.fkTabs {
+            if tab == internalTab.tab {
+                self.tabSelected(index)
+                return
+            }
+            index += 1
+        }
+    }
 }
 
 extension FKTabBarController {
