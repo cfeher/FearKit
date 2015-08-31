@@ -62,7 +62,7 @@ public class FKTabBarController: UIViewController {
 			relatedBy: .Equal,
 			toItem: self.view,
 			attribute: .Height,
-			multiplier: 0.11,
+			multiplier: 0.09,
 			constant: 0))
 
 		//create the list of tabs
