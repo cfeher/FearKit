@@ -79,6 +79,7 @@ public class FKSegmentedControl: UIControl {
                     constant: 0.0))
             } else {
                 //first segment
+                segment.view.tabSelected = true
                 self.addConstraint(NSLayoutConstraint(
                     item: segment.view,
                     attribute: .Left,
