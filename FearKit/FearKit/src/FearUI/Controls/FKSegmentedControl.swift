@@ -28,12 +28,8 @@ public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentPro
 public struct FKSegmentedControlSegment {
     public let view: FKSegmentedControlSegmentView
 
-    public init(backgroundView: FKSegmentedControlSegmentView, selectedCallback: ((FKSegmentedControlSegment, selected: Bool) -> ())?) {
+    public init(backgroundView: FKSegmentedControlSegmentView) {
         self.view = backgroundView
-
-        self.view.tabSelectedCallback = { selected in
-            selectedCallback?(self, selected: selected)
-        }
     }
 }
 
