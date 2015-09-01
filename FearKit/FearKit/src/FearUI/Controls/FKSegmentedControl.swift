@@ -1,10 +1,18 @@
 import UIKit
 
+public protocol FKSegmentedControlSegmentProtocol {
+    var tabSelected: Bool { get set }
+}
+
+public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentProtocol {
+    public var tabSelected = false
+}
+
 public struct FKSegmentedControlSegment {
-    public let view: UIView
+    public let view: FKSegmentedControlSegmentView
     let selectedCallback: ((FKSegmentedControlSegment) -> ())?
 
-    init(backgroundView: UIView, selectedCallback: ((FKSegmentedControlSegment) -> ())?) {
+    public init(backgroundView: FKSegmentedControlSegmentView, selectedCallback: ((FKSegmentedControlSegment) -> ())?) {
         self.view = backgroundView
         self.selectedCallback = selectedCallback
     }
