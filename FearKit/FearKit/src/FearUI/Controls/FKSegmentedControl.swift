@@ -9,7 +9,7 @@ public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentPro
     public var tabSelected = false
     var tabSelectedCallback: ((selected: Bool) -> ())?
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
 
         let tapGestureRec = UITapGestureRecognizer(target: self, action: "tabTapped")
