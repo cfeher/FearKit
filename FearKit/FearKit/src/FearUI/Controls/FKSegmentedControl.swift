@@ -5,16 +5,35 @@ public protocol FKSegmentedControlSegmentProtocol {
 }
 
 public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentProtocol {
+
     public var tabSelected = false
+    var tabSelectedCallback: ((selected: Bool) -> ())?
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+
+        let tapGestureRec = UITapGestureRecognizer(target: self, action: "tabTapped")
+        self.addGestureRecognizer(tapGestureRec)
+    }
+
+    required public init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func tabTapped() {
+        self.tabSelected = !self.tabSelected
+    }
 }
 
 public struct FKSegmentedControlSegment {
     public let view: FKSegmentedControlSegmentView
-    let selectedCallback: ((FKSegmentedControlSegment) -> ())?
 
-    public init(backgroundView: FKSegmentedControlSegmentView, selectedCallback: ((FKSegmentedControlSegment) -> ())?) {
+    public init(backgroundView: FKSegmentedControlSegmentView, selectedCallback: ((FKSegmentedControlSegment, selected: Bool) -> ())?) {
         self.view = backgroundView
-        self.selectedCallback = selectedCallback
+
+        self.view.tabSelectedCallback = { selected in
+            selectedCallback?(self, selected: selected)
+        }
     }
 }
 
@@ -29,7 +48,9 @@ public class FKSegmentedControl: UIControl {
         var index = 0
         var lastSegment: FKSegmentedControlSegment?
         for segment in self.segments {
+
             self.addSubview(segment.view)
+
             if let unwrappedLastSegment = lastSegment {
                 self.addConstraint(NSLayoutConstraint(
                     item: segment.view,
@@ -82,5 +103,9 @@ public class FKSegmentedControl: UIControl {
 
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func tabSelected() {
+        println("Tab Selected")
     }
 }
