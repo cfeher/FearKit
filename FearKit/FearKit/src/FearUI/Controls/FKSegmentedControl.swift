@@ -41,7 +41,6 @@ public class FKSegmentedControlSegment: NSObject {
             self.view.tabSelected = true
             self.internalNotifier?(self, selected: self.view.tabSelected)
             self.externalNotifier?(self, selected: self.view.tabSelected)
-
         }
     }
 }
@@ -58,7 +57,7 @@ public class FKSegmentedControl: UIControl {
         var lastSegment: FKSegmentedControlSegment?
         for segment in self.segments {
 
-            segment.externalNotifier = { retSegment, selected in
+            segment.internalNotifier = { retSegment, selected in
                 for internalSegment in self.segments {
                     if internalSegment != retSegment {
                         internalSegment.view.tabSelected = false
