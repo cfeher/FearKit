@@ -7,7 +7,6 @@ public protocol FKSegmentedControlSegmentProtocol {
 public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentProtocol {
 
     public var tabSelected = false
-    var tabSelectedCallback: ((selected: Bool) -> ())?
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,17 +18,28 @@ public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentPro
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func tabTapped() {
-        self.tabSelected = !self.tabSelected
-    }
 }
 
-public struct FKSegmentedControlSegment {
+public typealias FKSegmentedControlSegmentCallback = (FKSegmentedControlSegment, selected: Bool) -> ()
+public class FKSegmentedControlSegment: NSObject {
+
     public let view: FKSegmentedControlSegmentView
+    public var externalNotifier: FKSegmentedControlSegmentCallback?
+    var internalNotifier: FKSegmentedControlSegmentCallback?
 
     public init(backgroundView: FKSegmentedControlSegmentView) {
         self.view = backgroundView
+        super.init()
+
+        let tapGestureRec = UITapGestureRecognizer(target: self, action: "tabTapped")
+        self.view.addGestureRecognizer(tapGestureRec)
+
+    }
+
+    func tabTapped() {
+        self.view.tabSelected = !self.view.tabSelected
+        self.internalNotifier?(self, selected: self.view.tabSelected)
+        self.externalNotifier?(self, selected: self.view.tabSelected)
     }
 }
 
@@ -44,6 +54,10 @@ public class FKSegmentedControl: UIControl {
         var index = 0
         var lastSegment: FKSegmentedControlSegment?
         for segment in self.segments {
+
+            segment.externalNotifier = { segment, selected in
+                println("SELCTED")
+            }
 
             self.addSubview(segment.view)
 
