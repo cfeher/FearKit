@@ -175,18 +175,21 @@ extension FKTabBarController {
 			fkTab.tab.viewController.view.removeFromSuperview()
 			fkTab.backgroundColor = fkTab.tab.backgroundColor
 		}
-		self.fkTabs[index].backgroundColor = self.fkTabs[index].tab.selectedBackgroundColor
-		let view = self.fkTabs[index].tab.viewController.view
-		view.frame = CGRect(
-			x: 0,
-			y: 0,
-			width: self.view.frame.size.width,
-			height: self.view.frame.size.height)
-		self.view.addSubview(view)
-		if let tb = self.tabBar {
-			self.view.bringSubviewToFront(tb)
-		}
-	}
+        if let tabBar = self.tabBar {
+            self.fkTabs[index].backgroundColor = self.fkTabs[index].tab.selectedBackgroundColor
+            let view = self.fkTabs[index].tab.viewController.view
+            view.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: self.view.frame.size.width,
+                height: self.view.frame.size.height - tabBar.frame.height)
+            self.view.addSubview(view)
+            if let tb = self.tabBar {
+                self.view.bringSubviewToFront(tb)
+            }
+
+        }
+    }
 }
 
 internal class FKTabBarTab: UIView {
