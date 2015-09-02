@@ -1,12 +1,47 @@
 import UIKit
 
-public struct FKSegmentedControlSegment {
-    public let view: UIView
-    let selectedCallback: ((FKSegmentedControlSegment) -> ())?
+public protocol FKSegmentedControlSegmentProtocol {
+    var tabSelected: Bool { get set }
+}
 
-    init(backgroundView: UIView, selectedCallback: ((FKSegmentedControlSegment) -> ())?) {
+public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentProtocol {
+
+    public var tabSelected = false
+
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+
+        let tapGestureRec = UITapGestureRecognizer(target: self, action: "tabTapped")
+        self.addGestureRecognizer(tapGestureRec)
+    }
+
+    required public init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+public typealias FKSegmentedControlSegmentCallback = (FKSegmentedControlSegment, selected: Bool) -> ()
+public class FKSegmentedControlSegment: NSObject {
+
+    public let view: FKSegmentedControlSegmentView
+    public var externalNotifier: FKSegmentedControlSegmentCallback?
+    var internalNotifier: FKSegmentedControlSegmentCallback?
+
+    public init(backgroundView: FKSegmentedControlSegmentView) {
         self.view = backgroundView
-        self.selectedCallback = selectedCallback
+        super.init()
+
+        let tapGestureRec = UITapGestureRecognizer(target: self, action: "tabTapped")
+        self.view.addGestureRecognizer(tapGestureRec)
+
+    }
+
+    func tabTapped() {
+        if !self.view.tabSelected {
+            self.view.tabSelected = true
+            self.internalNotifier?(self, selected: self.view.tabSelected)
+            self.externalNotifier?(self, selected: self.view.tabSelected)
+        }
     }
 }
 
@@ -21,7 +56,17 @@ public class FKSegmentedControl: UIControl {
         var index = 0
         var lastSegment: FKSegmentedControlSegment?
         for segment in self.segments {
+
+            segment.internalNotifier = { retSegment, selected in
+                for internalSegment in self.segments {
+                    if internalSegment != retSegment {
+                        internalSegment.view.tabSelected = false
+                    }
+                }
+            }
+
             self.addSubview(segment.view)
+
             if let unwrappedLastSegment = lastSegment {
                 self.addConstraint(NSLayoutConstraint(
                     item: segment.view,
@@ -33,6 +78,7 @@ public class FKSegmentedControl: UIControl {
                     constant: 0.0))
             } else {
                 //first segment
+                segment.view.tabSelected = true
                 self.addConstraint(NSLayoutConstraint(
                     item: segment.view,
                     attribute: .Left,
@@ -74,5 +120,9 @@ public class FKSegmentedControl: UIControl {
 
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    func tabSelected() {
+        println("Tab Selected")
     }
 }
