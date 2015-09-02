@@ -177,17 +177,49 @@ extension FKTabBarController {
 		}
         if let tabBar = self.tabBar {
             self.fkTabs[index].backgroundColor = self.fkTabs[index].tab.selectedBackgroundColor
-            let view = self.fkTabs[index].tab.viewController.view
-            view.frame = CGRect(
-                x: 0,
-                y: 0,
-                width: self.view.frame.size.width,
-                height: self.view.frame.size.height - tabBar.frame.height)
             self.view.addSubview(view)
-            if let tb = self.tabBar {
-                self.view.bringSubviewToFront(tb)
-            }
+//            let view = self.fkTabs[index].tab.viewController.view
+//            view.frame = CGRect(
+//                x: 0,
+//                y: 0,
+//                width: self.view.frame.size.width,
+//                height: self.view.frame.size.height - tabBar.frame.height)
 
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Left,
+                relatedBy: .Equal,
+                toItem: self.view,
+                attribute: .Left,
+                multiplier: 1.0,
+                constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Right,
+                relatedBy: .Equal,
+                toItem: self.view,
+                attribute: .Right,
+                multiplier: 1.0,
+                constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Top,
+                relatedBy: .Equal,
+                toItem: self.view,
+                attribute: .Top,
+                multiplier: 1.0,
+                constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Bottom,
+                relatedBy: .Equal,
+                toItem: tabBar,
+                attribute: .Top,
+                multiplier: 1.0,
+                constant: 0))
+
+            self.view.bringSubviewToFront(tabBar)
+            self.view.layoutIfNeeded()
         }
     }
 }
