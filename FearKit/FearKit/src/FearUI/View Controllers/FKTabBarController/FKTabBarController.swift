@@ -179,6 +179,7 @@ extension FKTabBarController {
             self.fkTabs[index].backgroundColor = self.fkTabs[index].tab.selectedBackgroundColor
             let view = self.fkTabs[index].tab.viewController.view
             self.view.addSubview(view)
+            view.setTranslatesAutoresizingMaskIntoConstraints(false)
 //            let view = self.fkTabs[index].tab.viewController.view
 //            view.frame = CGRect(
 //                x: 0,
