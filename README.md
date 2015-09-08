@@ -1,4 +1,4 @@
-#FearKit
+#FearKit [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 A framework with useful iOS stuff I found myself always having to re-implement on different projects
 
 ##Installation
