@@ -16,6 +16,10 @@ public struct FKTab {
     }
 }
 
+public func == (lhs: FKTab, rhs: FKTab) -> Bool {
+    return lhs.viewController == rhs.viewController
+}
+
 public class FKTabBarController: UIViewController {
 
     private var fkTabs = [FKTabBarTab]()
@@ -284,8 +288,4 @@ internal class FKTabBarTab: UIView {
     func buttonPress() {
         self.buttonSelectedCallback?(tab: self.tab)
     }
-}
-
-func == (lhs: FKTab, rhs: FKTab) -> Bool {
-    return lhs.viewController == rhs.viewController
 }
