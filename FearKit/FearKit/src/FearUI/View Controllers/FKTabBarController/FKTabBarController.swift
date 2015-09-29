@@ -177,49 +177,49 @@ extension FKTabBarController {
             fkTab.tab.viewController.view.removeFromSuperview()
             fkTab.backgroundColor = fkTab.tab.backgroundColor
         }
-        if let tabBar = self.tabBar,
-            fkTabbarTab = self.fkTabs[index] {
-                self.tabSelectedCallback!(tab: fkTabbarTab.tab)
-                fkTabbarTab.backgroundColor = fkTabbarTab.tab.selectedBackgroundColor
-                let view = fkTabbarTab.tab.viewController.view
-                self.view.addSubview(view)
-                view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        if let tabBar = self.tabBar {
+            let fkTabbarTab = self.fkTabs[index]
+            self.tabSelectedCallback?(tab: fkTabbarTab.tab)
+            fkTabbarTab.backgroundColor = fkTabbarTab.tab.selectedBackgroundColor
+            let view = fkTabbarTab.tab.viewController.view
+            self.view.addSubview(view)
+            view.setTranslatesAutoresizingMaskIntoConstraints(false)
 
-                self.view.addConstraint(NSLayoutConstraint(
-                    item: view,
-                    attribute: .Left,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Left,
-                    multiplier: 1.0,
-                    constant: 0))
-                self.view.addConstraint(NSLayoutConstraint(
-                    item: view,
-                    attribute: .Right,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Right,
-                    multiplier: 1.0,
-                    constant: 0))
-                self.view.addConstraint(NSLayoutConstraint(
-                    item: view,
-                    attribute: .Top,
-                    relatedBy: .Equal,
-                    toItem: self.view,
-                    attribute: .Top,
-                    multiplier: 1.0,
-                    constant: 0))
-                self.view.addConstraint(NSLayoutConstraint(
-                    item: view,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
-                    toItem: tabBar,
-                    attribute: .Top,
-                    multiplier: 1.0,
-                    constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Left,
+                relatedBy: .Equal,
+                toItem: self.view,
+                attribute: .Left,
+                multiplier: 1.0,
+                constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Right,
+                relatedBy: .Equal,
+                toItem: self.view,
+                attribute: .Right,
+                multiplier: 1.0,
+                constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Top,
+                relatedBy: .Equal,
+                toItem: self.view,
+                attribute: .Top,
+                multiplier: 1.0,
+                constant: 0))
+            self.view.addConstraint(NSLayoutConstraint(
+                item: view,
+                attribute: .Bottom,
+                relatedBy: .Equal,
+                toItem: tabBar,
+                attribute: .Top,
+                multiplier: 1.0,
+                constant: 0))
 
-                self.view.bringSubviewToFront(tabBar)
-                self.view.layoutIfNeeded()
+            self.view.bringSubviewToFront(tabBar)
+            self.view.layoutIfNeeded()
         }
     }
 }
@@ -229,18 +229,18 @@ internal class FKTabBarTab: UIView {
     let button = UIButton(frame: CGRectZero)
     let tab: FKTab
     var buttonSelectedCallback: ((tab: FKTab) -> ())?
-    
+
     init(tab: FKTab, frame: CGRect) {
         self.tab = tab
         super.init(frame: frame)
-        
+
         self.button.setImage(tab.image, forState: .Normal)
         self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
         self.button.backgroundColor = UIColor.clearColor()
         self.addSubview(self.button)
         self.backgroundColor = UIColor.clearColor()
-        
+
         self.addConstraint(NSLayoutConstraint(
             item: self.button,
             attribute: .CenterX,
@@ -273,15 +273,15 @@ internal class FKTabBarTab: UIView {
             attribute: .Width,
             multiplier: 1.0,
             constant: 0))
-        
+
         //self.button.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.layoutIfNeeded()
     }
-    
+
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     func buttonPress() {
         self.buttonSelectedCallback?(tab: self.tab)
     }
