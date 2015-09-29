@@ -6,7 +6,6 @@ public struct FKTab {
     private let title: String
     private let backgroundColor: UIColor
     private let selectedBackgroundColor: UIColor
-    private var selectedTabIndex: Int = 0
 
     public init(viewController: UIViewController, image: UIImage, title: String, backgroundColor: UIColor = UIColor.clearColor(), selectedBackgroundColor: UIColor = UIColor.grayColor()) {
         self.viewController = viewController
