@@ -20,6 +20,7 @@ public class FKTabBarController: UIViewController {
 
 	private var fkTabs = [FKTabBarTab]()
 	public var tabBar: UIView?
+    private var selectedTabIndex: Int = 0
 
 	public init(tabs: [FKTab], barBackgroundColor: UIColor) {
 		super.init(nibName: nil, bundle: nil)
@@ -171,57 +172,58 @@ extension FKTabBarController {
 
 extension FKTabBarController {
 	func tabSelected(index: Int) {
-		for fkTab in self.fkTabs {
-			fkTab.tab.viewController.view.removeFromSuperview()
-			fkTab.backgroundColor = fkTab.tab.backgroundColor
-		}
-        if let tabBar = self.tabBar {
-            self.fkTabs[index].backgroundColor = self.fkTabs[index].tab.selectedBackgroundColor
-            let view = self.fkTabs[index].tab.viewController.view
-            self.view.addSubview(view)
-            view.setTranslatesAutoresizingMaskIntoConstraints(false)
-//            let view = self.fkTabs[index].tab.viewController.view
-//            view.frame = CGRect(
-//                x: 0,
-//                y: 0,
-//                width: self.view.frame.size.width,
-//                height: self.view.frame.size.height - tabBar.frame.height)
+        if self.selectedTabIndex == index {
+            //If the view controller is already shown
+            //pop to root
+            self.fkTabs[index].tab.viewController.navigationController?.popToRootViewControllerAnimated(true)
+        } else {
+            self.selectedTabIndex = index
+            for fkTab in self.fkTabs {
+                fkTab.tab.viewController.view.removeFromSuperview()
+                fkTab.backgroundColor = fkTab.tab.backgroundColor
+            }
+            if let tabBar = self.tabBar {
+                self.fkTabs[index].backgroundColor = self.fkTabs[index].tab.selectedBackgroundColor
+                let view = self.fkTabs[index].tab.viewController.view
+                self.view.addSubview(view)
+                view.setTranslatesAutoresizingMaskIntoConstraints(false)
 
-            self.view.addConstraint(NSLayoutConstraint(
-                item: view,
-                attribute: .Left,
-                relatedBy: .Equal,
-                toItem: self.view,
-                attribute: .Left,
-                multiplier: 1.0,
-                constant: 0))
-            self.view.addConstraint(NSLayoutConstraint(
-                item: view,
-                attribute: .Right,
-                relatedBy: .Equal,
-                toItem: self.view,
-                attribute: .Right,
-                multiplier: 1.0,
-                constant: 0))
-            self.view.addConstraint(NSLayoutConstraint(
-                item: view,
-                attribute: .Top,
-                relatedBy: .Equal,
-                toItem: self.view,
-                attribute: .Top,
-                multiplier: 1.0,
-                constant: 0))
-            self.view.addConstraint(NSLayoutConstraint(
-                item: view,
-                attribute: .Bottom,
-                relatedBy: .Equal,
-                toItem: tabBar,
-                attribute: .Top,
-                multiplier: 1.0,
-                constant: 0))
-
-            self.view.bringSubviewToFront(tabBar)
-            self.view.layoutIfNeeded()
+                self.view.addConstraint(NSLayoutConstraint(
+                    item: view,
+                    attribute: .Left,
+                    relatedBy: .Equal,
+                    toItem: self.view,
+                    attribute: .Left,
+                    multiplier: 1.0,
+                    constant: 0))
+                self.view.addConstraint(NSLayoutConstraint(
+                    item: view,
+                    attribute: .Right,
+                    relatedBy: .Equal,
+                    toItem: self.view,
+                    attribute: .Right,
+                    multiplier: 1.0,
+                    constant: 0))
+                self.view.addConstraint(NSLayoutConstraint(
+                    item: view,
+                    attribute: .Top,
+                    relatedBy: .Equal,
+                    toItem: self.view,
+                    attribute: .Top,
+                    multiplier: 1.0,
+                    constant: 0))
+                self.view.addConstraint(NSLayoutConstraint(
+                    item: view,
+                    attribute: .Bottom,
+                    relatedBy: .Equal,
+                    toItem: tabBar,
+                    attribute: .Top,
+                    multiplier: 1.0,
+                    constant: 0))
+                
+                self.view.bringSubviewToFront(tabBar)
+                self.view.layoutIfNeeded()
+            }
         }
     }
 }
