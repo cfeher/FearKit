@@ -17,7 +17,6 @@
 		5317B8061B850DF000C408BD /* FKTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7F11B850DF000C408BD /* FKTabBarController.swift */; };
 		5317B8071B850DF000C408BD /* FKBubbleColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7F41B850DF000C408BD /* FKBubbleColorView.swift */; };
 		5317B8081B850DF000C408BD /* FKFadedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7F61B850DF000C408BD /* FKFadedLineView.swift */; };
-		5317B8091B850DF000C408BD /* FKPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7F81B850DF000C408BD /* FKPageView.swift */; };
 		5317B80A1B850DF000C408BD /* FKQuadrantButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7FA1B850DF000C408BD /* FKQuadrantButtonView.swift */; };
 		5317B80B1B850DF000C408BD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 5317B7FB1B850DF000C408BD /* placeholder.png */; };
 		5317B80C1B850DF000C408BD /* FKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7FD1B850DF000C408BD /* FKTableView.swift */; };
@@ -49,7 +48,6 @@
 		5317B7F11B850DF000C408BD /* FKTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKTabBarController.swift; sourceTree = "<group>"; };
 		5317B7F41B850DF000C408BD /* FKBubbleColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKBubbleColorView.swift; sourceTree = "<group>"; };
 		5317B7F61B850DF000C408BD /* FKFadedLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKFadedLineView.swift; sourceTree = "<group>"; };
-		5317B7F81B850DF000C408BD /* FKPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKPageView.swift; sourceTree = "<group>"; };
 		5317B7FA1B850DF000C408BD /* FKQuadrantButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKQuadrantButtonView.swift; sourceTree = "<group>"; };
 		5317B7FB1B850DF000C408BD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		5317B7FD1B850DF000C408BD /* FKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKTableView.swift; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			children = (
 				5317B7F31B850DF000C408BD /* FKBubbleColorView */,
 				5317B7F51B850DF000C408BD /* FKFadedLine */,
-				5317B7F71B850DF000C408BD /* FKPageView */,
 				5317B7F91B850DF000C408BD /* FKQuadrantButtonView */,
 				5317B7FC1B850DF000C408BD /* FKTableView */,
 			);
@@ -191,14 +188,6 @@
 				5317B7F61B850DF000C408BD /* FKFadedLineView.swift */,
 			);
 			path = FKFadedLine;
-			sourceTree = "<group>";
-		};
-		5317B7F71B850DF000C408BD /* FKPageView */ = {
-			isa = PBXGroup;
-			children = (
-				5317B7F81B850DF000C408BD /* FKPageView.swift */,
-			);
-			path = FKPageView;
 			sourceTree = "<group>";
 		};
 		5317B7F91B850DF000C408BD /* FKQuadrantButtonView */ = {
@@ -399,7 +388,6 @@
 				5317B8051B850DF000C408BD /* FKPageViewController.swift in Sources */,
 				5317B8021B850DF000C408BD /* FKMasterDetailViewController.swift in Sources */,
 				5317B8031B850DF000C408BD /* FKMasterCell.swift in Sources */,
-				5317B8091B850DF000C408BD /* FKPageView.swift in Sources */,
 				5317B8001B850DF000C408BD /* FKNavigationViewController.swift in Sources */,
 				5317B80D1B850DF000C408BD /* FKUtil.swift in Sources */,
 			);

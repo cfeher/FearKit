@@ -73,13 +73,6 @@ extension FKPageViewController {
 		return vcs
 	}
 
-	private func removePageView(view: FKPageView) {
-		//TODO: Make this save to use externally
-		for index in self.pages.indexesOf(view) {
-			self.pages.removeAtIndex(index)
-		}
-	}
-
 	public func pageViewController(pageViewController: UIPageViewController,
 		viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
 			if self.currentIndex > 0 {

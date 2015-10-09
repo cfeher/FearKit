@@ -1,11 +1,3 @@
-//
-//  FKBubbleColorView.swift
-//  FearKit
-//
-//  Created by Chris Feher on 2015-08-10.
-//  Copyright (c) 2015 Chris Feher. All rights reserved.
-//
-
 import UIKit
 
 public class FKBubbleColorView: UIView {
