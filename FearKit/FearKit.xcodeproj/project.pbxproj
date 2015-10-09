@@ -23,9 +23,9 @@
 		5317B80D1B850DF000C408BD /* FKUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7FE1B850DF000C408BD /* FKUtil.swift */; };
 		532D09C51B5E85EA009E962E /* FearKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D09B91B5E85EA009E962E /* FearKit.framework */; };
 		532D09CC1B5E85EA009E962E /* FearKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D09CB1B5E85EA009E962E /* FearKitTests.swift */; };
-		532D0A491B5E8C9E009E962E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
 		5338764E1BC8071C0042C902 /* FKActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */; };
 		533876501BC80B090042C902 /* FKCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5338764F1BC80B090042C902 /* FKCircleView.swift */; };
+		533876871BC810820042C902 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
 		53B7FE4D1B94F1AE0043E1CB /* FKSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +62,7 @@
 		532D0A481B5E8C9E009E962E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKActivityIndicatorView.swift; sourceTree = "<group>"; };
 		5338764F1BC80B090042C902 /* FKCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKCircleView.swift; sourceTree = "<group>"; };
+		533876851BC810750042C902 /* FearKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FearKit.framework; path = ../../../Dropbox/Desktop/Test/Test/Carthage/Build/iOS/FearKit.framework; sourceTree = "<group>"; };
 		53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				532D0A491B5E8C9E009E962E /* UIKit.framework in Frameworks */,
+				533876871BC810820042C902 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +216,7 @@
 		532D09AF1B5E85EA009E962E = {
 			isa = PBXGroup;
 			children = (
+				533876851BC810750042C902 /* FearKit.framework */,
 				532D0A481B5E8C9E009E962E /* UIKit.framework */,
 				532D09BB1B5E85EA009E962E /* FearKit */,
 				532D09C81B5E85EA009E962E /* FearKitTests */,
@@ -524,6 +526,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/cfeher/Dropbox/Desktop/Test/Test/Carthage/Build/iOS,
+				);
 				INFOPLIST_FILE = FearKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -541,6 +547,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/cfeher/Dropbox/Desktop/Test/Test/Carthage/Build/iOS,
+				);
 				INFOPLIST_FILE = FearKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

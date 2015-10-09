@@ -102,6 +102,8 @@ internal class ThreeDotsView: UIView, FKAnimatableView {
     override init(frame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 20)) {
         super.init(frame: frame)
         self.setup()
+
+        self.backgroundColor = UIColor.redColor()
     }
 
     func setup() {
