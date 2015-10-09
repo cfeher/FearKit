@@ -24,6 +24,7 @@
 		532D09C51B5E85EA009E962E /* FearKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D09B91B5E85EA009E962E /* FearKit.framework */; };
 		532D09CC1B5E85EA009E962E /* FearKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D09CB1B5E85EA009E962E /* FearKitTests.swift */; };
 		532D0A491B5E8C9E009E962E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
+		5338764E1BC8071C0042C902 /* FKActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */; };
 		53B7FE4D1B94F1AE0043E1CB /* FKSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		532D09CA1B5E85EA009E962E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		532D09CB1B5E85EA009E962E /* FearKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FearKitTests.swift; sourceTree = "<group>"; };
 		532D0A481B5E8C9E009E962E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKActivityIndicatorView.swift; sourceTree = "<group>"; };
 		53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,6 +168,7 @@
 		5317B7F21B850DF000C408BD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5338764C1BC8071C0042C902 /* FKActivityIndicatorView */,
 				5317B7F31B850DF000C408BD /* FKBubbleColorView */,
 				5317B7F51B850DF000C408BD /* FKFadedLine */,
 				5317B7F91B850DF000C408BD /* FKQuadrantButtonView */,
@@ -258,6 +261,14 @@
 				532D09CA1B5E85EA009E962E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5338764C1BC8071C0042C902 /* FKActivityIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */,
+			);
+			path = FKActivityIndicatorView;
 			sourceTree = "<group>";
 		};
 		53B7FE4B1B94F1940043E1CB /* Controls */ = {
@@ -385,6 +396,7 @@
 				5317B8061B850DF000C408BD /* FKTabBarController.swift in Sources */,
 				5317B8041B850DF000C408BD /* FKMasterViewController.swift in Sources */,
 				53B7FE4D1B94F1AE0043E1CB /* FKSegmentedControl.swift in Sources */,
+				5338764E1BC8071C0042C902 /* FKActivityIndicatorView.swift in Sources */,
 				5317B8051B850DF000C408BD /* FKPageViewController.swift in Sources */,
 				5317B8021B850DF000C408BD /* FKMasterDetailViewController.swift in Sources */,
 				5317B8031B850DF000C408BD /* FKMasterCell.swift in Sources */,
