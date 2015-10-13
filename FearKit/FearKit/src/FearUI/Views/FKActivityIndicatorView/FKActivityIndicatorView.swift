@@ -65,7 +65,7 @@ public class FKActivityIndicatorView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func animate(_startStop: Bool) {
+    public func animate(_startStop: Bool) {
         self.animatableView.animate(_startStop)
     }
 }
