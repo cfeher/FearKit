@@ -9,53 +9,9 @@ public class FKActivityIndicatorView: UIView {
 
     public private(set) var animating: Bool = false
     private var style: FKActivityIndicatorViewStyle
-    private var animatableView: FKAnimatableView {
-        didSet(oldView) {
-            (oldView as? UIView)?.removeFromSuperview()
+    private var animatableView: FKAnimatableView
 
-            if let animatableView = self.animatableView as? UIView {
-                self.addSubview(animatableView)
-
-                self.addConstraint(NSLayoutConstraint(
-                    item: animatableView,
-                    attribute: .Left,
-                    relatedBy: .Equal,
-                    toItem: self,
-                    attribute: .Left,
-                    multiplier: 1.0,
-                    constant: 0))
-                self.addConstraint(NSLayoutConstraint(
-                    item: animatableView,
-                    attribute: .Right,
-                    relatedBy: .Equal,
-                    toItem: self,
-                    attribute: .Right,
-                    multiplier: 1.0,
-                    constant: 0))
-                self.addConstraint(NSLayoutConstraint(
-                    item: animatableView,
-                    attribute: .Top,
-                    relatedBy: .Equal,
-                    toItem: self,
-                    attribute: .Top,
-                    multiplier: 1.0,
-                    constant: 0))
-                self.addConstraint(NSLayoutConstraint(
-                    item: animatableView,
-                    attribute: .Bottom,
-                    relatedBy: .Equal,
-                    toItem: self,
-                    attribute: .Bottom,
-                    multiplier: 1.0,
-                    constant: 0))
-
-                self.setNeedsLayout()
-                self.layoutIfNeeded()
-            }
-        }
-    }
-
-    public init(frame: CGRect, style: FKActivityIndicatorViewStyle = .Default) {
+    public init(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 10), style: FKActivityIndicatorViewStyle = .Default) {
         self.style = style
 
         switch style {
@@ -66,30 +22,74 @@ public class FKActivityIndicatorView: UIView {
         }
 
         super.init(frame: frame)
+
+        //constraints
+        self.addSubview(self.animatableView)
+        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
+
+        self.addConstraint(NSLayoutConstraint(
+            item: self.animatableView,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .Left,
+            multiplier: 1.0,
+            constant: 0))
+        self.addConstraint(NSLayoutConstraint(
+            item: self.animatableView,
+            attribute: .Right,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .Right,
+            multiplier: 1.0,
+            constant: 0))
+        self.addConstraint(NSLayoutConstraint(
+            item: self.animatableView,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .Top,
+            multiplier: 1.0,
+            constant: 0))
+        self.addConstraint(NSLayoutConstraint(
+            item: self.animatableView,
+            attribute: .Bottom,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .Bottom,
+            multiplier: 1.0,
+            constant: 0))
     }
 
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-//MARK: - Animating Portion
-extension FKActivityIndicatorView {
     func animate(_startStop: Bool) {
-        if _startStop {
-
-        } else {
-
-        }
+        self.animatableView.animate(_startStop)
     }
 }
 
-protocol FKAnimatableView {
-    func animate(_startStop: Bool)
+class FKAnimatableView: UIView {
+
+    var animationSpeed: NSTimeInterval = 0.75
+    var animating: Bool = false
+
+    func animate(_startStop: Bool) {
+        println("default implementation of animate - must implement")
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 //MARK: Three Dots
-internal class ThreeDotsView: UIView, FKAnimatableView {
+internal class ThreeDotsView: FKAnimatableView {
 
     private let dotOne = FKCircleView(frame: CGRectZero)
     private let dotTwo = FKCircleView(frame: CGRectZero)
@@ -97,38 +97,19 @@ internal class ThreeDotsView: UIView, FKAnimatableView {
     private var dotDiameter: CGFloat {
         return self.frame.size.width/3.0 - self.dotSpacing/3.0
     }
-    private let dotSpacing: CGFloat = 5
+    private let dotSpacing: CGFloat = 3
 
-    override init(frame: CGRect = CGRect(x: 0, y: 0, width: 100, height: 20)) {
+    override init(frame: CGRect = CGRectZero) {
         super.init(frame: frame)
         self.setup()
-
-        self.backgroundColor = UIColor.redColor()
     }
 
     func setup() {
+
         self.addSubview(self.dotOne)
         self.addSubview(self.dotTwo)
         self.addSubview(self.dotThree)
         setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
-
-        //self
-        self.addConstraint(NSLayoutConstraint(
-            item: self,
-            attribute: .Height,
-            relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1.0,
-            constant: self.dotDiameter))
-        self.addConstraint(NSLayoutConstraint(
-            item: self,
-            attribute: .Width,
-            relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1.0,
-            constant: 3 * self.dotDiameter + 2 * self.dotSpacing))
 
         //dot one
         self.addConstraint(NSLayoutConstraint(
@@ -151,18 +132,18 @@ internal class ThreeDotsView: UIView, FKAnimatableView {
             item: self.dotOne,
             attribute: .Width,
             relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1.0,
-            constant: self.dotDiameter))
+            toItem: self,
+            attribute: .Width,
+            multiplier: 1.0/3.0,
+            constant: -(self.dotSpacing * 2.0/3.0)))
         self.addConstraint(NSLayoutConstraint(
             item: self.dotOne,
             attribute: .Height,
             relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
+            toItem: self.dotOne,
+            attribute: .Width,
             multiplier: 1.0,
-            constant: self.dotDiameter))
+            constant: 0))
 
         //dot two
         self.addConstraint(NSLayoutConstraint(
@@ -185,18 +166,18 @@ internal class ThreeDotsView: UIView, FKAnimatableView {
             item: self.dotTwo,
             attribute: .Width,
             relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1.0,
-            constant: self.dotDiameter))
+            toItem: self,
+            attribute: .Width,
+            multiplier: 1.0/3.0,
+            constant: -(self.dotSpacing * 2.0/3.0)))
         self.addConstraint(NSLayoutConstraint(
             item: self.dotTwo,
             attribute: .Height,
             relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
+            toItem: self.dotTwo,
+            attribute: .Width,
             multiplier: 1.0,
-            constant: self.dotDiameter))
+            constant: 0))
 
         //dot three
         self.addConstraint(NSLayoutConstraint(
@@ -219,29 +200,80 @@ internal class ThreeDotsView: UIView, FKAnimatableView {
             item: self.dotThree,
             attribute: .Width,
             relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1.0,
-            constant: self.dotDiameter))
+            toItem: self,
+            attribute: .Width,
+            multiplier: 1.0/3.0,
+            constant: -(self.dotSpacing * 2.0/3.0)))
         self.addConstraint(NSLayoutConstraint(
             item: self.dotThree,
             attribute: .Height,
             relatedBy: .Equal,
-            toItem: nil,
-            attribute: .NotAnAttribute,
+            toItem: self.dotThree,
+            attribute: .Width,
             multiplier: 1.0,
-            constant: self.dotDiameter))
+            constant: 0))
     }
 
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func animate(_startStop: Bool) {
-        if _startStop {
+    override func animate(_startStop: Bool) {
 
-        } else {
+        self.animating = _startStop
+        var fade: (() -> Void)?
+        var show: (() -> Void)?
 
+        show = {
+            let showOne: () -> Void = {
+                self.dotOne.alpha = 1.0
+            }
+            let showTwo: () -> Void = {
+                self.dotTwo.alpha = 1.0
+            }
+            let showThree: () -> Void = {
+                self.dotThree.alpha = 1.0
+            }
+
+            UIView.animateKeyframesWithDuration(self.animationSpeed,
+                delay: 0.0, options: .CalculationModeLinear, animations: {
+
+                    UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 1.0/3.0, animations: showOne)
+
+                    UIView.addKeyframeWithRelativeStartTime(1.0/3.0, relativeDuration: 1.0/3.0, animations: showTwo)
+
+                    UIView.addKeyframeWithRelativeStartTime(2.0/3.0, relativeDuration: 1.0/3.0, animations: showThree)
+
+                }) { (complete) -> Void in
+                    if self.animating {
+                        fade?()
+                    }
+            }
         }
+
+        fade = {
+            let fadeOne: () -> Void = {
+                self.dotOne.alpha = 0.5
+            }
+            let fadeTwo: () -> Void = {
+                self.dotTwo.alpha = 0.5
+            }
+            let fadeThree: () -> Void = {
+                self.dotThree.alpha = 0.5
+            }
+
+            UIView.animateKeyframesWithDuration(self.animationSpeed,
+                delay: 0.0, options: .CalculationModeLinear, animations: {
+                    UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 1.0/3.0, animations: fadeOne)
+
+                    UIView.addKeyframeWithRelativeStartTime(1.0/3.0, relativeDuration: 1.0/3.0, animations: fadeTwo)
+
+                    UIView.addKeyframeWithRelativeStartTime(2.0/3.0, relativeDuration: 1.0/3.0, animations: fadeThree)
+
+                }) { (complete) -> Void in
+                    show?()
+            }
+        }
+        _startStop ? fade?() : show?()
     }
 }

@@ -9,5 +9,6 @@ internal class FKCircleView: UIView {
         shapeLayer.path = UIBezierPath(ovalInRect: shapeLayer.frame).CGPath
         self.layer.mask = shapeLayer
         self.userInteractionEnabled = true
+        self.backgroundColor = UIColor.lightGrayColor()
     }
 }
