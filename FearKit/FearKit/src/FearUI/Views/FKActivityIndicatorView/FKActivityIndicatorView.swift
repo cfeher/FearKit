@@ -1,8 +1,7 @@
 import UIKit
 
 public enum FKActivityIndicatorViewStyle {
-    case ThreeDots
-    case Default
+    case ThreeDots(c1: UIColor, c2: UIColor)
 }
 
 public class FKActivityIndicatorView: UIView {
@@ -11,14 +10,13 @@ public class FKActivityIndicatorView: UIView {
     private var style: FKActivityIndicatorViewStyle
     private var animatableView: FKAnimatableView
 
-    public init(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 10), style: FKActivityIndicatorViewStyle = .Default) {
+    public init(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 10), style: FKActivityIndicatorViewStyle = FKActivityIndicatorViewStyle.ThreeDots(c1: UIColor.lightGrayColor(), c2: UIColor.lightGrayColor().colorWithAlphaComponent(0.5))) {
         self.style = style
 
         switch style {
-        case .ThreeDots:
-            self.animatableView = ThreeDotsView(frame: CGRectZero)
-        case .Default:
-            self.animatableView = ThreeDotsView(frame: CGRectZero)
+        case .ThreeDots(let c1, let c2):
+            let threeDots = ThreeDotsView(frame: CGRectZero, colorOne: c1, colorTwo: c2)
+            self.animatableView = threeDots
         }
 
         super.init(frame: frame)
@@ -91,6 +89,8 @@ class FKAnimatableView: UIView {
 //MARK: Three Dots
 internal class ThreeDotsView: FKAnimatableView {
 
+    private let colorOne: UIColor
+    private let colorTwo: UIColor
     private let dotOne = FKCircleView(frame: CGRectZero)
     private let dotTwo = FKCircleView(frame: CGRectZero)
     private let dotThree = FKCircleView(frame: CGRectZero)
@@ -99,7 +99,14 @@ internal class ThreeDotsView: FKAnimatableView {
     }
     private let dotSpacing: CGFloat = 3
 
-    override init(frame: CGRect = CGRectZero) {
+    init(frame: CGRect = CGRectZero, colorOne: UIColor, colorTwo: UIColor) {
+        self.colorOne = colorOne
+        self.colorTwo = colorTwo
+
+        self.dotOne.backgroundColor = colorOne
+        self.dotTwo.backgroundColor = colorOne
+        self.dotThree.backgroundColor = colorOne
+
         super.init(frame: frame)
         self.setup()
     }
@@ -226,13 +233,13 @@ internal class ThreeDotsView: FKAnimatableView {
 
         show = {
             let showOne: () -> Void = {
-                self.dotOne.alpha = 1.0
+                self.dotOne.backgroundColor = self.colorOne
             }
             let showTwo: () -> Void = {
-                self.dotTwo.alpha = 1.0
+                self.dotTwo.backgroundColor = self.colorOne
             }
             let showThree: () -> Void = {
-                self.dotThree.alpha = 1.0
+                self.dotThree.backgroundColor = self.colorOne
             }
 
             UIView.animateKeyframesWithDuration(self.animationSpeed,
@@ -253,13 +260,13 @@ internal class ThreeDotsView: FKAnimatableView {
 
         fade = {
             let fadeOne: () -> Void = {
-                self.dotOne.alpha = 0.5
+                self.dotOne.backgroundColor = self.colorTwo
             }
             let fadeTwo: () -> Void = {
-                self.dotTwo.alpha = 0.5
+                self.dotTwo.backgroundColor = self.colorTwo
             }
             let fadeThree: () -> Void = {
-                self.dotThree.alpha = 0.5
+                self.dotThree.backgroundColor = self.colorTwo
             }
 
             UIView.animateKeyframesWithDuration(self.animationSpeed,
