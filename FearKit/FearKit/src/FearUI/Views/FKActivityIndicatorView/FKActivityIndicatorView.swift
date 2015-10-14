@@ -102,11 +102,6 @@ internal class ThreeDotsView: FKAnimatableView {
     init(frame: CGRect = CGRectZero, colorOne: UIColor, colorTwo: UIColor) {
         self.colorOne = colorOne
         self.colorTwo = colorTwo
-
-        self.dotOne.backgroundColor = colorOne
-        self.dotTwo.backgroundColor = colorOne
-        self.dotThree.backgroundColor = colorOne
-
         super.init(frame: frame)
         self.setup()
     }
@@ -116,6 +111,11 @@ internal class ThreeDotsView: FKAnimatableView {
         self.addSubview(self.dotOne)
         self.addSubview(self.dotTwo)
         self.addSubview(self.dotThree)
+
+        self.dotOne.backgroundColor = colorOne
+        self.dotTwo.backgroundColor = colorOne
+        self.dotThree.backgroundColor = colorOne
+        
         setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
 
         //dot one
