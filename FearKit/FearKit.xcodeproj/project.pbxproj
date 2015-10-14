@@ -26,6 +26,7 @@
 		5338764E1BC8071C0042C902 /* FKActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */; };
 		533876501BC80B090042C902 /* FKCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5338764F1BC80B090042C902 /* FKCircleView.swift */; };
 		533876871BC810820042C902 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 532D0A481B5E8C9E009E962E /* UIKit.framework */; };
+		539AF2971BCE9C22007D83CE /* FKThreeDotsAnimatableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539AF2961BCE9C22007D83CE /* FKThreeDotsAnimatableView.swift */; };
 		53B7FE4D1B94F1AE0043E1CB /* FKSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKActivityIndicatorView.swift; sourceTree = "<group>"; };
 		5338764F1BC80B090042C902 /* FKCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKCircleView.swift; sourceTree = "<group>"; };
 		533876851BC810750042C902 /* FearKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FearKit.framework; path = ../../../Dropbox/Desktop/Test/Test/Carthage/Build/iOS/FearKit.framework; sourceTree = "<group>"; };
+		539AF2961BCE9C22007D83CE /* FKThreeDotsAnimatableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKThreeDotsAnimatableView.swift; sourceTree = "<group>"; };
 		53B7FE4C1B94F1AE0043E1CB /* FKSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKSegmentedControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +274,7 @@
 			children = (
 				5338764D1BC8071C0042C902 /* FKActivityIndicatorView.swift */,
 				5338764F1BC80B090042C902 /* FKCircleView.swift */,
+				539AF2961BCE9C22007D83CE /* FKThreeDotsAnimatableView.swift */,
 			);
 			path = FKActivityIndicatorView;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				5317B8081B850DF000C408BD /* FKFadedLineView.swift in Sources */,
 				5317B8071B850DF000C408BD /* FKBubbleColorView.swift in Sources */,
 				5317B8061B850DF000C408BD /* FKTabBarController.swift in Sources */,
+				539AF2971BCE9C22007D83CE /* FKThreeDotsAnimatableView.swift in Sources */,
 				5317B8041B850DF000C408BD /* FKMasterViewController.swift in Sources */,
 				53B7FE4D1B94F1AE0043E1CB /* FKSegmentedControl.swift in Sources */,
 				5338764E1BC8071C0042C902 /* FKActivityIndicatorView.swift in Sources */,
