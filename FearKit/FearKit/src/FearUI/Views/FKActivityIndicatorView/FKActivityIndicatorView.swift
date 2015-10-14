@@ -28,7 +28,11 @@ public class FKActivityIndicatorView: UIView {
     private var style: FKActivityIndicatorViewStyle
     private var animatableView: FKAnimatableView
 
-    public init(frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 10), style: FKActivityIndicatorViewStyle = FKActivityIndicatorViewStyle.ThreeDots(c1: UIColor.lightGrayColor(), c2: UIColor.lightGrayColor().colorWithAlphaComponent(0.5))) {
+    public init(
+        frame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 10),
+        style: FKActivityIndicatorViewStyle = .ThreeDots(
+            c1: UIColor.lightGrayColor(),
+            c2: UIColor.lightGrayColor().colorWithAlphaComponent(0.5))) {
         self.style = style
 
         switch style {
