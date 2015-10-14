@@ -24,6 +24,7 @@ public enum FKActivityIndicatorViewStyle {
 
 public class FKActivityIndicatorView: UIView {
 
+    public var hidesWhenStopped: Bool = false
     public private(set) var animating: Bool = false
     private var style: FKActivityIndicatorViewStyle
     private var animatableView: FKAnimatableView
@@ -89,6 +90,9 @@ public class FKActivityIndicatorView: UIView {
     }
 
     public func animate(_startStop: Bool) {
+        if self.hidesWhenStopped {
+            self.hidden = !_startStop
+        }
         self.animatableView.animate(_startStop)
     }
 }
