@@ -1,6 +1,6 @@
 #FearKit 
-![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)
-![Status](https://img.shields.io/badge/status-prerelease-orange.svg)
+![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![Platform](https://img.shields.io/badge/platform-ios-lightgrey.svg?style=flat)
+![Status](https://img.shields.io/badge/status-prerelease-orange.svg?style=flat)
 
 A framework with useful iOS stuff I found myself always having to re-implement on different projects
 
