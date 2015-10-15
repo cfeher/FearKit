@@ -7,6 +7,27 @@ A framework with useful iOS stuff I found myself always having to re-implement o
 ## Requirements
 - iOS 8.0+
 
+## Samples
+###FKSegmentedControl
+
+```swift
+let leftTab = FKSegmentedControlSegment(backgroundView: TabView(frame: CGRectZero))
+let rightTab = FKSegmentedControlSegment(backgroundView: TabView(frame: CGRectZero))
+
+leftTab.externalNotifier = { segment, selected in
+  //do something
+}
+rightTab.externalNotifier = { segment, selected in
+  //do something
+}
+
+let tabSegmentedControl = FKSegmentedControl(
+                                frame: CGRectZero, 
+                                segments: [leftTab, rightTab])
+                                
+self.view.addSubview(tabSegmentedControl)
+```
+
 ##Installation
 ### Carthage
 
