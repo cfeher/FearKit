@@ -1,9 +1,0 @@
-version: "Apple Swift version 1.2 (swiftlang-602.0.53.1 clang-602.0.53)"
-options: "f107051e2a89b1b9145f61166f690b9e"
-inputs: 
-- "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/FearKit/src/FearUI/View Controllers/FKMasterDetailViewController/Detail/FKDetailViewController.swift"
-- "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/FearKit/src/FearUI/View Controllers/FKMasterDetailViewController/FKMasterDetailViewController.swift"
-- "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/FearKit/src/FearUI/View Controllers/FKBottomNavigationController/FKBottomNavigationViewController.swift"
-- "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/FearKit/src/FearUI/View Controllers/FKMasterDetailViewController/Master/FKMasterViewController.swift"
-- "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/FearKit/src/FearUI/Views/FKQuadrantButtonView/FKFadedLineView.swift"
-- "/Users/cfeher/Dropbox/Documents/FearKit/FearKit/FearKit/src/FearUI/Views/FKQuadrantButtonView/FKQuadrantButtonView.swift"
