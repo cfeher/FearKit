@@ -23,16 +23,16 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 		// Setup the table view
 		self.tableView.frame = self.view.frame
 		self.view.addSubview(self.tableView)
-		items?.map({[weak self] in self?.addMasterItem($0)})
+		items?.each({[weak self] in self?.addMasterItem($0)})
 	}
 
-	required public init(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
 	public func addMasterItem(item: MasterItem) {
 		items.append(item)
-		items.sort { (item1: MasterItem, item2: MasterItem) -> Bool in
+		items.sortInPlace { (item1: MasterItem, item2: MasterItem) -> Bool in
 			return item1.ord < item2.ord
 		}
 		self.tableView.reloadData()

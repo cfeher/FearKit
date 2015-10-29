@@ -21,7 +21,7 @@ public class FKMasterCell: UITableViewCell {
 		self.reapplyConstraints()
 	}
 
-	required public init(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
@@ -33,8 +33,8 @@ public class FKMasterCell: UITableViewCell {
 	
 	private func reapplyConstraints() {
 		//autolayout
-		self.majorLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-		self.leftImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		self.majorLabel.translatesAutoresizingMaskIntoConstraints = false
+		self.leftImageView.translatesAutoresizingMaskIntoConstraints = false
 		for constraint in self.consts { self.contentView.removeConstraint(constraint) }
 		self.consts = []
 
@@ -75,7 +75,7 @@ public class FKMasterCell: UITableViewCell {
 			attribute: NSLayoutAttribute.Left,
 			multiplier: 1.0,
 			constant: self.padding/2.0))
-		if let unwrappedImage = self.leftImage {
+		if let _ = self.leftImage { //FIXME: Figure out why we are unwrapping
 			consts.append(NSLayoutConstraint(
 				item: self.leftImageView,
 				attribute: NSLayoutAttribute.Width,

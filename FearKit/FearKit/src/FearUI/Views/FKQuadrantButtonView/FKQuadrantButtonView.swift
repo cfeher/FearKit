@@ -36,18 +36,18 @@ public class FKQuadrantButtonView: UIView {
 		self.layoutIfNeeded()
 	}
 
-	required public init(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 	    fatalError("init(coder:) has not been implemented")
 	}
 
 	func prepareForConstraints() {
 		self.cachedConstraints.removeAll(keepCapacity: true)
 		let closure: (view: UIView?) -> () = {(view: UIView?) in
-				view?.setTranslatesAutoresizingMaskIntoConstraints(false)
+				view?.translatesAutoresizingMaskIntoConstraints = false
 				view?.backgroundColor = UIColor.clearColor()
 				(view as? UIButton)?.imageView?.contentMode = .ScaleAspectFit
 			}
-		self.subviews.map({view in closure(view: view as? UIView)})
+		self.subviews.each({ view in closure(view: view) })
 	}
 
 	func setupButtons() {

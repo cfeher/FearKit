@@ -15,7 +15,7 @@ public class FKSegmentedControlSegmentView: UIView, FKSegmentedControlSegmentPro
         self.addGestureRecognizer(tapGestureRec)
     }
 
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -53,7 +53,6 @@ public class FKSegmentedControl: UIControl {
         self.segments = segments
         super.init(frame: frame)
 
-        var index = 0
         var lastSegment: FKSegmentedControlSegment?
         for segment in self.segments {
 
@@ -115,14 +114,14 @@ public class FKSegmentedControl: UIControl {
 
             lastSegment = segment
         }
-        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
+        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, val: false)
     }
 
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
     func tabSelected() {
-        println("Tab Selected")
+        print("Tab Selected")
     }
 }

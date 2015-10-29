@@ -45,21 +45,21 @@ public class FKTableView: UIView, UITableViewDelegate, UITableViewDataSource {
 		self.tableView.layer.shadowOpacity = 0.3;
 	}
 
-	required public init(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
 	private func setup() {
-		self.scrollView.setTranslatesAutoresizingMaskIntoConstraints(false)
-		self.topView.setTranslatesAutoresizingMaskIntoConstraints(false)
-		self.tableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+		self.scrollView.translatesAutoresizingMaskIntoConstraints = false
+		self.topView.translatesAutoresizingMaskIntoConstraints = false
+		self.tableView.translatesAutoresizingMaskIntoConstraints = false
 		self.tableView.delegate = self
 		self.tableView.dataSource = self
 		self.tableView.scrollEnabled = false
 		self.scrollView.bounces = false
 		self.scrollView.showsVerticalScrollIndicator = false
 		for const in self.consts { self.removeConstraint(const) }
-		for view in self.subviews { (view as? UIView)?.removeFromSuperview() }
+		for view in self.subviews { view.removeFromSuperview() }
 		self.consts = []
 		self.addSubview(self.topView)
 		self.addSubview(self.scrollView)
@@ -215,8 +215,8 @@ extension FKTableView {
 			return 60
 		}
 	}
-	public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
-			return self.delegate?.tableView(tableView, editActionsForRow: indexPath.row)
+	public func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        return self.delegate?.tableView(tableView, editActionsForRow: indexPath.row) as? [UITableViewRowAction]
 	}
 	public func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 		return true
@@ -242,15 +242,15 @@ extension FKTableView {
 	public func moveSection(section: Int, toSection newSection: Int) {
 		self.tableView.moveSection(section, toSection: newSection)
 	}
-	public func insertRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+	public func insertRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
 		self.updateTableViewHeight()
 	}
-	public func deleteRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+	public func deleteRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
 		self.updateTableViewHeight()
 	}
-	public func reloadRowsAtIndexPaths(indexPaths: [AnyObject], withRowAnimation animation: UITableViewRowAnimation) {
+	public func reloadRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation animation: UITableViewRowAnimation) {
 		self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: animation)
 	}
 	public func moveRowAtIndexPath(indexPath: NSIndexPath, toIndexPath newIndexPath: NSIndexPath) {
@@ -261,21 +261,19 @@ extension FKTableView {
 internal class CustomScrollView: UIScrollView {
 	func touchIntersectsTransparentRegion(point: CGPoint) -> Bool {
 		for view in self.subviews {
-			if let subView = view as? UIView {
 
-				var alteredFrame = CGRect(
+				let alteredFrame = CGRect(
 					origin: CGPoint(
-						x: subView.frame.origin.x,
-						y: subView.frame.origin.y + -self.contentOffset.y),
-					size: subView.frame.size)
-				var alteredPoint = CGPoint(
+						x: view.frame.origin.x,
+						y: view.frame.origin.y + -self.contentOffset.y),
+					size: view.frame.size)
+				let alteredPoint = CGPoint(
 					x: point.x,
 					y: point.y + -self.contentOffset.y)
 
 				if alteredPoint.y > alteredFrame.origin.y && alteredPoint.y <= alteredFrame.origin.y + alteredFrame.size.height {
 					return false
 				}
-			}
 		}
 		return true
 	}

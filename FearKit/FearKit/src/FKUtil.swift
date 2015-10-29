@@ -78,20 +78,26 @@ public func delay(delay:Double, closure:()->()) {
 extension Array {
 	func indexesOf<T : Equatable>(object:T) -> [Int] {
 		var result: [Int] = []
-		for (index,obj) in enumerate(self) {
+		for (index,obj) in self.enumerate() {
 			if obj as! T == object {
 				result.append(index)
 			}
 		}
 		return result
 	}
+
+    func each(_closure: (Element) -> ()) {
+        for object: Element in self {
+            _closure(object)
+        }
+    }
 }
 
 public func setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(root: UIView, val: Bool) {
 	for view in root.subviews {
-		view.setTranslatesAutoresizingMaskIntoConstraints(val)
+		view.translatesAutoresizingMaskIntoConstraints = val
 		if view.subviews.count > 0 {
-			setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(view as! UIView, val)
+			setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(view, val: val)
 		}
 	}
 }

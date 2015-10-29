@@ -27,7 +27,7 @@ internal class FKThreeDotsAnimatableView: FKAnimatableView {
         self.dotTwo.backgroundColor = colorOne
         self.dotThree.backgroundColor = colorOne
 
-        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
+        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, val: false)
 
         //dot one
         self.addConstraint(NSLayoutConstraint(
@@ -132,7 +132,7 @@ internal class FKThreeDotsAnimatableView: FKAnimatableView {
             constant: 0))
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

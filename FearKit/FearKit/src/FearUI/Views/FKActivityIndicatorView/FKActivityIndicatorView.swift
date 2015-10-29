@@ -6,14 +6,14 @@ class FKAnimatableView: UIView {
     var animating: Bool = false
 
     func animate(_startStop: Bool) {
-        println("default implementation of animate - must implement")
+        print("default implementation of animate - must implement")
     }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -49,7 +49,7 @@ public class FKActivityIndicatorView: UIView {
 
         //constraints
         self.addSubview(self.animatableView)
-        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, false)
+        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, val: false)
 
         self.addConstraint(NSLayoutConstraint(
             item: self.animatableView,
@@ -85,7 +85,7 @@ public class FKActivityIndicatorView: UIView {
             constant: 0))
     }
 
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
