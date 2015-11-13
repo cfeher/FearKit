@@ -141,7 +141,7 @@ public class FKTabBarController: UIViewController {
             index += 1
         }
 
-        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, false)
+        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, val: false)
         //view controllers
         for fkTab in self.fkTabs {
             self.addChildViewController(fkTab.tab.viewController)
@@ -151,7 +151,7 @@ public class FKTabBarController: UIViewController {
         self.tabSelected(0)
     }
 
-    required public init(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -186,7 +186,7 @@ extension FKTabBarController {
             fkTabbarTab.backgroundColor = fkTabbarTab.tab.selectedBackgroundColor
             let view = fkTabbarTab.tab.viewController.view
             self.view.addSubview(view)
-            view.setTranslatesAutoresizingMaskIntoConstraints(false)
+            view.translatesAutoresizingMaskIntoConstraints = false
 
             self.view.addConstraint(NSLayoutConstraint(
                 item: view,
@@ -281,7 +281,7 @@ internal class FKTabBarTab: UIView {
         self.layoutIfNeeded()
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

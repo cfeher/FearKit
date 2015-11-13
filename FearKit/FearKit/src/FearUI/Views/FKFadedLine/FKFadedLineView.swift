@@ -17,7 +17,7 @@ public class FKFadedLineView: UIView {
 		super.init(frame: frame)
 	}
 
-	required public init(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 
@@ -50,7 +50,7 @@ public class FKFadedLineView: UIView {
 			let endCenter = CGPointMake(
 				CGRectGetMidX(currentBounds),
 				currentBounds.size.height);
-			CGContextDrawLinearGradient(context, glossGradient, topCenter, endCenter, 0);
+			CGContextDrawLinearGradient(context, glossGradient, topCenter, endCenter, .DrawsBeforeStartLocation);
 
 		} else if gradientDirection == .Horizontal {
 
@@ -58,7 +58,7 @@ public class FKFadedLineView: UIView {
 			let endCenter = CGPointMake(
 				currentBounds.size.width,
 				CGRectGetMidY(currentBounds));
-			CGContextDrawLinearGradient(context, glossGradient, leftCenter, endCenter, 0);
+			CGContextDrawLinearGradient(context, glossGradient, leftCenter, endCenter, .DrawsBeforeStartLocation);
 		}
 	}
 }

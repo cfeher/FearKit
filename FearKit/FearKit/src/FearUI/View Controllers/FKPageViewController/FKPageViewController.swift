@@ -44,14 +44,14 @@ extension FKPageViewController {
 		//setup new view controller
 		let viewController = UIViewController(nibName: nil, bundle: nil)
 		viewController.view.addSubview(view)
-		view.setTranslatesAutoresizingMaskIntoConstraints(false)
+		view.translatesAutoresizingMaskIntoConstraints = false
 
 		//setup pageviewcontroller
 		self.currentIndex = 0
 		self.pageViewController.dataSource = self
 		self.pages.append(FKPageViewContainer(controller: viewController, pageView: view))
 
-		let tmp = self.viewControllersFromPages()
+//		let tmp = self.viewControllersFromPages() //FIXME: Remove this?
 		self.pageViewController.setViewControllers(
 			[viewController],
 			direction: .Forward,
