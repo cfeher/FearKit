@@ -23,11 +23,7 @@ public class FKFadingTableView: UIView {
             self.tableView.reloadData()
         }
     }
-    public var delegate: UITableViewDelegate? {
-        didSet {
-            //            self.tableView.delegate = self.delegate
-        }
-    }
+    public var delegate: UITableViewDelegate?
     private let tableView: UITableView
     private var visibleCells = [VisibleCell]()
     private var newThings = [NSIndexPath: UIView]()
@@ -97,7 +93,6 @@ extension FKFadingTableView: UITableViewDelegate {
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         //calculate a list of visible cells
         self.visibleCells = self.visibleCellsForContentOffset(self.tableView.contentOffset.y)
-        
         self.visibleCells.each({ visibleCell in
             if let newThing = self.newThings[visibleCell.indexPath] {
                 setAllAlpha(newThing, alpha: visibleCell.calculatedAlpha)
