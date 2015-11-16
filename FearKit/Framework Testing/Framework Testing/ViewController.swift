@@ -6,18 +6,31 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.view.backgroundColor = UIColor.redColor()
-        
-        let button = FKButton(frame: CGRectMake(50, 25, 100, 50)) //use default
-        button.buttonText = "Chat Now"
-        self.view.addSubview(button)
+        self.view.backgroundColor = .whiteColor()
+        let tableView = FKFadingTableView(frame: self.view.frame, style: .Grouped)
+        tableView.dataSource = self
+        self.view.addSubview(tableView)
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 40
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("bob") ?? UITableViewCell(style: .Value1, reuseIdentifier: "bob")
+        cell.textLabel?.text = "TEST"
+        cell.detailTextLabel?.text = "Detail"
+        return cell
     }
 
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 66
+    }
 
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 66
+    }
 }
 

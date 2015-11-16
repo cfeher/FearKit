@@ -101,3 +101,12 @@ public func setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(root: UI
 		}
 	}
 }
+
+internal func setAllAlpha(rootView: UIView, alpha: CGFloat) {
+    rootView.alpha = alpha
+    rootView.subviews.each({ subview in
+        subview.alpha = alpha
+        setAllAlpha(subview, alpha: alpha)
+    })
+}
+

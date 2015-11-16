@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5309872E1BF789BA0051E1BC /* FKFadingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5309872D1BF789BA0051E1BC /* FKFadingTableView.swift */; };
 		5317B7FF1B850DF000C408BD /* FearKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 5317B7E21B850DF000C408BD /* FearKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5317B8001B850DF000C408BD /* FKNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7E61B850DF000C408BD /* FKNavigationViewController.swift */; };
 		5317B8011B850DF000C408BD /* FKDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5317B7E91B850DF000C408BD /* FKDetailViewController.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5309872D1BF789BA0051E1BC /* FKFadingTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKFadingTableView.swift; sourceTree = "<group>"; };
 		5317B7E21B850DF000C408BD /* FearKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FearKit.h; sourceTree = "<group>"; };
 		5317B7E61B850DF000C408BD /* FKNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKNavigationViewController.swift; sourceTree = "<group>"; };
 		5317B7E91B850DF000C408BD /* FKDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FKDetailViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				5317B7FD1B850DF000C408BD /* FKTableView.swift */,
+				5309872D1BF789BA0051E1BC /* FKFadingTableView.swift */,
 			);
 			path = FKTableView;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 				5317B8051B850DF000C408BD /* FKPageViewController.swift in Sources */,
 				5317B8021B850DF000C408BD /* FKMasterDetailViewController.swift in Sources */,
 				5317B8031B850DF000C408BD /* FKMasterCell.swift in Sources */,
+				5309872E1BF789BA0051E1BC /* FKFadingTableView.swift in Sources */,
 				5317B8001B850DF000C408BD /* FKNavigationViewController.swift in Sources */,
 				5317B80D1B850DF000C408BD /* FKUtil.swift in Sources */,
 			);
