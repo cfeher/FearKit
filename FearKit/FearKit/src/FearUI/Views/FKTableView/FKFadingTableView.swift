@@ -5,7 +5,7 @@ private class VisibleCell {
     let rowHeight: CGFloat
     var calculatedAlpha: CGFloat = 1.0
     var contentView: UIView?
-
+    
     init(indexPath: NSIndexPath, rowHeight: CGFloat) {
         self.indexPath = indexPath
         self.rowHeight = rowHeight
@@ -23,11 +23,7 @@ public class FKFadingTableView: UIView {
             self.tableView.reloadData()
         }
     }
-    public var delegate: UITableViewDelegate? {
-        didSet {
-//            self.tableView.delegate = self.delegate
-        }
-    }
+    public var delegate: UITableViewDelegate?
     private let tableView: UITableView
     private var visibleCells = [VisibleCell]()
     private var newThings = [NSIndexPath: UIView]()
@@ -41,7 +37,7 @@ public class FKFadingTableView: UIView {
         super.init(frame: frame)
         self.setup()
     }
-
+    
     public required init?(coder aDecoder: NSCoder) {
         self.tableView = UITableView(frame: CGRectZero, style: .Grouped)
         super.init(frame: CGRectZero)
@@ -97,7 +93,6 @@ extension FKFadingTableView: UITableViewDelegate {
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         //calculate a list of visible cells
         self.visibleCells = self.visibleCellsForContentOffset(self.tableView.contentOffset.y)
-
         self.visibleCells.each({ visibleCell in
             if let newThing = self.newThings[visibleCell.indexPath] {
                 setAllAlpha(newThing, alpha: visibleCell.calculatedAlpha)
@@ -151,7 +146,10 @@ extension FKFadingTableView {
         for section in 0...numberOfSections - 1 {
             let headerHeight = self.tableView(self.tableView, heightForHeaderInSection: section)
             yVal += headerHeight
-            for row in 0...self.tableView(self.tableView, numberOfRowsInSection: section) - 1 {
+            
+            let numberOfRows = self.tableView(self.tableView, numberOfRowsInSection: section) - 1
+            if numberOfRows == 0 { return [] }
+            for row in 0...numberOfRows - 1 {
                 let ip = NSIndexPath(forRow: row, inSection: section)
                 let rowHeight = self.tableView(self.tableView, heightForRowAtIndexPath: ip)
                 yVal += rowHeight
