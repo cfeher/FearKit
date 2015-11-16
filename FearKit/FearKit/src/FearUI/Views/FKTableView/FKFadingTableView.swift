@@ -1,14 +1,19 @@
 import UIKit
 
-private struct VisibleCell {
+private class VisibleCell {
     let indexPath: NSIndexPath
     let rowHeight: CGFloat
     var calculatedAlpha: CGFloat = 1.0
+    var contentView: UIView?
 
     init(indexPath: NSIndexPath, rowHeight: CGFloat) {
         self.indexPath = indexPath
         self.rowHeight = rowHeight
     }
+}
+
+private func == (cell1: VisibleCell, cell2: VisibleCell) -> Bool {
+    return cell1.indexPath.compare(cell2.indexPath) == NSComparisonResult.OrderedSame
 }
 
 public class FKFadingTableView: UIView {
@@ -20,12 +25,12 @@ public class FKFadingTableView: UIView {
     }
     public var delegate: UITableViewDelegate? {
         didSet {
-            self.tableView.delegate = self.delegate
+//            self.tableView.delegate = self.delegate
         }
     }
     private let tableView: UITableView
-    private var lastContentOffset: CGFloat = 0
     private var visibleCells = [VisibleCell]()
+    private var newThings = [NSIndexPath: UIView]()
     override public var backgroundColor: UIColor? {
         didSet {
             self.tableView.backgroundColor = backgroundColor
@@ -38,7 +43,9 @@ public class FKFadingTableView: UIView {
     }
 
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.tableView = UITableView(frame: CGRectZero, style: .Grouped)
+        super.init(frame: CGRectZero)
+        self.setup()
     }
     
     private func setup() {
@@ -90,8 +97,12 @@ extension FKFadingTableView: UITableViewDelegate {
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         //calculate a list of visible cells
         self.visibleCells = self.visibleCellsForContentOffset(self.tableView.contentOffset.y)
-        self.tableView.reloadRowsAtIndexPaths(visibleCells.map({ $0.indexPath }), withRowAnimation: .None)
-        self.lastContentOffset = self.tableView.contentOffset.y
+
+        self.visibleCells.each({ visibleCell in
+            if let newThing = self.newThings[visibleCell.indexPath] {
+                newThing.alpha = visibleCell.calculatedAlpha
+            }
+        })
     }
 }
 
@@ -106,12 +117,7 @@ extension FKFadingTableView: UITableViewDataSource {
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.dataSource?.tableView(tableView, cellForRowAtIndexPath: indexPath) ?? UITableViewCell(style: .Default, reuseIdentifier: "")
         
-        setAllAlpha(cell, alpha: 1.0)
-        self.visibleCells.each({ visibleCell in
-            if visibleCell.indexPath == indexPath {
-                setAllAlpha(cell, alpha: visibleCell.calculatedAlpha)
-            }
-        })
+        self.newThings[indexPath] = cell.contentView
         return cell
     }
     
@@ -149,7 +155,7 @@ extension FKFadingTableView {
                 let rowHeight = self.tableView(self.tableView, heightForRowAtIndexPath: ip)
                 yVal += rowHeight
                 if yVal >= 0 {
-                    var visibleCell = VisibleCell(indexPath: ip, rowHeight: rowHeight)
+                    let visibleCell = VisibleCell(indexPath: ip, rowHeight: rowHeight)
                     
                     if yVal <= self.tableView.frame.size.height {
                         if visibleCells.count <= 1 {
