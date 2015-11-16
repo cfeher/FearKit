@@ -108,7 +108,7 @@ extension FKFadingTableView: UITableViewDelegate {
 
 extension FKFadingTableView {
     public func reloadData() {
-        self.newThings = nil
+        self.newThings.removeAll()
         self.tableView.reloadData()
     }
 }
