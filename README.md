@@ -5,7 +5,7 @@
 A framework with useful iOS stuff I found myself always having to re-implement on different projects
 
 ## Requirements
-- iOS 8.0+
+- iOS 9.0+
 
 ## Samples
 ###FKSegmentedControl
