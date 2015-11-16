@@ -100,7 +100,7 @@ extension FKFadingTableView: UITableViewDelegate {
 
         self.visibleCells.each({ visibleCell in
             if let newThing = self.newThings[visibleCell.indexPath] {
-                newThing.alpha = visibleCell.calculatedAlpha
+                setAllAlpha(newThing, alpha: visibleCell.calculatedAlpha)
             }
         })
     }
