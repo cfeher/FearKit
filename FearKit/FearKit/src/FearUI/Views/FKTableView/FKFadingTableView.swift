@@ -106,10 +106,10 @@ extension FKFadingTableView: UITableViewDataSource {
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.dataSource?.tableView(tableView, cellForRowAtIndexPath: indexPath) ?? UITableViewCell(style: .Default, reuseIdentifier: "")
         
-        cell.setAllAlpha(1.0)
+        setAllAlpha(cell, alpha: 1.0)
         self.visibleCells.each({ visibleCell in
             if visibleCell.indexPath == indexPath {
-                cell.setAllAlpha(visibleCell.calculatedAlpha)
+                setAllAlpha(cell, alpha: visibleCell.calculatedAlpha)
             }
         })
         return cell
@@ -165,14 +165,5 @@ extension FKFadingTableView {
             yVal += footerHeight
         }
         return visibleCells
-    }
-}
-
-extension UITableViewCell {
-    func setAllAlpha(alpha: CGFloat) {
-        self.alpha = alpha
-        self.subviews.each({ subview in
-            subview.alpha = alpha
-        })
     }
 }
