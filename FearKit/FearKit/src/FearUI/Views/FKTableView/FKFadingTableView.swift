@@ -1,5 +1,16 @@
 import UIKit
 
+private struct VisibleCell {
+    let indexPath: NSIndexPath
+    let rowHeight: CGFloat
+    var calculatedAlpha: CGFloat = 1.0
+
+    init(indexPath: NSIndexPath, rowHeight: CGFloat) {
+        self.indexPath = indexPath
+        self.rowHeight = rowHeight
+    }
+}
+
 public class FKFadingTableView: UIView {
     
     public var dataSource: UITableViewDataSource? {
@@ -14,7 +25,12 @@ public class FKFadingTableView: UIView {
     }
     private let tableView: UITableView
     private var lastContentOffset: CGFloat = 0
-    
+    private var visibleCells = [VisibleCell]()
+    override public var backgroundColor: UIColor? {
+        didSet {
+            self.tableView.backgroundColor = backgroundColor
+        }
+    }
     public init(frame: CGRect, style: UITableViewStyle) {
         self.tableView = UITableView(frame: CGRectZero, style: style)
         super.init(frame: frame)
@@ -73,8 +89,15 @@ public class FKFadingTableView: UIView {
 extension FKFadingTableView: UITableViewDelegate {
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         //calculate a list of visible cells
-        let visibleCells = self.visibleCellsForContentOffset(self.tableView.contentOffset.y)
+        self.visibleCells = self.visibleCellsForContentOffset(self.tableView.contentOffset.y)
+        self.tableView.reloadRowsAtIndexPaths(visibleCells.map({ $0.indexPath }), withRowAnimation: .None)
         self.lastContentOffset = self.tableView.contentOffset.y
+    }
+}
+
+extension FKFadingTableView {
+    public func reloadData() {
+        self.tableView.reloadData()
     }
 }
 
@@ -82,6 +105,13 @@ extension FKFadingTableView: UITableViewDataSource {
     
     public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.dataSource?.tableView(tableView, cellForRowAtIndexPath: indexPath) ?? UITableViewCell(style: .Default, reuseIdentifier: "")
+        
+        cell.setAllAlpha(1.0)
+        self.visibleCells.each({ visibleCell in
+            if visibleCell.indexPath == indexPath {
+                cell.setAllAlpha(visibleCell.calculatedAlpha)
+            }
+        })
         return cell
     }
     
@@ -105,11 +135,11 @@ extension FKFadingTableView: UITableViewDataSource {
 
 extension FKFadingTableView {
     
-    func visibleCellsForContentOffset(contentOffset: CGFloat) -> [NSIndexPath] {
+    private func visibleCellsForContentOffset(contentOffset: CGFloat) -> [VisibleCell] {
         
         let numberOfSections = self.dataSource?.numberOfSectionsInTableView?(self.tableView) ?? 1
         var yVal: CGFloat = -1 * contentOffset
-        var visibleCells = [NSIndexPath]()
+        var visibleCells = [VisibleCell]()
         
         for section in 0...numberOfSections - 1 {
             let headerHeight = self.tableView(self.tableView, heightForHeaderInSection: section)
@@ -117,14 +147,32 @@ extension FKFadingTableView {
             for row in 0...self.tableView(self.tableView, numberOfRowsInSection: section) - 1 {
                 let ip = NSIndexPath(forRow: row, inSection: section)
                 let rowHeight = self.tableView(self.tableView, heightForRowAtIndexPath: ip)
-                if yVal >= 0 && yVal <= self.tableView.frame.size.height {
-                    visibleCells.append(ip)
-                }
                 yVal += rowHeight
+                if yVal >= 0 {
+                    var visibleCell = VisibleCell(indexPath: ip, rowHeight: rowHeight)
+                    
+                    if yVal <= self.tableView.frame.size.height {
+                        if visibleCells.count <= 1 {
+                            if fabs(yVal/rowHeight) <= 2 {
+                                visibleCell.calculatedAlpha = max(fabs(yVal/rowHeight) - 1, 0)
+                            }
+                        }
+                        visibleCells.append(visibleCell)
+                    }
+                }
             }
             let footerHeight = self.tableView(self.tableView, heightForFooterInSection: section)
             yVal += footerHeight
         }
         return visibleCells
+    }
+}
+
+extension UITableViewCell {
+    func setAllAlpha(alpha: CGFloat) {
+        self.alpha = alpha
+        self.subviews.each({ subview in
+            subview.alpha = alpha
+        })
     }
 }
