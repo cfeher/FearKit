@@ -147,8 +147,8 @@ extension FKFadingTableView {
             let headerHeight = self.tableView(self.tableView, heightForHeaderInSection: section)
             yVal += headerHeight
             
-            let numberOfRows = self.tableView(self.tableView, numberOfRowsInSection: section) - 1
-            if numberOfRows == 0 { return [] }
+            let numberOfRows = self.tableView(self.tableView, numberOfRowsInSection: section)
+            if numberOfRows <= 0 { return [] }
             for row in 0...numberOfRows - 1 {
                 let ip = NSIndexPath(forRow: row, inSection: section)
                 let rowHeight = self.tableView(self.tableView, heightForRowAtIndexPath: ip)
