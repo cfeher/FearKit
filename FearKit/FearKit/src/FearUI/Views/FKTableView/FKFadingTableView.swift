@@ -133,6 +133,27 @@ extension FKFadingTableView: UITableViewDataSource {
     public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return self.delegate?.tableView?(tableView, heightForRowAtIndexPath: indexPath) ?? 50
     }
+    
+    public func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return self.delegate?.tableView?(tableView, shouldHighlightRowAtIndexPath: indexPath) ?? false
+    }
+    
+    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.delegate?.tableView?(tableView, didSelectRowAtIndexPath: indexPath)
+    }
+    
+    public func insertRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
+        self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
+    }
+    
+    public func deleteRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
+        self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
+    }
+    
+    public func reloadRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
+        self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
+    }
+
 }
 
 extension FKFadingTableView {
