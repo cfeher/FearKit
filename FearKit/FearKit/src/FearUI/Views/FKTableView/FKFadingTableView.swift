@@ -144,7 +144,7 @@ extension FKFadingTableView: UITableViewDataSource {
     }
     
     public func deleteRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
-        self.adjustIndexPathsFor(.Insert, indexPath: indexPaths[0])
+        self.adjustIndexPathsFor(.Delete, indexPath: indexPaths[0])
         self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
     }
     

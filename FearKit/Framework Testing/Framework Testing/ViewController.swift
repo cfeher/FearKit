@@ -13,31 +13,31 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         self.view.addSubview(tableView)
         
-//        delay(3.0) { () -> () in
-//            self.cells.removeFirst()
-//            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
-//            delay(3.0) { () -> () in
-//                self.cells.removeFirst()
-//                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
-//                delay(3.0) { () -> () in
-//                    self.cells.removeFirst()
-//                    tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
-//                }
-//            }
-//        }
-        
         delay(3.0) { () -> () in
-            self.cells.append(1)
-            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+            self.cells.removeFirst()
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
             delay(3.0) { () -> () in
-                self.cells.append(1)
-                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+                self.cells.removeFirst()
+                tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
                 delay(3.0) { () -> () in
-                    self.cells.append(1)
-                    tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+                    self.cells.removeFirst()
+                    tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
                 }
             }
         }
+        
+//        delay(3.0) { () -> () in
+//            self.cells.append(1)
+//            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+//            delay(3.0) { () -> () in
+//                self.cells.append(1)
+//                tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+//                delay(3.0) { () -> () in
+//                    self.cells.append(1)
+//                    tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+//                }
+//            }
+//        }
     }
 }
 
