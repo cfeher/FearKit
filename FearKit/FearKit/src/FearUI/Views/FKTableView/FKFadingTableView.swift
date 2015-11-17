@@ -1,10 +1,10 @@
 import UIKit
 
 private class VisibleCell {
-    let indexPath: NSIndexPath
+    var indexPath: NSIndexPath
     let rowHeight: CGFloat
     var calculatedAlpha: CGFloat = 1.0
-    var contentView: UIView?
+//    var contentView: UIView?
     
     init(indexPath: NSIndexPath, rowHeight: CGFloat) {
         self.indexPath = indexPath
@@ -25,7 +25,15 @@ public class FKFadingTableView: UIView {
     }
     public var delegate: UITableViewDelegate?
     private let tableView: UITableView
-    private var visibleCells = [VisibleCell]()
+    private var visibleCells = [VisibleCell]() {
+        didSet {
+            self.visibleCells.each({ visibleCell in
+                if let newThing = self.newThings[visibleCell.indexPath] {
+                    setAllAlpha(newThing, alpha: visibleCell.calculatedAlpha)
+                }
+            })
+        }
+    }
     private var newThings = [NSIndexPath: UIView]()
     override public var backgroundColor: UIColor? {
         didSet {
@@ -93,18 +101,6 @@ extension FKFadingTableView: UITableViewDelegate {
     public func scrollViewDidScroll(scrollView: UIScrollView) {
         //calculate a list of visible cells
         self.visibleCells = self.visibleCellsForContentOffset(self.tableView.contentOffset.y)
-        self.visibleCells.each({ visibleCell in
-            if let newThing = self.newThings[visibleCell.indexPath] {
-                setAllAlpha(newThing, alpha: visibleCell.calculatedAlpha)
-            }
-        })
-    }
-}
-
-extension FKFadingTableView {
-    public func reloadData() {
-        self.newThings.removeAll()
-        self.tableView.reloadData()
     }
 }
 
@@ -143,15 +139,61 @@ extension FKFadingTableView: UITableViewDataSource {
     }
     
     public func insertRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
+        self.adjustIndexPathsFor(.Insert, indexPath: indexPaths[0])
         self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
     }
     
     public func deleteRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
+        self.adjustIndexPathsFor(.Insert, indexPath: indexPaths[0])
         self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
     }
     
     public func reloadRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
         self.tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
+    }
+    
+    public func reloadData() {
+        
+        Array(self.newThings.values).each({ view in
+            setAllAlpha(view, alpha: 1.0)
+        })
+        
+        self.newThings.removeAll()
+        self.visibleCells.removeAll()
+        self.tableView.reloadData()
+    }
+
+    enum TableViewAction {
+        case Insert
+        case Delete
+    }
+    
+    private func adjustIndexPathsFor(insertOrDelete: TableViewAction, indexPath: NSIndexPath) {
+        
+        var newNewThings = [NSIndexPath: UIView]()
+        switch insertOrDelete {
+        case .Insert:
+            for row in indexPath.row...self.tableView(self.tableView, numberOfRowsInSection: indexPath.section) - 1 {
+                let oldIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
+                let newIndexPath = NSIndexPath(forRow: row + 1, inSection: indexPath.section)
+                
+                let view = self.newThings[oldIndexPath]
+                newNewThings[newIndexPath] = view
+            }
+            self.newThings = newNewThings
+            break
+        case .Delete:
+            for row in indexPath.row + 1...self.tableView(self.tableView, numberOfRowsInSection: indexPath.section) - 1 {
+                let oldIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
+                let newIndexPath = NSIndexPath(forRow: row - 1, inSection: indexPath.section)
+                
+                let view = self.newThings[oldIndexPath]
+                newNewThings[newIndexPath] = view
+            }
+            self.newThings = newNewThings
+            break
+        }
+        self.visibleCells = self.visibleCellsForContentOffset(self.tableView.contentOffset.y)
     }
 
 }
