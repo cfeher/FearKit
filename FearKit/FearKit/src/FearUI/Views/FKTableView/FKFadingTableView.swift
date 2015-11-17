@@ -114,7 +114,7 @@ extension FKFadingTableView: UITableViewDataSource {
     }
     
     public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let num = self.dataSource?.tableView(tableView, numberOfRowsInSection: section) ?? 25
+        let num = self.dataSource?.tableView(tableView, numberOfRowsInSection: section) ?? 0
         return num
     }
     
@@ -139,12 +139,16 @@ extension FKFadingTableView: UITableViewDataSource {
     }
     
     public func insertRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
-        self.adjustIndexPathsFor(.Insert, indexPath: indexPaths[0])
+        indexPaths.each { ip in
+            self.adjustIndexPathsFor(.Insert, indexPath: ip)
+        }
         self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
     }
     
     public func deleteRowsAtIndexPaths(indexPaths: [NSIndexPath], withRowAnimation: UITableViewRowAnimation) {
-        self.adjustIndexPathsFor(.Delete, indexPath: indexPaths[0])
+        indexPaths.each { ip in
+            self.adjustIndexPathsFor(.Delete, indexPath: ip)
+        }
         self.tableView.deleteRowsAtIndexPaths(indexPaths, withRowAnimation: withRowAnimation)
     }
     
@@ -173,22 +177,70 @@ extension FKFadingTableView: UITableViewDataSource {
         var newNewThings = [NSIndexPath: UIView]()
         switch insertOrDelete {
         case .Insert:
-            for row in indexPath.row...self.tableView(self.tableView, numberOfRowsInSection: indexPath.section) - 1 {
-                let oldIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
-                let newIndexPath = NSIndexPath(forRow: row + 1, inSection: indexPath.section)
-                
-                let view = self.newThings[oldIndexPath]
-                newNewThings[newIndexPath] = view
+
+            let numberOfRowsInSection = self.tableView(self.tableView, numberOfRowsInSection: indexPath.section) - 1
+
+            if self.newThings.count > 0 {
+                if indexPath.row == 0 {
+                    //increment everything
+                    Array(self.newThings.keys).each { key in
+                        if key.section == indexPath.section {
+                            newNewThings[NSIndexPath(forRow: key.row + 1, inSection: key.section)] = self.newThings[key]
+
+                            self.visibleCells.each { visibleCell in
+                                if visibleCell.indexPath.compare(key) == .OrderedSame {
+                                    visibleCell.indexPath = NSIndexPath(forRow: key.row + 1, inSection: key.section)
+                                }
+                            }
+                        }
+                    }
+                } else if indexPath.row < numberOfRowsInSection {
+                    //increment after
+                    Array(self.newThings.keys).each { key in
+                        if key.section == indexPath.section && key.row > indexPath.row {
+                            newNewThings[NSIndexPath(forRow: key.row + 1, inSection: key.section)] = self.newThings[key]
+
+                            self.visibleCells.each { visibleCell in
+                                if visibleCell.indexPath.compare(key) == .OrderedSame {
+                                    visibleCell.indexPath = NSIndexPath(forRow: key.row + 1, inSection: key.section)
+                                }
+                            }
+                        }
+                    }
+                }
             }
             self.newThings = newNewThings
             break
         case .Delete:
-            for row in indexPath.row + 1...self.tableView(self.tableView, numberOfRowsInSection: indexPath.section) - 1 {
-                let oldIndexPath = NSIndexPath(forRow: row, inSection: indexPath.section)
-                let newIndexPath = NSIndexPath(forRow: row - 1, inSection: indexPath.section)
-                
-                let view = self.newThings[oldIndexPath]
-                newNewThings[newIndexPath] = view
+            let numberOfRowsInSection = self.tableView(self.tableView, numberOfRowsInSection: indexPath.section) - 1
+            if self.newThings.count > 0 {
+                if indexPath.row == 0 {
+                    //decrement everything
+                    Array(self.newThings.keys).each { key in
+                        if key.section == indexPath.section {
+                            newNewThings[NSIndexPath(forRow: key.row - 1, inSection: key.section)] = self.newThings[key]
+
+                            self.visibleCells.each { visibleCell in
+                                if visibleCell.indexPath.compare(key) == .OrderedSame {
+                                    visibleCell.indexPath = NSIndexPath(forRow: key.row - 1, inSection: key.section)
+                                }
+                            }
+                        }
+                    }
+                } else if indexPath.row < numberOfRowsInSection {
+                    //decrement after
+                    Array(self.newThings.keys).each { key in
+                        if key.section == indexPath.section && key.row > indexPath.row {
+                            newNewThings[NSIndexPath(forRow: key.row - 1, inSection: key.section)] = self.newThings[key]
+
+                            self.visibleCells.each { visibleCell in
+                                if visibleCell.indexPath.compare(key) == .OrderedSame {
+                                    visibleCell.indexPath = NSIndexPath(forRow: key.row - 1, inSection: key.section)
+                                }
+                            }
+                        }
+                    }
+                }
             }
             self.newThings = newNewThings
             break

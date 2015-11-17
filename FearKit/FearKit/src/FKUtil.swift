@@ -76,7 +76,7 @@ public func delay(delay:Double, closure:()->()) {
 }
 
 extension Array {
-	func indexesOf<T : Equatable>(object:T) -> [Int] {
+	public func indexesOf<T : Equatable>(object:T) -> [Int] {
 		var result: [Int] = []
 		for (index,obj) in self.enumerate() {
 			if obj as! T == object {
@@ -86,7 +86,7 @@ extension Array {
 		return result
 	}
 
-    func each(_closure: (Element) -> ()) {
+    public func each(_closure: (Element) -> ()) {
         for object: Element in self {
             _closure(object)
         }
