@@ -9,15 +9,21 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     var detailViewController: FKDetailViewController?
     var masterViewController: FKMasterViewController?
     var navController: FKNavigationViewController?
+    let masterItems: [FKMasterItem]
 
     //callbacks
     public var willOpenMasterPanel: (() -> (Bool))?
     public var didOpenMasterPanel: (() -> ())?
     public var willCloseMasterPanel: (() -> (Bool))?
     public var didCloseMasterPanel: (() -> ())?
-    public var splitPercentageForMasterPanel: (() -> (CGFloat))?
+    public var splitPercentageForMasterPanel: (() -> (CGFloat))? {
+        didSet {
+            self.setup()
+        }
+    }
 
-    public init() {
+    public init(masterDetailItems: [FKMasterItem]) {
+        self.masterItems = masterDetailItems
         super.init(nibName: nil, bundle: nil);
         self.view.frame = UIScreen.mainScreen().bounds
     }
@@ -28,27 +34,30 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        self.setup()
     }
 
-
-    override public func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    func setup() {
+        //setup
+        let itemSelectedCallback: (FKMasterItem) -> Void = { item in
+            print("Selected: \(item.itemTitle)")
+            self.showDetailViewController(item.detailViewController)
+        }
+        self.masterItems.each({ item in item.internalItemCallback = itemSelectedCallback })
+        self.showDetailViewController(self.masterItems.first!.detailViewController)
+        self.showMasterViewController(FKMasterViewController(items: self.masterItems))
     }
 
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    public func addDetailViewController(vc: FKDetailViewController!) {
+    private func showDetailViewController(vc: FKDetailViewController!) {
 
         //Get rid of the old stuff
+        let navContFrame = self.navController?.view.frame
+        let detailFrame = self.detailViewController?.view.frame
+
         self.navController?.view.removeFromSuperview()
         self.navController?.removeFromParentViewController()
-        self.navController?.view.removeFromSuperview()
         self.detailViewController?.view.removeFromSuperview()
         self.detailViewController?.removeFromParentViewController()
-        self.detailViewController?.view.removeFromSuperview()
 
         //Add new stuff
         self.detailViewController = vc
@@ -62,16 +71,21 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
         let bezPath = UIBezierPath(rect: CGRect(x: 0,
             y: 0,
-            width: 0.5 * self.navController!.view.frame.size.width,
+            width: self.splitPercentage * self.navController!.view.frame.size.width,
             height: self.navController!.view.frame.size.height))
         self.navController?.view.layer.shadowPath = bezPath.CGPath
+
+        if let navContFrame = navContFrame, detailFrame = detailFrame {
+            self.detailViewController?.view.frame = detailFrame
+            self.navController?.view.frame = navContFrame
+        }
 
         self.addChildViewController(self.navController!)
         self.view.addSubview(self.navController!.view)
         self.view.bringSubviewToFront(self.navController!.view)
     }
 
-    public func addMasterViewController(vc: FKMasterViewController) {
+    private func showMasterViewController(vc: FKMasterViewController) {
 
         //Get rid of the old stuff
         self.masterViewController?.view.removeFromSuperview()
@@ -82,6 +96,44 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.masterViewController = vc
         self.view.addSubview(self.masterViewController!.view)
         self.view.sendSubviewToBack(self.masterViewController!.view)
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+
+        //contsraints
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Left,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Top,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Bottom,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Bottom,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Width,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Width,
+            multiplier: self.splitPercentage,
+            constant: 0))
+
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
     }
 
     func hideMaster(animated: Bool) {

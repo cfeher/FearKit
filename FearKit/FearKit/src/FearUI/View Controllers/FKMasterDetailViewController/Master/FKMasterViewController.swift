@@ -16,31 +16,65 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
         }
     }
 
-    required public init(items: [MasterItem]?) {
+    required public init(items: [FKMasterItem]?) {
         super.init(nibName: nil, bundle: nil);
-        self.view.backgroundColor = UIColor.greenColor()
-
-        // Setup the table view
-        self.tableView.frame = self.view.frame
-        self.view.addSubview(self.tableView)
-        items?.each({[weak self] in self?.addMasterItem($0)})
+        items?.each({[weak self] in self?.addFKMasterItem($0)})
     }
 
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func addMasterItem(item: MasterItem) {
+    public func addFKMasterItem(item: FKMasterItem) {
         items.append(item)
-        items.sortInPlace { (item1: MasterItem, item2: MasterItem) -> Bool in
+        items.sortInPlace { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
             return item1.ord < item2.ord
         }
         self.tableView.reloadData()
     }
 
-    public override func viewDidAppear(animated: Bool) {
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Setup the table view
+        self.view.addSubview(self.tableView)
+        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, val: false)
         self.tableView.dataSource = self
         self.tableView.delegate = self
+
+        //contsraints
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Left,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Top,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Bottom,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Bottom,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Right,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Right,
+            multiplier: 1.0,
+            constant: 0))
     }
 
     private var width = CGFloat.max
@@ -55,7 +89,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
      */
 
-    private var items: [MasterItem] = []
+    private var items: [FKMasterItem] = []
     private let tableView = UITableView()
 
     /**
@@ -86,7 +120,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
                 }
 
                 //assign the values
-                let item: MasterItem = self.items[indexPath.row]
+                let item: FKMasterItem = self.items[indexPath.row]
 
                 cell.majorLabel.attributedText = NSAttributedString(
                     string: item.itemTitle,
@@ -107,8 +141,9 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
     }
 
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let item: MasterItem = self.items[indexPath.row]
+        let item: FKMasterItem = self.items[indexPath.row]
         item.itemCallback(item)
+        item.internalItemCallback?(item)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 

@@ -99,7 +99,7 @@ public class FKMasterCell: UITableViewCell {
         // Label
         consts.append(NSLayoutConstraint(
             item: self.majorLabel,
-            attribute: NSLayoutAttribute.Leading,
+            attribute: NSLayoutAttribute.Left,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.leftImageView,
             attribute: NSLayoutAttribute.Right,
@@ -108,7 +108,7 @@ public class FKMasterCell: UITableViewCell {
 
         consts.append(NSLayoutConstraint(
             item: self.majorLabel,
-            attribute: NSLayoutAttribute.Trailing,
+            attribute: NSLayoutAttribute.Right,
             relatedBy: NSLayoutRelation.Equal,
             toItem: self.contentView,
             attribute: NSLayoutAttribute.Right,
