@@ -51,8 +51,8 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     private func showDetailViewController(vc: FKDetailViewController!) {
 
         //Get rid of the old stuff
-        let navContFrame = self.navController?.view.frame ?? CGRectZero
-        let detailFrame = self.detailViewController?.view.frame ?? CGRectZero
+        let navContFrame = self.navController?.view.frame
+        let detailFrame = self.detailViewController?.view.frame
 
         self.navController?.view.removeFromSuperview()
         self.navController?.removeFromParentViewController()
@@ -63,10 +63,8 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.detailViewController = vc
         let barButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("masterStateChange"))
         self.detailViewController?.showHideButton = barButton
-        self.detailViewController?.view.frame = detailFrame
 
         self.navController = FKNavigationViewController(rootViewController: self.detailViewController!)
-        self.navController?.view.frame = navContFrame
         self.navController?.view.layer.shadowOffset = CGSizeMake(-3, 3)
         self.navController?.view.layer.shadowRadius = 5
         self.navController?.view.layer.shadowOpacity = 0.5
@@ -76,6 +74,11 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
             width: self.splitPercentage * self.navController!.view.frame.size.width,
             height: self.navController!.view.frame.size.height))
         self.navController?.view.layer.shadowPath = bezPath.CGPath
+
+        if let navContFrame = navContFrame, detailFrame = detailFrame {
+            self.detailViewController?.view.frame = detailFrame
+            self.navController?.view.frame = navContFrame
+        }
 
         self.addChildViewController(self.navController!)
         self.view.addSubview(self.navController!.view)
