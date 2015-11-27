@@ -119,7 +119,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
         self.detailViewController?.view.hidden = true
         delay(2.0) { () -> () in
-            print("Master Frame: \(self.masterViewController.view.frame)")
+            print("Master Frame: \(self.masterViewController?.view.frame)")
             print("MasterDetail Frame: \(self.view.frame)")
         }
     }
