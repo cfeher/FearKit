@@ -123,6 +123,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
+        self.detailViewController?.view.hidden = true
     }
 
     func hideMaster(animated: Bool) {
