@@ -32,8 +32,8 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         super.viewDidLoad()
 
         //setup
-        self.showMasterViewController(FKMasterViewController(items: self.masterItems))
         self.showDetailViewController(self.masterItems.first!.detailViewController)
+        self.showMasterViewController(FKMasterViewController(items: self.masterItems))
     }
 
     private func showDetailViewController(vc: FKDetailViewController!) {
