@@ -18,11 +18,6 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
 
     required public init(items: [FKMasterItem]?) {
         super.init(nibName: nil, bundle: nil);
-        self.view.backgroundColor = UIColor.greenColor()
-
-        // Setup the table view
-        self.view.addSubview(self.tableView)
-        items?.each({[weak self] in self?.addFKMasterItem($0)})
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -45,8 +40,12 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        //contsraints
+        // Setup the table view
+        self.view.addSubview(self.tableView)
+        items?.each({[weak self] in self?.addFKMasterItem($0)})
         setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, val: false)
+
+        //contsraints
         self.view.addConstraint(NSLayoutConstraint(
             item: self.tableView,
             attribute: .Left,
