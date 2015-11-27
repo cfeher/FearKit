@@ -119,6 +119,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
         self.masterViewController?.view.backgroundColor = .redColor()
         self.detailViewController?.view.hidden = true
+        print("HERE")
     }
 
     func hideMaster(animated: Bool) {
