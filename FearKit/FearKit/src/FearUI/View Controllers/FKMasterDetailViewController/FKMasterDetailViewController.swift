@@ -78,6 +78,40 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.masterViewController = vc
         self.view.addSubview(self.masterViewController!.view)
         self.view.sendSubviewToBack(self.masterViewController!.view)
+
+        //contsraints
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Left,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Top,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Bottom,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Bottom,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: vc.view,
+            attribute: .Width,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Width,
+            multiplier: self.splitPercentage,
+            constant: 0))
     }
 
     func hideMaster(animated: Bool) {
