@@ -20,11 +20,12 @@ public struct FKFont {
 }
 
 public struct FKMasterItem {
-    public let itemTitle: String!
+    public let itemTitle: String
     public var itemImage: UIImage?
-    public let itemCallback: ((FKMasterItem) -> Void)!
-    public let ord: Int!
-    public let viewController: UIViewController!
+    public let itemCallback: ((FKMasterItem) -> Void)
+    internal var internalItemCallback: ((FKMasterItem) -> Void)?
+    public let ord: Int
+    public let viewController: UIViewController
     internal let detailViewController: FKDetailViewController
 
     public init(itemTitle: String, itemImage: UIImage?, ord: Int = Int.min, viewController: UIViewController, itemCallback: (FKMasterItem) -> Void) {

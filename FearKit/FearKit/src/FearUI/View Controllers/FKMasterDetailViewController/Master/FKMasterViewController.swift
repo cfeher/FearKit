@@ -143,6 +143,7 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
     public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item: FKMasterItem = self.items[indexPath.row]
         item.itemCallback(item)
+        item.internalItemCallback?(item)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
