@@ -58,7 +58,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
         let bezPath = UIBezierPath(rect: CGRect(x: 0,
             y: 0,
-            width: 0.5 * self.navController!.view.frame.size.width,
+            width: self.splitPercentage * self.navController!.view.frame.size.width,
             height: self.navController!.view.frame.size.height))
         self.navController?.view.layer.shadowPath = bezPath.CGPath
 
