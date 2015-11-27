@@ -9,7 +9,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     var detailViewController: FKDetailViewController?
     var masterViewController: FKMasterViewController?
     var navController: FKNavigationViewController?
-    let masterDetailItems: [FKMasterDetailItem]
+    let masterItems: [FKMasterItem]
 
     //callbacks
     public var willOpenMasterPanel: (() -> (Bool))?
@@ -18,8 +18,8 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     public var didCloseMasterPanel: (() -> ())?
     public var splitPercentageForMasterPanel: (() -> (CGFloat))?
 
-    public init(masterDetailItems: [FKMasterDetailItem]) {
-        self.masterDetailItems = masterDetailItems
+    public init(masterDetailItems: [FKMasterItem]) {
+        self.masterItems = masterDetailItems
         super.init(nibName: nil, bundle: nil);
         self.view.frame = UIScreen.mainScreen().bounds
     }
@@ -32,25 +32,11 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         super.viewDidLoad()
 
         //setup
-        var masterItems = [FKMasterItem]()
-        self.masterDetailItems.each({ mdi in
-            masterItems.append(mdi.masterItem)
-        })
-        self.addMasterViewController(FKMasterViewController(items: masterItems))
-        self.addDetailViewController(self.masterDetailItems.first!.detailViewController)
+        self.showMasterViewController(FKMasterViewController(items: self.masterItems))
+        self.showDetailViewController(self.masterItems.first!.detailViewController)
     }
 
-
-    override public func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override public func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    private func addDetailViewController(vc: FKDetailViewController!) {
+    private func showDetailViewController(vc: FKDetailViewController!) {
 
         //Get rid of the old stuff
         self.navController?.view.removeFromSuperview()
@@ -81,7 +67,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.view.bringSubviewToFront(self.navController!.view)
     }
 
-    private func addMasterViewController(vc: FKMasterViewController) {
+    private func showMasterViewController(vc: FKMasterViewController) {
 
         //Get rid of the old stuff
         self.masterViewController?.view.removeFromSuperview()
