@@ -41,6 +41,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         //setup
         let itemSelectedCallback: (FKMasterItem) -> Void = { item in
             print("Selected: \(item.itemTitle)")
+            self.masterStateChange()
             self.showDetailViewController(item.detailViewController)
         }
         self.masterItems.each({ item in item.internalItemCallback = itemSelectedCallback })
