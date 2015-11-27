@@ -36,6 +36,7 @@ public class FKMasterItem {
         self.viewController = viewController
 
         let dvc = FKDetailViewController()
+        dvc.title = viewController.title
         dvc.addChildViewController(self.viewController)
         dvc.view.addSubview(viewController.view)
         self.detailViewController = dvc
