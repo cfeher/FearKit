@@ -21,7 +21,6 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
         self.view.backgroundColor = UIColor.greenColor()
 
         // Setup the table view
-        self.tableView.frame = self.view.frame
         self.view.addSubview(self.tableView)
         items?.each({[weak self] in self?.addFKMasterItem($0)})
     }
@@ -41,6 +40,45 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
     public override func viewDidAppear(animated: Bool) {
         self.tableView.dataSource = self
         self.tableView.delegate = self
+    }
+
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //contsraints
+        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, val: false)
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Left,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Left,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Top,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Top,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Bottom,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Bottom,
+            multiplier: 1.0,
+            constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(
+            item: self.tableView,
+            attribute: .Right,
+            relatedBy: .Equal,
+            toItem: self.view,
+            attribute: .Right,
+            multiplier: 1.0,
+            constant: 0))
     }
 
     private var width = CGFloat.max
