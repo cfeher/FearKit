@@ -33,17 +33,14 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
         self.tableView.reloadData()
     }
 
-    public override func viewDidAppear(animated: Bool) {
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-    }
-
     public override func viewDidLoad() {
         super.viewDidLoad()
 
         // Setup the table view
         self.view.addSubview(self.tableView)
         setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self.view, val: false)
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
 
         //contsraints
         self.view.addConstraint(NSLayoutConstraint(
