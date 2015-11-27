@@ -117,9 +117,11 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
 
-        self.masterViewController?.view.backgroundColor = .redColor()
         self.detailViewController?.view.hidden = true
-        print("HERE")
+        delay(2.0) { () -> () in
+            print("Master Frame: \(self.masterViewController.view.frame)")
+            print("MasterDetail Frame: \(self.view.frame)")
+        }
     }
 
     func hideMaster(animated: Bool) {
