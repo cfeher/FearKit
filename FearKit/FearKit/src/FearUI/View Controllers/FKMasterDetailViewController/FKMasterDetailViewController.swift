@@ -113,6 +113,12 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
             attribute: .Width,
             multiplier: self.splitPercentage,
             constant: 0))
+
+        self.view.setNeedsLayout()
+        self.view.layoutIfNeeded()
+
+        self.masterViewController?.view.backgroundColor = .redColor()
+        self.detailViewController?.view.hidden = true
     }
 
     func hideMaster(animated: Bool) {
