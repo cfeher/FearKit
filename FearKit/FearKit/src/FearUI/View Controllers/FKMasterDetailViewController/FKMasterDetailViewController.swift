@@ -78,6 +78,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.masterViewController = vc
         self.view.addSubview(self.masterViewController!.view)
         self.view.sendSubviewToBack(self.masterViewController!.view)
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
 
         //contsraints
         self.view.addConstraint(NSLayoutConstraint(
