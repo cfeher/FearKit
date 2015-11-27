@@ -2,11 +2,20 @@ import UIKit
 
 public class FKMasterDetailViewController: UIViewController, FKBottomNavigation {
 
-    let splitPercentage: CGFloat = 0.65
+    var splitPercentage: CGFloat {
+        return self.splitPercentageForMasterPanel?() ?? 0.65
+    }
     let openAnimationDuration: Double = 0.25
     var detailViewController: FKDetailViewController?
     var masterViewController: FKMasterViewController?
     var navController: FKNavigationViewController?
+
+    //callbacks
+    public var willOpenMasterPanel: (() -> (Bool))?
+    public var didOpenMasterPanel: (() -> ())?
+    public var willCloseMasterPanel: (() -> (Bool))?
+    public var didCloseMasterPanel: (() -> ())?
+    public var splitPercentageForMasterPanel: (() -> (CGFloat))?
 
     public init() {
         super.init(nibName: nil, bundle: nil);
@@ -76,6 +85,8 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     }
 
     func hideMaster(animated: Bool) {
+        let boolVal = self.willCloseMasterPanel?() == nil ? false : !self.willCloseMasterPanel!()
+        if boolVal { return }
         let closedRect = CGRect(
             x: 0,
             y: 0,
@@ -90,13 +101,19 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
                 options: .AllowUserInteraction,
                 animations: { () -> Void in
                     self.navController?.view.frame = closedRect
-                }, completion: nil)
+                }, completion: { complete in
+                    if complete {
+                        self.didCloseMasterPanel?()
+                    }
+            })
         } else {
             self.navController?.view.frame = closedRect
         }
     }
 
     func showMaster(animated: Bool) {
+        let boolVal = self.willOpenMasterPanel?() == nil ? false : !self.willOpenMasterPanel!()
+        if boolVal { return }
         let openRect = CGRect(
             x: self.view.frame.size.width * self.splitPercentage,
             y: 0,
@@ -111,7 +128,11 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
                 options: .AllowUserInteraction,
                 animations: { () -> Void in
                     self.navController?.view.frame = openRect
-                }, completion: nil)
+                }, completion: { complete in
+                    if complete {
+                        self.didOpenMasterPanel?()
+                    }
+            })
         } else {
             self.navController?.view.frame = openRect
         }
