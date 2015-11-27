@@ -39,7 +39,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
     func setup() {
         //setup
-        let itemSelectedCallback: Void -> Void = { item in
+        let itemSelectedCallback: (FKMasterItem) -> Void = { item in
             print("SUPPP")
         }
         self.masterItems.each({ item in item.internalItemCallback = itemSelectedCallback })

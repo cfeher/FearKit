@@ -19,7 +19,7 @@ public struct FKFont {
     }
 }
 
-public struct FKMasterItem {
+public class FKMasterItem {
     public let itemTitle: String
     public var itemImage: UIImage?
     public let itemCallback: ((FKMasterItem) -> Void)
