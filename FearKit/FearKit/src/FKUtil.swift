@@ -22,14 +22,30 @@ public struct FKFont {
 public struct FKMasterItem {
     public let itemTitle: String!
     public var itemImage: UIImage?
-    public let itemCallback: ((MasterItem) -> Void)!
+    public let itemCallback: ((FKMasterItem) -> Void)!
     public let ord: Int!
 
-    public init(itemTitle: String, itemImage: UIImage?, ord: Int = Int.min, itemCallback: (MasterItem) -> Void) {
+    public init(itemTitle: String, itemImage: UIImage?, ord: Int = Int.min, itemCallback: (FKMasterItem) -> Void) {
         self.itemTitle = itemTitle
         self.itemImage = itemImage
         self.itemCallback = itemCallback
         self.ord = ord
+    }
+}
+
+public struct FKMasterDetailItem {
+    public let masterItem: FKMasterItem!
+    public let viewiewController: UIViewController!
+    internal let detailViewController: FKDetailViewController
+
+    public init(viewController: UIViewController, masterItem: FKMasterItem) {
+        self.masterItem = masterItem
+        self.viewiewController = viewController
+
+        let dvc = FKDetailViewController()
+        dvc.addChildViewController(self.viewiewController)
+        dvc.view.addSubview(viewiewController.view)
+        self.detailViewController = dvc
     }
 }
 

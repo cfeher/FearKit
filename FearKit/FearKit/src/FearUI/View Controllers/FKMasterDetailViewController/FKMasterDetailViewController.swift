@@ -9,6 +9,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     var detailViewController: FKDetailViewController?
     var masterViewController: FKMasterViewController?
     var navController: FKNavigationViewController?
+    let masterDetailItems: [FKMasterDetailItem]
 
     //callbacks
     public var willOpenMasterPanel: (() -> (Bool))?
@@ -17,7 +18,8 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     public var didCloseMasterPanel: (() -> ())?
     public var splitPercentageForMasterPanel: (() -> (CGFloat))?
 
-    public init() {
+    public init(masterDetailItems: [FKMasterDetailItem]) {
+        self.masterDetailItems = masterDetailItems
         super.init(nibName: nil, bundle: nil);
         self.view.frame = UIScreen.mainScreen().bounds
     }
@@ -28,6 +30,14 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+
+        //setup
+        var masterItems = [FKMasterItem]()
+        self.masterDetailItems.each({ mdi in
+            masterItems.append(mdi.masterItem)
+        })
+        self.addMasterViewController(FKMasterViewController(items: masterItems))
+        self.addDetailViewController(self.masterDetailItems.first!.detailViewController)
     }
 
 
@@ -40,7 +50,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         // Dispose of any resources that can be recreated.
     }
 
-    public func addDetailViewController(vc: FKDetailViewController!) {
+    private func addDetailViewController(vc: FKDetailViewController!) {
 
         //Get rid of the old stuff
         self.navController?.view.removeFromSuperview()
@@ -71,7 +81,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.view.bringSubviewToFront(self.navController!.view)
     }
 
-    public func addMasterViewController(vc: FKMasterViewController) {
+    private func addMasterViewController(vc: FKMasterViewController) {
 
         //Get rid of the old stuff
         self.masterViewController?.view.removeFromSuperview()
