@@ -24,7 +24,7 @@ public struct FKMasterItem {
     public var itemImage: UIImage?
     public let itemCallback: ((FKMasterItem) -> Void)!
     public let ord: Int!
-    public let viewiewController: UIViewController!
+    public let viewController: UIViewController!
     internal let detailViewController: FKDetailViewController
 
     public init(itemTitle: String, itemImage: UIImage?, ord: Int = Int.min, viewController: UIViewController, itemCallback: (FKMasterItem) -> Void) {
@@ -32,11 +32,11 @@ public struct FKMasterItem {
         self.itemImage = itemImage
         self.itemCallback = itemCallback
         self.ord = ord
-        self.viewiewController = viewController
+        self.viewController = viewController
 
         let dvc = FKDetailViewController()
-        dvc.addChildViewController(self.viewiewController)
-        dvc.view.addSubview(viewiewController.view)
+        dvc.addChildViewController(self.viewController)
+        dvc.view.addSubview(viewController.view)
         self.detailViewController = dvc
     }
 }
