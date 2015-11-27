@@ -5,11 +5,11 @@ public enum FKButtonStyle {
 }
 
 public class FKButton: UIControl {
-    
+
     static private let defaultStyle: FKButtonStyle = .RoudedBorder(
-                                    textColor: .whiteColor(),
-                                    textFont: UIFont(name: "HelveticaNeue", size: 18.0)!,
-                                    borderColor: .whiteColor())
+        textColor: .whiteColor(),
+        textFont: UIFont(name: "HelveticaNeue", size: 18.0)!,
+        borderColor: .whiteColor())
     private let style: FKButtonStyle
     public var buttonPressCallback: (() -> ())?
     private let buttonLabel = UILabel(frame: CGRectZero)
@@ -29,7 +29,7 @@ public class FKButton: UIControl {
 
         }
     }
-    
+
     public init(
         frame: CGRect,
         style: FKButtonStyle = defaultStyle) {
@@ -43,10 +43,10 @@ public class FKButton: UIControl {
     }
 
     public func setup() {
-        
+
         self.addSubview(self.buttonLabel)
         setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, val: false)
-        
+
         self.addConstraint(NSLayoutConstraint(
             item: self.buttonLabel,
             attribute: .CenterX,
@@ -87,10 +87,10 @@ public class FKButton: UIControl {
             self.layer.borderWidth = 1.5
             break
         }
-        
+
         self.setNeedsLayout()
         self.layoutIfNeeded()
-        
+
         self.addTarget(self, action: Selector("touchDownAction"), forControlEvents: .TouchDown)
         self.addTarget(self, action: Selector("touchUpInsideAction"), forControlEvents: .TouchUpInside)
         self.addTarget(self, action: Selector("touchUpOutsideAction"), forControlEvents: .TouchUpOutside)
@@ -98,16 +98,16 @@ public class FKButton: UIControl {
 }
 
 extension FKButton {
-    
+
     func touchDownAction() {
         self.alpha = 0.5
     }
-    
+
     func touchUpInsideAction() {
         self.alpha = 1.0
         self.buttonPressCallback?()
     }
-    
+
     func touchUpOutsideAction() {
         self.alpha = 1.0
     }

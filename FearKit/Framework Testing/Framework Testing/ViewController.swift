@@ -2,6 +2,8 @@ import UIKit
 import FearKit
 
 class ViewController: UIViewController {
+    
+    var cells: [Int] = [1,1,1,1]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -10,12 +12,44 @@ class ViewController: UIViewController {
         let tableView = FKFadingTableView(frame: self.view.frame, style: .Grouped)
         tableView.dataSource = self
         self.view.addSubview(tableView)
+        
+        
+//        delay(3.0) { () -> () in
+//            self.cells.append(1)
+//            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+//        }
+//
+//        delay(6.0) { () -> () in
+//            self.cells.append(1)
+//            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+//        }
+//
+//        delay(9.0) { () -> () in
+//            self.cells.append(1)
+//            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+//        }
+
+        delay(3.0) { () -> () in
+            self.cells.removeFirst()
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
+        }
+
+        delay(6.0) { () -> () in
+            self.cells.removeFirst()
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
+        }
+
+        delay(9.0) { () -> () in
+            self.cells.removeFirst()
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+        }
+
     }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return cells.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -30,7 +64,7 @@ extension ViewController: UITableViewDataSource {
     }
 
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 66
+        return 100
     }
 }
 

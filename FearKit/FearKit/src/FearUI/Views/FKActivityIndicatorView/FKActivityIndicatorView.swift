@@ -34,55 +34,55 @@ public class FKActivityIndicatorView: UIView {
         style: FKActivityIndicatorViewStyle = .ThreeDots(
             c1: UIColor.lightGrayColor(),
             c2: UIColor.lightGrayColor().colorWithAlphaComponent(0.5))) {
-        self.style = style
+                self.style = style
 
-        switch style {
-        case .ThreeDots(let c1, let c2):
-            let threeDots = FKThreeDotsAnimatableView(
-                frame: CGRectZero,
-                colorOne: c1,
-                colorTwo: c2)
-            self.animatableView = threeDots
-        }
+                switch style {
+                case .ThreeDots(let c1, let c2):
+                    let threeDots = FKThreeDotsAnimatableView(
+                        frame: CGRectZero,
+                        colorOne: c1,
+                        colorTwo: c2)
+                    self.animatableView = threeDots
+                }
 
-        super.init(frame: frame)
+                super.init(frame: frame)
 
-        //constraints
-        self.addSubview(self.animatableView)
-        setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, val: false)
+                //constraints
+                self.addSubview(self.animatableView)
+                setTranslatesAutoresizingMaskIntoConstraintsForAllHeirarchy(self, val: false)
 
-        self.addConstraint(NSLayoutConstraint(
-            item: self.animatableView,
-            attribute: .Left,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Left,
-            multiplier: 1.0,
-            constant: 0))
-        self.addConstraint(NSLayoutConstraint(
-            item: self.animatableView,
-            attribute: .Right,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Right,
-            multiplier: 1.0,
-            constant: 0))
-        self.addConstraint(NSLayoutConstraint(
-            item: self.animatableView,
-            attribute: .Top,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Top,
-            multiplier: 1.0,
-            constant: 0))
-        self.addConstraint(NSLayoutConstraint(
-            item: self.animatableView,
-            attribute: .Bottom,
-            relatedBy: .Equal,
-            toItem: self,
-            attribute: .Bottom,
-            multiplier: 1.0,
-            constant: 0))
+                self.addConstraint(NSLayoutConstraint(
+                    item: self.animatableView,
+                    attribute: .Left,
+                    relatedBy: .Equal,
+                    toItem: self,
+                    attribute: .Left,
+                    multiplier: 1.0,
+                    constant: 0))
+                self.addConstraint(NSLayoutConstraint(
+                    item: self.animatableView,
+                    attribute: .Right,
+                    relatedBy: .Equal,
+                    toItem: self,
+                    attribute: .Right,
+                    multiplier: 1.0,
+                    constant: 0))
+                self.addConstraint(NSLayoutConstraint(
+                    item: self.animatableView,
+                    attribute: .Top,
+                    relatedBy: .Equal,
+                    toItem: self,
+                    attribute: .Top,
+                    multiplier: 1.0,
+                    constant: 0))
+                self.addConstraint(NSLayoutConstraint(
+                    item: self.animatableView,
+                    attribute: .Bottom,
+                    relatedBy: .Equal,
+                    toItem: self,
+                    attribute: .Bottom,
+                    multiplier: 1.0,
+                    constant: 0))
     }
 
     required public init?(coder aDecoder: NSCoder) {
