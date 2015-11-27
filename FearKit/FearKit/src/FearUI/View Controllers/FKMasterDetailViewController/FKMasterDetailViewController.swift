@@ -16,7 +16,11 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     public var didOpenMasterPanel: (() -> ())?
     public var willCloseMasterPanel: (() -> (Bool))?
     public var didCloseMasterPanel: (() -> ())?
-    public var splitPercentageForMasterPanel: (() -> (CGFloat))?
+    public var splitPercentageForMasterPanel: (() -> (CGFloat))? {
+        didSet {
+            self.setup()
+        }
+    }
 
     public init(masterDetailItems: [FKMasterItem]) {
         self.masterItems = masterDetailItems
@@ -30,7 +34,10 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
     override public func viewDidLoad() {
         super.viewDidLoad()
+        self.setup()
+    }
 
+    func setup() {
         //setup
         self.showDetailViewController(self.masterItems.first!.detailViewController)
         self.showMasterViewController(FKMasterViewController(items: self.masterItems))
@@ -116,13 +123,6 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
-
-        self.detailViewController?.view.hidden = true
-        delay(2.0) { () -> () in
-            print("Master Frame: \(self.masterViewController?.view.frame)")
-            print("Master Sub Frame: \(self.masterItems.first!.viewController.view.frame)")
-            print("MasterDetail Frame: \(self.view.frame)")
-        }
     }
 
     func hideMaster(animated: Bool) {
