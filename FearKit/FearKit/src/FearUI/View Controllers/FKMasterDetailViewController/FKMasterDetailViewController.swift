@@ -41,7 +41,6 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         //setup
         let itemSelectedCallback: (FKMasterItem) -> Void = { item in
             print("Selected: \(item.itemTitle)")
-            self.masterStateChange()
             self.showDetailViewController(item.detailViewController)
         }
         self.masterItems.each({ item in item.internalItemCallback = itemSelectedCallback })
@@ -52,19 +51,22 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     private func showDetailViewController(vc: FKDetailViewController!) {
 
         //Get rid of the old stuff
+        let navContFrame = self.navController?.view.frame ?? CGRectZero
+        let detailFrame = self.detailViewController?.view.frame ?? CGRectZero
+
         self.navController?.view.removeFromSuperview()
         self.navController?.removeFromParentViewController()
-        self.navController?.view.removeFromSuperview()
         self.detailViewController?.view.removeFromSuperview()
         self.detailViewController?.removeFromParentViewController()
-        self.detailViewController?.view.removeFromSuperview()
 
         //Add new stuff
         self.detailViewController = vc
         let barButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector("masterStateChange"))
         self.detailViewController?.showHideButton = barButton
+        self.detailViewController?.view.frame = detailFrame
 
         self.navController = FKNavigationViewController(rootViewController: self.detailViewController!)
+        self.navController?.view.frame = navContFrame
         self.navController?.view.layer.shadowOffset = CGSizeMake(-3, 3)
         self.navController?.view.layer.shadowRadius = 5
         self.navController?.view.layer.shadowOpacity = 0.5
