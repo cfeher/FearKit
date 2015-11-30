@@ -1,13 +1,12 @@
 import UIKit
 
-public class FKMasterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+internal class FKMasterViewController: UIViewController {
 
-    /**
 
-     // MARK: - Public Functionality
-
-     */
-    public var majorFont: FKFont = FKFont(
+    private var items: [FKMasterItem] = []
+    private let tableView = UITableView()
+    let identifier = "master_row"
+    var majorFont: FKFont = FKFont(
         font: UIFont(name: "Helvetica", size: 20)!,
         color: UIColor.blackColor()) {
 
@@ -16,24 +15,24 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
         }
     }
 
-    required public init(items: [FKMasterItem]?) {
+    required init(items: [FKMasterItem]?) {
         super.init(nibName: nil, bundle: nil);
         items?.each({[weak self] in self?.addFKMasterItem($0)})
     }
 
-    required public init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public func addFKMasterItem(item: FKMasterItem) {
-        items.append(item)
-        items.sortInPlace { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
+    func addFKMasterItem(item: FKMasterItem) {
+        self.items.append(item)
+        self.items.sortInPlace { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
             return item1.ord < item2.ord
         }
         self.tableView.reloadData()
     }
 
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         // Setup the table view
@@ -78,36 +77,23 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
     }
 
     private var width = CGFloat.max
-    public func setWidth(width: CGFloat) {
+    func setWidth(width: CGFloat) {
         self.width = width
         self.tableView.reloadData()
     }
+}
 
-    /**
+extension FKMasterViewController: UITableViewDelegate, UITableViewDataSource {
 
-     // MARK: - Private Functionality
-
-     */
-
-    private var items: [FKMasterItem] = []
-    private let tableView = UITableView()
-
-    /**
-
-     // MARK: - UITableView delegate and data source
-
-     */
-
-    public func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
 
-    public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count
     }
 
-    let identifier = "master_row"
-    public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell: FKMasterCell
         if let unwrappedCell: AnyObject = tableView.dequeueReusableCellWithIdentifier(self.identifier)
             where (unwrappedCell.isKindOfClass(FKMasterCell)) {
@@ -140,14 +126,14 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
         return cell
     }
 
-    public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let item: FKMasterItem = self.items[indexPath.row]
-        item.itemCallback(item)
-        item.internalItemCallback?(item)
+        item.itemCallback(ord: item.ord)
+        item.internalItemCallback(item)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 
-    public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 60
     }
 }
