@@ -2,6 +2,9 @@ import UIKit
 
 internal class FKMasterViewController: UIViewController {
 
+
+    private var items: [FKMasterItem] = []
+    private let tableView = UITableView()
     let identifier = "master_row"
     var majorFont: FKFont = FKFont(
         font: UIFont(name: "Helvetica", size: 20)!,
@@ -78,15 +81,6 @@ internal class FKMasterViewController: UIViewController {
         self.width = width
         self.tableView.reloadData()
     }
-
-    /**
-
-     // MARK: - Private Functionality
-
-     */
-
-    private var items: [FKMasterItem] = []
-    private let tableView = UITableView()
 }
 
 extension FKMasterViewController: UITableViewDelegate, UITableViewDataSource {
