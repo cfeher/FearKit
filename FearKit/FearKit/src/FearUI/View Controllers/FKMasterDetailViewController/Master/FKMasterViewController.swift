@@ -26,8 +26,8 @@ public class FKMasterViewController: UIViewController, UITableViewDataSource, UI
     }
 
     public func addFKMasterItem(item: FKMasterItem) {
-        items.append(item)
-        items.sortInPlace { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
+        self.items.append(item)
+        self.sortInPlace { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
             return item1.ord < item2.ord
         }
         self.tableView.reloadData()

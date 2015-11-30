@@ -1,5 +1,37 @@
 import UIKit
 
+internal struct FKMasterItem {
+    let itemTitle: String
+    var itemImage: UIImage?
+    let itemCallback: ((FKMasterDetailProtocol) -> Void)
+    let ord: Int
+    let viewController: UIViewController
+    let detailViewController: FKDetailViewController
+    var internalItemCallback: ((FKMasterItem) -> Void)?
+
+    init(masterItem: FKMasterDetailProtocol, internalItemCallback: ((FKMasterItem) -> Void)?) {
+        self.itemTitle = masterItem.itemTitle
+        self.itemImage = masterItem.itemImage
+        self.itemCallback = masterItem.itemCallback
+        self.ord = masterItem.ord
+        self.viewController = masterItem.viewController
+
+        let dvc = FKDetailViewController()
+        dvc.title = masterItem.viewController.title
+        dvc.addChildViewController(self.viewController)
+        dvc.view.addSubview(masterItem.viewController.view)
+        self.detailViewController = dvc
+    }
+}
+
+public protocol FKMasterDetailProtocol {
+    var itemTitle: String { get }
+    var itemImage: UIImage? { get }
+    var itemCallback: ((FKMasterDetailProtocol) -> Void) { get }
+    var ord: Int { get }
+    var viewController: UIViewController { get }
+}
+
 public class FKMasterDetailViewController: UIViewController, FKBottomNavigation {
 
     var splitPercentage: CGFloat {
@@ -9,7 +41,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
     var detailViewController: FKDetailViewController?
     var masterViewController: FKMasterViewController?
     var navController: FKNavigationViewController?
-    let masterItems: [FKMasterItem]
+    var masterItems = [FKMasterItem]()
 
     //callbacks
     public var willOpenMasterPanel: (() -> (Bool))?
@@ -22,9 +54,14 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         }
     }
 
-    public init(masterDetailItems: [FKMasterItem]) {
-        self.masterItems = masterDetailItems
+    public init(masterDetailItems: [FKMasterDetailProtocol]) {
         super.init(nibName: nil, bundle: nil);
+
+        let itemSelectedCallback: (FKMasterItem) -> Void = { item in
+            print("Selected: \(item.itemTitle)")
+            self.showDetailViewController(item.detailViewController)
+        }
+        self.masterItems = masterDetailItems.map({ return FKMasterItem(masterItem: $0, internalItemCallback: itemSelectedCallback) })
         self.view.frame = UIScreen.mainScreen().bounds
     }
 
@@ -39,11 +76,6 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
     func setup() {
         //setup
-        let itemSelectedCallback: (FKMasterItem) -> Void = { item in
-            print("Selected: \(item.itemTitle)")
-            self.showDetailViewController(item.detailViewController)
-        }
-        self.masterItems.each({ item in item.internalItemCallback = itemSelectedCallback })
         self.showDetailViewController(self.masterItems.first!.detailViewController)
         self.showMasterViewController(FKMasterViewController(items: self.masterItems))
     }
