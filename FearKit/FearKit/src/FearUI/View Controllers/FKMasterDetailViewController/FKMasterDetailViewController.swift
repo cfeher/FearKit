@@ -7,14 +7,15 @@ internal struct FKMasterItem {
     let ord: Int
     let viewController: UIViewController
     let detailViewController: FKDetailViewController
-    var internalItemCallback: ((FKMasterItem) -> Void)?
+    let internalItemCallback: ((FKMasterItem) -> Void)
 
-    init(masterItem: FKMasterDetailProtocol, internalItemCallback: ((FKMasterItem) -> Void)?) {
+    init(masterItem: FKMasterDetailProtocol, internalItemCallback: ((FKMasterItem) -> Void)) {
         self.itemTitle = masterItem.itemTitle
         self.itemImage = masterItem.itemImage
         self.itemCallback = masterItem.itemCallback
         self.ord = masterItem.ord
         self.viewController = masterItem.viewController
+        self.internalItemCallback = internalItemCallback
 
         let dvc = FKDetailViewController()
         dvc.title = masterItem.viewController.title
