@@ -3,7 +3,7 @@ import UIKit
 internal struct FKMasterItem {
     let itemTitle: String
     var itemImage: UIImage?
-    let itemCallback: ((FKMasterDetailProtocol) -> Void)
+    let itemCallback: ((ord: Int) -> Void)
     let ord: Int
     let viewController: UIViewController
     let detailViewController: FKDetailViewController
@@ -27,7 +27,7 @@ internal struct FKMasterItem {
 public protocol FKMasterDetailProtocol {
     var itemTitle: String { get }
     var itemImage: UIImage? { get }
-    var itemCallback: ((FKMasterDetailProtocol) -> Void) { get }
+    var itemCallback: ((ord: Int) -> Void) { get }
     var ord: Int { get }
     var viewController: UIViewController { get }
 }
