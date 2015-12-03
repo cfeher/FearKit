@@ -62,7 +62,12 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
             print("Selected: \(item.itemTitle)")
             self.showDetailViewController(item.detailViewController)
         }
-        self.masterItems = masterDetailItems.map({ return FKMasterItem(masterItem: $0, internalItemCallback: itemSelectedCallback) })
+        self.masterItems = masterDetailItems.map {
+            return FKMasterItem(masterItem: $0, internalItemCallback: itemSelectedCallback) }
+        .sortInPlace { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
+            return item1.ord < item2.ord
+        }
+
         self.view.frame = UIScreen.mainScreen().bounds
     }
 
