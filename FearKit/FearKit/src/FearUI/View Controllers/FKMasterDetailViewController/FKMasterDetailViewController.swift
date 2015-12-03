@@ -64,7 +64,7 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         }
         self.masterItems = masterDetailItems.map {
             return FKMasterItem(masterItem: $0, internalItemCallback: itemSelectedCallback) }
-        .sortInPlace { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
+        .sort { (item1: FKMasterItem, item2: FKMasterItem) -> Bool in
             return item1.ord < item2.ord
         }
 
