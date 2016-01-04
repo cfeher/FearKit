@@ -88,9 +88,6 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
     private func showDetailViewController(vc: FKDetailViewController!) {
 
-        //hide master
-        self.masterStateChange()
-
         //Get rid of the old stuff
         let navContFrame = self.navController?.view.frame
         let detailFrame = self.detailViewController?.view.frame
@@ -124,6 +121,11 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
         self.addChildViewController(self.navController!)
         self.view.addSubview(self.navController!.view)
         self.view.bringSubviewToFront(self.navController!.view)
+
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            //hide master
+            self.masterStateChange()
+        }
     }
 
     private func showMasterViewController(vc: FKMasterViewController) {
