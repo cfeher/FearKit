@@ -88,6 +88,9 @@ public class FKMasterDetailViewController: UIViewController, FKBottomNavigation 
 
     private func showDetailViewController(vc: FKDetailViewController!) {
 
+        //hide master
+        self.masterStateChange()
+
         //Get rid of the old stuff
         let navContFrame = self.navController?.view.frame
         let detailFrame = self.detailViewController?.view.frame
