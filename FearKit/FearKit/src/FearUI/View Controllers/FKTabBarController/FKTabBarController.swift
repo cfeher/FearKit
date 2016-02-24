@@ -242,21 +242,18 @@ internal class FKTabBarTab: UIView {
         self.tab = tab
         super.init(frame: frame)
 
-        self.button.setImage(tab.image, forState: .Normal)
         self.button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
         self.button.contentVerticalAlignment = UIControlContentVerticalAlignment.Fill
-        self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
-        let imagesize = tab.image.size
-//        self.button.imageEdgeInsets = UIEdgeInsets(
-//            top: ((imagesize.height - frame.size.height)/2.0) * 0.75,
-//            left: ((imagesize.width - frame.size.width)/2.0) * 0.75,
-//            bottom: ((imagesize.height - frame.size.height)/2.0) * 0.75,
-//            right: ((imagesize.width - frame.size.width)/2.0) * 0.75)
+        let buttonImageView = UIImageView(frame: CGRectZero)
+        buttonImageView.contentMode = .ScaleAspectFit
+        buttonImageView.image = tab.image
+        self.button.addSubview(buttonImageView)
         self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
         self.button.backgroundColor = UIColor.clearColor()
         self.addSubview(self.button)
         self.backgroundColor = UIColor.clearColor()
 
+        //button
         self.addConstraint(NSLayoutConstraint(
             item: self.button,
             attribute: .CenterX,
@@ -289,7 +286,33 @@ internal class FKTabBarTab: UIView {
             attribute: .Width,
             multiplier: 1.0,
             constant: 0))
-
+        
+        //button image
+        self.addConstraint(NSLayoutConstraint(
+            item: buttonImageView,
+            attribute: .CenterX,
+            relatedBy: .Equal,
+            toItem: self.button,
+            attribute: .CenterX,
+            multiplier: 1.0,
+            constant: 0))
+        self.addConstraint(NSLayoutConstraint(
+            item: buttonImageView,
+            attribute: .CenterY,
+            relatedBy: .Equal,
+            toItem: self.button,
+            attribute: .CenterY,
+            multiplier: 1.0,
+            constant: 0))
+        self.addConstraint(NSLayoutConstraint(
+            item: buttonImageView,
+            attribute: .Height,
+            relatedBy: .Equal,
+            toItem: self.button,
+            attribute: .Height,
+            multiplier: 0.85,
+            constant: 0))
+        
         //self.button.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.layoutIfNeeded()
     }
