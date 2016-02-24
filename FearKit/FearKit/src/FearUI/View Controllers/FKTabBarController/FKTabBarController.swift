@@ -247,6 +247,7 @@ internal class FKTabBarTab: UIView {
         let buttonImageView = UIImageView(frame: CGRectZero)
         buttonImageView.contentMode = .ScaleAspectFit
         buttonImageView.image = tab.image
+        buttonImageView.backgroundColor = .redColor()
         self.button.addSubview(buttonImageView)
         self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
         self.button.backgroundColor = UIColor.clearColor()
