@@ -180,6 +180,7 @@ extension FKTabBarController {
         guard index != self.selectedTab else {
             return
         }
+        self.selectedTab = index
         for fkTab in self.fkTabs {
             fkTab.tab.viewController.view.removeFromSuperview()
             fkTab.backgroundColor = fkTab.tab.backgroundColor
