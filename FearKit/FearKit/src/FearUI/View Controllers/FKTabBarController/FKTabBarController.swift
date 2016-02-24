@@ -239,6 +239,7 @@ internal class FKTabBarTab: UIView {
 
         self.button.setImage(tab.image, forState: .Normal)
         self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        self.button.clipsToBounds = true
         self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
         self.button.backgroundColor = UIColor.clearColor()
         self.addSubview(self.button)
