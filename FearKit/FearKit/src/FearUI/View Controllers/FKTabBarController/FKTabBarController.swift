@@ -22,6 +22,7 @@ public func == (lhs: FKTab, rhs: FKTab) -> Bool {
 
 public class FKTabBarController: UIViewController {
 
+    private var selectedTab = 0
     private var fkTabs = [FKTabBarTab]()
     private var tabBar: UIView?
     public var tabSelectedCallback: ((tab: FKTab) -> ())?
@@ -176,6 +177,9 @@ extension FKTabBarController {
 
 extension FKTabBarController {
     func tabSelected(index: Int) {
+        guard index != self.selectedTab else {
+            return
+        }
         for fkTab in self.fkTabs {
             fkTab.tab.viewController.view.removeFromSuperview()
             fkTab.backgroundColor = fkTab.tab.backgroundColor
