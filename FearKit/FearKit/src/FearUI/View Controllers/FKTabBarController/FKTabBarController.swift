@@ -22,7 +22,7 @@ public func == (lhs: FKTab, rhs: FKTab) -> Bool {
 
 public class FKTabBarController: UIViewController {
 
-    private var selectedTab = 0
+    private var selectedTab = -1
     private var fkTabs = [FKTabBarTab]()
     private var tabBar: UIView?
     public var tabSelectedCallback: ((tab: FKTab) -> ())?
