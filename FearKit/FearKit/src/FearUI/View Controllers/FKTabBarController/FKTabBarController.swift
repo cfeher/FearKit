@@ -313,7 +313,7 @@ internal class FKTabBarTab: UIView {
             multiplier: 0.85,
             constant: 0))
         
-        //self.button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        buttonImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.layoutIfNeeded()
     }
 
