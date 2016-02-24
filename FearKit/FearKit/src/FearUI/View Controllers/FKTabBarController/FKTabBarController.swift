@@ -247,7 +247,6 @@ internal class FKTabBarTab: UIView {
         let buttonImageView = UIImageView(frame: CGRectZero)
         buttonImageView.contentMode = .ScaleAspectFit
         buttonImageView.image = tab.image
-        buttonImageView.backgroundColor = .redColor()
         self.button.addSubview(buttonImageView)
         self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
         self.button.backgroundColor = UIColor.clearColor()
@@ -311,7 +310,7 @@ internal class FKTabBarTab: UIView {
             relatedBy: .Equal,
             toItem: self,
             attribute: .Height,
-            multiplier: 0.85,
+            multiplier: 0.65,
             constant: 0))
         
         buttonImageView.translatesAutoresizingMaskIntoConstraints = false
