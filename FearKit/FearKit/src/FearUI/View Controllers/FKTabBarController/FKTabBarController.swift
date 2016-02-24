@@ -310,7 +310,7 @@ internal class FKTabBarTab: UIView {
             relatedBy: .Equal,
             toItem: self,
             attribute: .Height,
-            multiplier: 0.65,
+            multiplier: 0.5,
             constant: 0))
         
         buttonImageView.translatesAutoresizingMaskIntoConstraints = false
