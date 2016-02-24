@@ -309,7 +309,7 @@ internal class FKTabBarTab: UIView {
             item: buttonImageView,
             attribute: .Height,
             relatedBy: .Equal,
-            toItem: self.button,
+            toItem: self,
             attribute: .Height,
             multiplier: 0.85,
             constant: 0))
