@@ -243,10 +243,10 @@ internal class FKTabBarTab: UIView {
         self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFill
         let imagesize = tab.image.size
         self.button.imageEdgeInsets = UIEdgeInsets(
-            top: 30,
-            left: 30,
-            bottom: 30,
-            right: 30)
+            top: ((imagesize.height - frame.size.height)/2.0) * 0.75,
+            left: ((imagesize.width - frame.size.width)/2.0) * 0.75,
+            bottom: ((imagesize.height - frame.size.height)/2.0) * 0.75,
+            right: ((imagesize.width - frame.size.width)/2.0) * 0.75)
         self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
         self.button.backgroundColor = UIColor.clearColor()
         self.addSubview(self.button)
