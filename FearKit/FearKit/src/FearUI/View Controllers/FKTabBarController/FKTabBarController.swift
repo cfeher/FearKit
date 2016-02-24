@@ -22,6 +22,7 @@ public func == (lhs: FKTab, rhs: FKTab) -> Bool {
 
 public class FKTabBarController: UIViewController {
 
+    private var selectedTab = -1
     private var fkTabs = [FKTabBarTab]()
     private var tabBar: UIView?
     public var tabSelectedCallback: ((tab: FKTab) -> ())?
@@ -176,6 +177,10 @@ extension FKTabBarController {
 
 extension FKTabBarController {
     func tabSelected(index: Int) {
+        guard index != self.selectedTab else {
+            return
+        }
+        self.selectedTab = index
         for fkTab in self.fkTabs {
             fkTab.tab.viewController.view.removeFromSuperview()
             fkTab.backgroundColor = fkTab.tab.backgroundColor
@@ -237,13 +242,18 @@ internal class FKTabBarTab: UIView {
         self.tab = tab
         super.init(frame: frame)
 
-        self.button.setImage(tab.image, forState: .Normal)
-        self.button.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        self.button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Fill
+        self.button.contentVerticalAlignment = UIControlContentVerticalAlignment.Fill
+        let buttonImageView = UIImageView(frame: CGRectZero)
+        buttonImageView.contentMode = .ScaleAspectFit
+        buttonImageView.image = tab.image
+        self.button.addSubview(buttonImageView)
         self.button.addTarget(self, action: Selector("buttonPress"), forControlEvents: .TouchUpInside)
         self.button.backgroundColor = UIColor.clearColor()
         self.addSubview(self.button)
         self.backgroundColor = UIColor.clearColor()
 
+        //button
         self.addConstraint(NSLayoutConstraint(
             item: self.button,
             attribute: .CenterX,
@@ -276,8 +286,34 @@ internal class FKTabBarTab: UIView {
             attribute: .Width,
             multiplier: 1.0,
             constant: 0))
-
-        //self.button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
+        //button image
+        self.addConstraint(NSLayoutConstraint(
+            item: buttonImageView,
+            attribute: .CenterX,
+            relatedBy: .Equal,
+            toItem: self.button,
+            attribute: .CenterX,
+            multiplier: 1.0,
+            constant: 0))
+        self.addConstraint(NSLayoutConstraint(
+            item: buttonImageView,
+            attribute: .CenterY,
+            relatedBy: .Equal,
+            toItem: self.button,
+            attribute: .CenterY,
+            multiplier: 1.0,
+            constant: 0))
+        self.addConstraint(NSLayoutConstraint(
+            item: buttonImageView,
+            attribute: .Height,
+            relatedBy: .Equal,
+            toItem: self,
+            attribute: .Height,
+            multiplier: 0.5,
+            constant: 0))
+        
+        buttonImageView.translatesAutoresizingMaskIntoConstraints = false
         self.layoutIfNeeded()
     }
 
