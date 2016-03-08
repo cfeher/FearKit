@@ -321,6 +321,7 @@
 				532D09B41B5E85EA009E962E /* Sources */,
 				532D09B61B5E85EA009E962E /* Headers */,
 				532D09B71B5E85EA009E962E /* Resources */,
+				534AEE351C8F1EFF00256214 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -404,6 +405,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		534AEE351C8F1EFF00256214 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then\n    rm -fr Frameworks\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		532D09B41B5E85EA009E962E /* Sources */ = {
