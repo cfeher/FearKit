@@ -9,9 +9,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         self.view.backgroundColor = .whiteColor()
-        let tableView = FKFadingTableView(frame: self.view.frame, style: .Grouped)
-        tableView.dataSource = self
-        self.view.addSubview(tableView)
+//        let tableView = FKFadingTableView(frame: self.view.frame, style: .Grouped)
+//        tableView.dataSource = self
+//        self.view.addSubview(tableView)
+
+        let fkq = FKQuadrantButtonView()
+        fkq.frame = self.view.bounds
+        self.view.addSubview(fkq)
         
         
 //        delay(3.0) { () -> () in
@@ -29,20 +33,20 @@ class ViewController: UIViewController {
 //            tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
 //        }
 
-        delay(3.0) { () -> () in
-            self.cells.removeFirst()
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
-        }
-
-        delay(6.0) { () -> () in
-            self.cells.removeFirst()
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
-        }
-
-        delay(9.0) { () -> () in
-            self.cells.removeFirst()
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
-        }
+//        delay(3.0) { () -> () in
+//            self.cells.removeFirst()
+//            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
+//        }
+//
+//        delay(6.0) { () -> () in
+//            self.cells.removeFirst()
+//            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 1, inSection: 0)], withRowAnimation: .Fade)
+//        }
+//
+//        delay(9.0) { () -> () in
+//            self.cells.removeFirst()
+//            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: .Fade)
+//        }
 
     }
 }
