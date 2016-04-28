@@ -93,7 +93,6 @@ public class FKActivityIndicatorView: UIView {
         if self.hidesWhenStopped {
             self.hidden = !_startStop
         }
-        self.animatableView.animate(false)
         self.animatableView.animate(_startStop)
     }
 }

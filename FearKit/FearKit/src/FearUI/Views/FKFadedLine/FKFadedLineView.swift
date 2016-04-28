@@ -31,12 +31,13 @@ public class FKFadedLineView: UIView {
 
         //Information for gradient
         let context = UIGraphicsGetCurrentContext()
-        let locations: [CGFloat] = [0.0, 0.15, 0.85, 1.0]
+        let locations: [CGFloat] = [0.0, 0.35, 0.75, 1.0]
         let components: [CGFloat] = [
             red, green, blue, 0.0 /*End of colour 1*/,
             red, green, blue, 1.0/*End of colour 2*/,
             red, green, blue, 1.0/*End of colour 3*/,
-            red, green, blue, 0.0/*End of colour 4*/]
+            red, green, blue, 0.0/*End of colour 4*/
+        ]
 
         //Create gradient
         let rgbColorspace = CGColorSpaceCreateDeviceRGB();
